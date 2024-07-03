@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: Poppins, sans-serif;
+}
+
+.distance {
+    @apply px-6 md:px-20 py-6;
+}
