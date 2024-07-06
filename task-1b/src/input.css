@@ -9,6 +9,9 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 /* NAVBAR FIXED BLUR */
