@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../dist/output.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- navbar start -->
+    <header
+      class="bg-transparent absolute w-full top-0 left-0 flex items-center z-10"
+    >
+      <div class="container">
+        <div class="flex justify-between items-center relative">
+          <div class="px-4">
+            <a href="#home" class="block py-6"
+              ><img
+                src="../assets/logo-smkdev.png"
+                alt="logo-smkdev"
+                class="h-5 md:h-7 lg:h-9"
+            /></a>
+          </div>
+          <div class="flex items-center px-4">
+            <button
+              id="hamburger"
+              name="hamburger"
+              type="button"
+              class="block absolute right-4 lg:hidden"
+            >
+              <span
+                class="hamburger-line transition duration-300 ease-in-out origin-top-left"
+              ></span>
+              <span
+                class="hamburger-line transition duration-300 ease-in-out"
+              ></span>
+              <span
+                class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"
+              ></span>
+            </button>
+
+            <nav
+              id="nav-menu"
+              class="hidden absolute py-5 bg-white right-4 top-16 w-full shadow-lg rounded-lg max-w-[250px] lg:flex lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none"
+            >
+              <ul class="block lg:flex">
+                <li class="group">
+                  <a
+                    href="#about"
+                    class="text-base text-dark py-2 px-8 flex group-hover:text-primary"
+                    ><img
+                      src="../assets/about.png"
+                      alt="about"
+                      class="w-4 h-4 mr-2"
+                    />About</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="#mitra"
+                    class="text-base text-dark py-2 px-8 flex group-hover:text-primary"
+                    ><img
+                      src="../assets/mitra.png"
+                      alt="mitra"
+                      class="w-4 h-4 mr-2"
+                    />Mitra</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="#blog"
+                    class="text-base text-dark py-2 px-8 flex group-hover:text-primary"
+                    ><img
+                      src="../assets/blog.png"
+                      alt="blog"
+                      class="w-4 h-4 mr-2"
+                    />Blog</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="#contact"
+                    class="text-base text-dark py-2 px-8 flex group-hover:text-primary"
+                    ><img
+                      src="../assets/contact.png"
+                      alt="contact"
+                      class="w-4 h-4 mr-2"
+                    />Contact</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- navbar end -->
+
+    <!-- hero start -->
+    <section id="home" class="pt-36 font-serif">
+      <div class="container">
+        <div class="flex flex-wrap">
+          <div class="w-full self-center px-4 lg:w-1/2">
+            <h1
+              class="text-dark text-3xl font-bold mb-2 lg:text-4xl lg:leading-normal"
+            >
+              Mengembangkan Talenta Digital
+              <span class="text-primary lg:text-5xl">untuk Masa Depan</span>
+            </h1>
+            <div class="flex relative flex-wrap items-center">
+              <p
+                class="text-dark text-lg mb-8 lg:text-xl lg:leading-relaxed lg:mb-12"
+              >
+                Kami memastikan Anda dibimbing oleh Profesional berpengalaman
+                dan Kurikulum sesuai kebutuhan Industri Digital.
+              </p>
+            </div>
+          </div>
+
+          <div class="w-full self-end px-4 lg:w-1/2">
+            <div class="mt-10 lg:mt-9">
+              <img
+                src="../assets/undraw_programming.svg"
+                alt="programming"
+                class="max-w-full mx-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- hero end -->
+
+    <!-- about start -->
+    <section id="about" class="py-20">
+      <div class="container"></div>
+    </section>
+    <!-- about end -->
+
+    <script src="./script.js"></script>
+  </body>
+</html>
