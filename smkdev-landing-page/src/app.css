@@ -16,6 +16,21 @@ html {
 .specialSpin {
   animation: spin 5s linear infinite;
 }
+#typewriter {
+  font-weight: bold;
+}
+
+#cursor {
+  animation: blink 1s linear infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 100%;
+  }
+  50% {
+    opacity: 0%;
+  }
+}
 
 @keyframes spin {
   from {

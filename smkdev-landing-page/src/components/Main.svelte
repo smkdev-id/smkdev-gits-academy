@@ -1,9 +1,9 @@
 <script>
     import Step from "./Step.svelte"
+
     let slogan = [
         {
             name: "Jadilah Talenta Digital",
-            runTxt: "Masa Depan Indonesia",
             description: "Belajar langsung dengan expert dari industri dengan kurikulum komperhensif berbasis project-based learning"
         }
     ]
@@ -19,17 +19,18 @@
     >
         <h4 class="font-semibold text-4xl sm:text-4xl ">
             {slogan[0].name}
-            <span class="poppins text-violet-400">{slogan[0].runTxt}</span>
+            <span class="poppins text-violet-400"><span id="typewriter"></span
+                ><span id="cursor">|</span></span>
         </h4>
         <p class="text-base sm:text-lg md:text-lg">
             {slogan[0].description}
         </p>
     </div>
-    <div class="relative grid place-items-end">
+    <div class="relative grid place-items-center">
         <img
             src={"images/profile.png"}
             alt="Zetane Engine"
-            class="object-cover z-[2] max-h-[70vh]"
+            class="object-cover z-[1] max-h-[70vh] lg:h-max h-screen"
         />
     </div>
 </section>
