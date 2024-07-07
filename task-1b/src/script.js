@@ -93,3 +93,30 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", updateTitleAndURL);
   updateTitleAndURL();
 });
+
+// swiper mitra
+document.addEventListener("DOMContentLoaded", function () {
+  var swiper = new Swiper(".swiper-container", {
+    slidesPerView: 6,
+    spaceBetween: 10,
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    breakpoints: {
+      360: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 6,
+        spaceBetween: 10,
+      },
+    },
+  });
+});
