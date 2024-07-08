@@ -1,4 +1,4 @@
-import skills  from './images/skils.jpg'
+import skills  from './images/skills.jpg'
 import logo from './images/logo.png'
 
 const img = {

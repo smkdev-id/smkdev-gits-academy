@@ -14,6 +14,8 @@ module.exports = {
     extend: {
       colors: {
         accent: 'rgba(153, 102, 255, 0.7)',
+        dark: 'rgba(31,41,55,255)',
+        // grey: 'rgba(246,248,253,255)',
       }
     },
   },

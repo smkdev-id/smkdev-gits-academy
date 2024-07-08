@@ -1,11 +1,13 @@
-import Navbar from "./components/navbar";
+import Navbar from "./components/ui/Navbar";
+import Section from "./components/section";
 
 const App = () => {
   return (
-    <div className="w-full min-h-screen">
+    <>
       <Navbar />
-    </div>
-  )
-}
+      <Section />
+    </>
+  );
+};
 
 export default App;
