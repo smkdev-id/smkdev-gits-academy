@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero';
+import Client from './components/Client';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Navbar/>
       <div className='pt-16'>
         <Hero/>
+        <Client/>
       </div>
     </>
   )
