@@ -12,6 +12,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
+  background-color: #f0f5fc;
 }
 
 /* NAVBAR FIXED BLUR */
