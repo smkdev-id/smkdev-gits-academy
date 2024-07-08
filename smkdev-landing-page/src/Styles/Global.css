@@ -1,0 +1,27 @@
+:root {
+  --blue: #1c3965;
+  --semi-blue: #244d73;
+  --white: #fcfcfc;
+  --black: #000000;
+  --gray: #616364;
+  --orange: #e48f0f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: var(--white);
+  padding: 25px 50px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
