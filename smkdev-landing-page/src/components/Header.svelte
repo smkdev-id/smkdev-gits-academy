@@ -62,10 +62,10 @@
 </style>
 
 <header
-    class={"sticky z-[10] top-0 duration-200 px-6 flex items-center justify-between border-b border-solid " +
+    class={"sticky z-[10] top-0 duration-200 px-6 lg:px-[300px] flex items-center justify-between border-b border-solid " +
         (y > 0
-            ? " py-4 bg-white border-violet-950"
-            : " py-6 bg-transparent border-transparent")}
+            ? " py-2 bg-white border-violet-950"
+            : " py-4 bg-transparent border-transparent")}
 >
     <h1 class="font-medium">
         <a href="/"><img src="/images/logo-smkdev.png" width="110" height="23" alt=""></a>
@@ -130,7 +130,7 @@
 </header>
 
 {#if showMobileMenu}
-<nav class="mobile-nav bg-white shadow-lg rounded-md mt-2 px-6 py-4">
+<nav class="mobile-nav bg-white shadow-lg rounded-md mt-2 px-6 py-4 z-[9]">
     {#each tabs as tab, index}
         <div class="relative mb-2">
             {#if tab.name == "Learn"}

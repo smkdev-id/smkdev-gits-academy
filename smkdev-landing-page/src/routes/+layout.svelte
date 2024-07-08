@@ -12,7 +12,7 @@
 </script>
 
 <div
-    class="container relative flex flex-col max-w-[1000px] mx-auto w-full text-xs sm:text-sm min-h-screen"
+    class="container relative flex flex-col mx-auto w-full text-xs sm:text-sm min-h-screen"
 >
     <div
         class={"fixed bottom-0 w-full duration-200 flex p-10 z-[10] " +
