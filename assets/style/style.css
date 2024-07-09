@@ -1,0 +1,324 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+header {
+  top: 0;
+  display: inline;
+  position: fixed;
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  background-color: white;
+  justify-content: space-around;
+  height: 60px;
+  align-items: center;
+  box-shadow: 0 2px 2px gainsboro;
+  border-radius: 0 0 15px 15px;
+}
+
+nav > .logo > img {
+  width: 100px;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  width: 40%;
+  justify-content: space-around;
+}
+
+nav ul li a {
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none;
+  color: black;
+}
+
+nav ul li a:hover {
+  font-weight: 400;
+  border-bottom: 2px solid rgb(3, 3, 91);
+}
+
+.dashboard-nav {
+  background-color: rgb(3, 3, 91);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px;
+}
+
+.dashboard-nav:hover {
+  border-bottom: none;
+}
+
+/*Hamburger menu untuk mobile device*/
+.toggle-menu {
+  display: flex;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.toggle-menu input {
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  top: -7px;
+  left: -10px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.toggle-menu span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: rgb(3, 3, 91);
+  border-radius: 3px;
+  transition: 0.5s;
+}
+
+/*Hamburger menu animation, untuk merubah menjadi tanda silang*/
+.toggle-menu span:nth-child(2) {
+  transform-origin: 0 0; /*Sumbu x=0 y=0*/
+}
+
+.toggle-menu span:nth-child(4) {
+  transform-origin: 0 100%; /*Sumbu x=0 y=100%*/
+}
+
+.toggle-menu input:checked ~ span:nth-child(2) {
+  background-color: rgb(3, 3, 91);
+  transform: rotate(45deg) translate(-1.5px, -1.3px);
+}
+
+.toggle-menu input:checked ~ span:nth-child(4) {
+  background-color: rgb(3, 3, 91);
+  transform: rotate(-45deg) translate(0, 0);
+}
+
+.toggle-menu input:checked ~ span:nth-child(3) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+main {
+  padding: 20px;
+}
+
+h2 {
+  color: rgb(3, 3, 91);
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.home-container {
+  text-align: left;
+  margin-top: 20px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+  padding: 0 50px;
+}
+
+.home-image {
+  width: 35%;
+  border-radius: 50px;
+}
+
+.deskripsi {
+  padding: 10px;
+}
+
+p {
+  line-height: 23px;
+  letter-spacing: 1px;
+  text-align: justify;
+}
+
+/* Mitra section */
+.mitra {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  background-color: rgb(233, 239, 242);
+  padding: 70px;
+}
+
+.title-mitra {
+  font-weight: 500;
+}
+
+.logo-mitra {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+}
+
+.logo-mitra > img {
+  width: 120px;
+  cursor: grab;
+}
+
+/* orientation section */
+
+.orientation {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+}
+
+.title-orientation {
+    color: rgb(3, 3, 91);
+}
+
+.description-orientation {
+    margin-top: 20px;
+    width: 80%;
+    text-align: center;
+}
+
+.card-orientation {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.card-item {
+    border-radius: 20px;
+    border: 0.5px solid black;
+    width: 30%;
+    padding: 30px; 
+    display: flex;
+    flex-direction: column;   
+    gap: 20px;
+}
+
+.card-icon {
+    width: 40px;
+    background-color: rgb(210, 224, 210);
+    padding: 50px;    
+    border-radius: 20px;      
+}
+
+footer {
+  background-color: rgb(3, 3, 91);
+  text-align: center;
+  padding: 15px;
+  margin-top: 5px;
+  font-weight: bold;
+  width: 100vw;
+}
+
+footer p {
+  color: white;
+  text-align: center;
+}
+
+/*untuk menghilangkan hamburger menu*/
+@media screen and (max-width: 2000px) {
+  .toggle-menu {
+    display: none;
+  }
+}
+
+/*Media screen ipad atau device mobile saat landscape*/
+@media screen and (max-width: 900px) {
+  nav ul {
+    width: 50%;
+    font-size: 80%;
+  }
+
+  .container,
+  .container1,
+  .container2,
+  .container3 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container,
+  .biodata,
+  .about {
+    box-shadow: 0 0 3px 0 rgb(3, 3, 91);
+    border-radius: 5px;
+  }
+
+  table {
+    width: auto;
+  }
+}
+
+/*Media screen untuk mobile*/
+@media screen and (max-width: 600px) {
+  .container,
+  .container1,
+  .container2,
+  .container3 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .img {
+    width: 100%;
+  }
+  .toggle-menu {
+    display: flex;
+  }
+
+  nav ul {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 80%;
+    height: 100vh;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    z-index: -1;
+    transform: translateX(100%);
+    transition: all 1s;
+  }
+
+  nav ul.slide {
+    transform: translateX(0);
+  }
+
+  table {
+    width: auto;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
