@@ -55,6 +55,8 @@ const Mentor = () => {
               className="mx-auto mb-4 rounded-full w-36 h-36"
               src={mentor.profile}
               alt={`${mentor.name}'s profile`}
+              width={100}
+              height={100}
             />
             <div className="flex flex-col">
               <p className="flex items-center justify-center h-16 mb-1 text-lg font-semibold text-gray-700">

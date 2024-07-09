@@ -45,7 +45,9 @@ const Footer = () => {
               <img
                 src={img.logo}
                 className="h-8 pb-2 me-3"
-                alt="FlowBite Logo"
+                alt="smkdev"
+                width={120}
+                height={100}
               />
             </a>
             <span className="self-center text-base font-semibold text-slate-200 whitespace-nowrap">

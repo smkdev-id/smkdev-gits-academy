@@ -5,8 +5,8 @@ const Card = ({ title, body, img, category }) => {
     <div className="relative w-full bg-white border border-gray-200 rounded-lg shadow md:w-1/4 lg:w-1/4">
       <img
         className="object-cover w-full h-48 rounded-t-lg"
-        width={200}
-        height={200}
+        width={100}
+        height={100}
         src={img}
         alt=""
       />
