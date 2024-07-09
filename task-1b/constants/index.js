@@ -39,37 +39,55 @@ export const Talenta = [
   "Saya Telah menjadi Talenta Digital Handal",
 ];
 
-export const newFeatures = [
+export const Testimoni = [
   {
-    imgUrl: "/vrpano.svg",
-    title: "A new world",
-    subtitle:
-      "we have the latest update with new world for you to try never mind",
+    name: "Hasban Fardani",
+    message:
+      "GITS Academy membantu saya memahami konsep-konsep dasar dalam pemrograman dengan sangat baik. Instruktur yang berpengalaman membuat proses belajar menjadi menyenangkan dan mudah dipahami.",
   },
   {
-    imgUrl: "/headset.svg",
-    title: "More realistic",
-    subtitle:
-      "In the latest update, your eyes are narrow, making the world more realistic than ever",
+    name: "Rizal Maulana",
+    message:
+      "Saya sangat senang dengan pengalaman belajar di GITS Academy. Instruktur dan materi pelajarannya luar biasa! Saya merasa lebih siap untuk menghadapi tantangan di dunia kerja.",
+  },
+  {
+    name: "Guruh Maulana",
+    message:
+      "Pengalaman saya di GITS Academy sungguh memuaskan. Saya belajar banyak hal baru dan mendapatkan pengalaman berharga yang tidak bisa saya dapatkan di tempat lain.",
+  },
+  {
+    name: "Karel Trisnanto Utomo",
+    message:
+      "Instruktur di GITS Academy sangat berpengetahuan dan membantu. Materi pelajaran sangat relevan dengan kebutuhan industri saat ini, dan saya merasa lebih percaya diri dalam karir saya.",
+  },
+  {
+    name: "Asep Dwi Saputra",
+    message:
+      "Saya merekomendasikan GITS Academy kepada siapa pun yang ingin memulai karir di dunia pemrograman. Terima kasih atas pengalaman belajar yang luar biasa!",
+  },
+  {
+    name: "Shevabey Rahman",
+    message:
+      "GITS Academy memberikan pendekatan pembelajaran yang sangat praktis dan aplikatif. Saya bisa langsung menerapkan ilmu yang saya dapatkan dalam pekerjaan sehari-hari.",
   },
 ];
 
-export const insights = [
+export const Artikel = [
   {
-    imgUrl: "/planet-06.png",
-    title: "The launch of the Metaverse makes Elon musk ketar-ketir",
+    imgUrl: "/Visualization.png",
+    title: "Propmt Enginnering: Keterampilan, Prospek Karir Dan Kursus AI",
     subtitle:
       "Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Diam maecenas sed enim ut sem viverra alique.",
   },
   {
-    imgUrl: "/planet-07.png",
-    title: "7 tips to easily master the madness of the Metaverse",
+    imgUrl: "/Strategi.png",
+    title: "Strategi Menurunkan Churn Rate Untuk Pertumbuhan Bisnis",
     subtitle:
       "Vitae congue eu consequat ac felis donec. Et magnis dis parturient montes nascetur ridiculus mus. Convallis tellus id interdum",
   },
   {
     imgUrl: "/planet-08.png",
-    title: "With one platform you can explore the whole world virtually",
+    title: "Mengoptimalkan ROI dengan Strategi Analisis Data Yang efektif",
     subtitle:
       "Quam quisque id diam vel quam elementum. Viverra nam libero justo laoreet sit amet cursus sit. Mauris in aliquam sem",
   },
@@ -78,18 +96,18 @@ export const insights = [
 export const socials = [
   {
     name: "twitter",
-    url: "/twitter.svg",
+    url: "/X.png",
   },
   {
     name: "linkedin",
-    url: "/linkedin.svg",
+    url: "/Linkedin.png",
   },
   {
     name: "instagram",
-    url: "/instagram.svg",
+    url: "/Instagram.png",
   },
   {
     name: "facebook",
-    url: "/facebook.svg",
+    url: "/Facebook.png",
   },
 ];

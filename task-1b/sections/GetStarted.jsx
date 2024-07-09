@@ -32,7 +32,14 @@ const GetStarted = () => (
       >
         <TypingText title="|Talenta Digital SMKDEV" />
         <TitleText
-          title={<>Langkah Menjadi Talenta Digital Bersama SMKDEV</>}
+          title={
+            <>
+              Langkah Menjad
+              <span className="text-[#ebb000]">Talenta Digital</span>
+              <span className="text-[#00bd00]">Bersama</span>
+              SMKDEV
+            </>
+          }
         />
         <div className="mt-[31px] flex flex-col max-w-[370px] gap-[24px]">
           {Talenta.map((features, index) => (

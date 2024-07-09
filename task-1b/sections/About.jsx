@@ -7,7 +7,7 @@ import { fadeIn, staggerContainer, textVariant } from "../utils/motion";
 
 const About = () => (
   <section className={`${styles.paddings} relative z-10`}>
-    <div className="gradient-02 z-0" />
+    <div className="z-0" />
     <motion.div
       variants={staggerContainer}
       initial="hidden"
@@ -18,26 +18,29 @@ const About = () => (
       <TypingText title="| About SMKDEV" textStyles="text-center" />
       <motion.p
         variants={fadeIn("up", "tween", 0.2, 1)}
-        className="mt-[8px] font-normal sm:text-[32px] text-[20px] text-center text-secondary-white"
+        className="mt-[8px] font-normal sm:text-[32px] text-[20px] text-center text-primary-blue"
       >
         <span className="font-extrabold">SMKDEV</span>
         adalah komunitas yang berkomitmen untuk membina talenta SMK melalui{" "}
-        <span className="font-extrabold">
+        <span className="font-extrabold text-[#ebb000]">
           pendekatan project-based learning
         </span>
         , di mana para siswa diberi kesempatan untuk terlibat langsung dalam
         berbagai studi kasus project IT yang berasal dari dunia industri. Dengan
         metode ini, siswa tidak hanya mendapatkan pengetahuan teoritis, tetapi
         juga pengalaman praktis yang
-        <span className="font-extrabold">
+        <span className="font-extrabold text-[#00bd00]">
           relevan dengan kebutuhan pasar kerja saat ini
         </span>
         . Melalui bimbingan dan dukungan dari para profesional, SMKDEV bertujuan
         untuk{" "}
-        <span className="font-extrabold">
+        <span className="font-extrabold text-[#ebb000]">
           mempersiapkan generasi muda agar siap menghadapi tantangan di industri
-          teknologi informasi, sekaligus mendorong pengembangan keterampilan
-          teknis dan soft skills yang dibutuhkan dalam dunia kerja
+          teknologi informasi, sekaligus mendorong
+        </span>
+        <span className="font-extrabold text-[#00bd00]">
+          pengembangan keterampilan teknis dan soft skills yang dibutuhkan dalam
+          dunia kerja
         </span>
         . Komunitas ini menjadi jembatan yang menghubungkan pendidikan dengan
         industri, memastikan bahwa talenta muda memiliki kompetensi yang tepat

@@ -22,8 +22,14 @@ const Explore = () => {
         <TitleText
           title={
             <>
-              SMKDEV menghadirkan expert <br className="md:block hidden" />
-              dari industri untuk mendampingi proses belajarmu
+              SMKDEV menghadirkan{" "}
+              <span className="font-extrabold text-[#ebb000]">expert</span>{" "}
+              <br className="md:block hidden" />
+              dari{" "}
+              <span className="font-extrabold text-[#00bd00]">
+                industri
+              </span>{" "}
+              untuk mendampingi proses belajarmu
             </>
           }
           textStyles="text-center"
