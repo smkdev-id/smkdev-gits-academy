@@ -56,6 +56,23 @@
             description: "Dibimbing langsung oleh mentor expert dari industri digital"
         }
     ]
+    let talents = [
+        {
+            title: "Kurikulum",
+            icon: "fa-solid fa-globe fa-2x",
+            description: "Kurikulum berstandar industri global, senantiasa diperbaharui"
+        },
+        {
+            title: "Metode",
+            icon: "fa-solid fa-pencil fa-2x",
+            description: "Metode belajar project-based learning, dapat menjadi portfolio siswa"
+        },
+        {
+            title: "Mentor",
+            icon: "fa-solid fa-person-chalkboard",
+            description: "Dibimbing langsung oleh mentor expert dari industri digital"
+        }
+    ]
 
     onMount(() => {
         const swiper = new Swiper(".centered-slide-carousel", {
@@ -251,8 +268,31 @@
         </div>
     </section>    
     <!-- About -->
-     <section class="py-10 lg:py-28 flex flex-col gap-16 px-6 lg:px-[300px]" id="about">
-        <div class="h-full bg-indigo-700"></div>
-     </section>
+    <section
+    id="about"
+    class="py-8 lg:py-10 pt-7 lg:pt-9 flex flex-col gap-10 sm:gap-20 md:gap-24 relative lg:px-[300px]">
+    <div class="flex flex-col gap-2 text-center relative  before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-violet-400 after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-violet-400 py-4">
+        <h3 class="font-semibold text-xl sm:text-2xl md:text-4xl">
+            Talenta Digital <span class="text-violet-400">SMKDEV</span> 
+        </h3>
+    </div>
+    <div class="flex flex-col gap-20 w-full bg-indigo-100 grid place-items-center">
+        {#each talents as talent, index}
+            <div class="flex gap-2 sm:gap-5">
+                <p
+                    class="poppins text-xl sm:text-2xl md:text-3xl text-slate-500 font-semibold"
+                >
+                    {index + 1}
+                </p>
+                <div class="flex flex-col gap-2 sm:gap-5">
+                    <h3 class="text-2xl sm:text-3xl md:text-5xl">
+                        {talent.name}
+                    </h3>
+                    <p>{talent.description}</p>
+                </div>
+            </div>
+        {/each}
+    </div>
+</section>
 </main>
 
