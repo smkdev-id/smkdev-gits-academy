@@ -1,5 +1,9 @@
+import Featured from "./featured";
 import Hero from "./hero";
+import Mitra from "./mitra";
 
 export {
-    Hero
+    Featured,
+    Hero,
+    Mitra,
 }

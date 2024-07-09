@@ -1,14 +1,13 @@
 "use client";
-import { NextPage } from "next";
 import Image from "next/image";
 
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import ActionMenu from "./DropdownMenu";
 import ButtonLink from "./Button";
 
 interface Props {}
 
-const Topnav: NextPage<Props> = ({}) => {
+const Topnav: FC<Props> = ({}) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {

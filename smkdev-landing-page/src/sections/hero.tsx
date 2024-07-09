@@ -7,7 +7,7 @@ interface Props {}
 
 const Hero: NextPage<Props> = ({}) => {
   return (
-    <div className="flex w-full justify-center py-28">
+    <div className="flex w-full justify-center py-40">
       <div className="flex w-[60%] items-center justify-center gap-x-8">
         <div className="flex flex-col gap-y-9">
           <h1 className="text-5xl font-semibold capitalize leading-snug">
@@ -22,10 +22,10 @@ const Hero: NextPage<Props> = ({}) => {
               }}
             />
           </h1>
-          <h2 className="text-xl font-medium">
+          <p className="text-xl font-medium">
             Belajar langsung dengan expert dari industri dengan kurikulum
             komperhensif berbasis project-based learning
-          </h2>
+          </p>
         </div>
         <div className="relative">
           <div className="z-20 w-[415px]">
