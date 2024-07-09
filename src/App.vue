@@ -3,6 +3,7 @@ import NavBar from './components/NavBar.vue'
 import HeroSection from './components/HeroSection.vue'
 import IndustryPatnersSection from './components/IndustryPatnersSection.vue'
 import OrientationLearningSection from './components/OrientationLearningSection.vue'
+import WhyChooseUsSection from './components/WhyChooseUsSection.vue'
 </script>
 <template>
   <NavBar />
@@ -10,5 +11,6 @@ import OrientationLearningSection from './components/OrientationLearningSection.
     <HeroSection />
     <IndustryPatnersSection />
     <OrientationLearningSection />
+    <WhyChooseUsSection />
   </main>
 </template>

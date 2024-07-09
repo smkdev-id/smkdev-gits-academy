@@ -4,7 +4,7 @@ import GraphicsIcon from './icons/GraphicsIcon.vue'
 </script>
 <template>
   <div
-    class="distance flex flex-col md:flex-row justify-center items-center gap-14 text-start py-16"
+    class="distance flex flex-col md:flex-row justify-center items-center gap-14 text-start py-16 lg:h-[90vh]"
   >
     <div class="w-full md:w-1/2 mt-12">
       <h1 class="text-4xl font-medium text-blue-950 leading-tight">

@@ -18,7 +18,7 @@ import MenuIcon from './icons/MenuIcon.vue'
     </div>
     <div class="flex-1">
       <a class="btn btn-ghost pl-0">
-        <img src="@/assets/smkdev-logo.png" alt="logo smkdev" width="120" />
+        <img src="/logo/smkdev-logo.png" alt="logo smkdev" width="120" />
       </a>
     </div>
     <div class="flex-none">
