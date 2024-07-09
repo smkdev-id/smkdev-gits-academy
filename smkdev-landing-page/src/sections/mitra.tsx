@@ -1,8 +1,4 @@
-"use client";
 import { NextPage } from "next";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
@@ -24,7 +20,7 @@ const Mitra: NextPage = () => {
         </h1>
         <Marquee className="w-full">
           {slides.concat(slides).map((slide, index) => (
-            <div key={index} className="flex w-[170px] justify-center">
+            <div key={index} className="flex w-[200px] justify-center">
               <Image
                 src={slide.src}
                 alt={slide.alt}
@@ -36,34 +32,6 @@ const Mitra: NextPage = () => {
             </div>
           ))}
         </Marquee>
-
-        {/* <Swiper
-          className="w-full"
-          spaceBetween={10}
-          slidesPerView={6}
-          modules={[Autoplay]}
-          autoplay={{
-            pauseOnMouseEnter: false,
-            delay: 0,
-            disableOnInteraction: false,
-          }}
-          loop
-        >
-          {slides.concat(slides).map((slide, index) => (
-            <SwiperSlide key={index}>
-              <div className="flex w-[170px] justify-center">
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  width={130}
-                  height={130}
-                  sizes="100vw"
-                  className=""
-                />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper> */}
       </div>
     </div>
   );

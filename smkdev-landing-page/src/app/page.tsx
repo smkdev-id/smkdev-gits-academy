@@ -1,5 +1,5 @@
 import { Topnav } from "@/components";
-import { Featured, Hero, Mitra } from "@/sections";
+import { Featured, Hero, Mitra, WhyUs } from "@/sections";
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
       <Hero />
       <Mitra />
       <Featured />
+      <WhyUs />
     </main>
   );
 }

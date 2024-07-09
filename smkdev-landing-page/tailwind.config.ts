@@ -19,6 +19,11 @@ const config: Config = {
         secondary: "#00a92f",
         bg2: "#f3f8fb",
       },
+      fill: {
+        primary: "#1c3965",
+        secondary: "#00a92f",
+        bg2: "#f3f8fb",
+      }
     },
   },
   plugins: [],
