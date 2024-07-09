@@ -5,20 +5,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
+   
+   <script src="
+https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
+"></script>
+<link href="
+https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
+" rel="stylesheet">
+
+
+ 
+    
   <title>SMKDEV EDU</title>
 </head>
 
 <body>
-<section class="home">
-<section class="container" >
+
+ <!-- nav -->
+ <nav>
+<ul class="ul-nav">
+  <li class="li-nav navi">SMKDEV</li>
+  <li class="li-nav"><a href="#contact">Contact Us</a></li>
+  <li class="li-nav "><a href="#testimony">Testimonials</a></li>
+  <li class="li-nav"><a href="#services">Services</a></li>
+  <li class="li-nav"><a href="#home">Welcome</a></li>
+ 
+</ul>
+</nav>
+
+ 
+<section id="home" class="home">
+
+  <section class="container">
+  
+  
   <h1 class="brand">
   SMKDEV
   </h1>
  
   <section class="column">
-     <p class="header-title">
+     <p class="header-title top">
    Jadilah Talenta Digital 
-
   </p>  <p id="ijo" class="header-title">
    Masa Depan Indonesia
   </p> 
@@ -28,188 +55,290 @@
     </p>
     </section>
     
-     <img class="header" src="https://images.pexels.com/photos/1326947/pexels-photo-1326947.jpeg" alt="fashion" width=500px height= 800px;/>
+     <img class="header" src="https://images.pexels.com/photos/1326947/pexels-photo-1326947.jpeg" alt="fashion" width=54% height=600;/>
  </section>
  </section>
   
   <section class="mitra">
-  <p id="white" class="title-section">
+  <p id="text-lightgreen" class="title-section">
   Dipercaya Oleh Mitra Industri
   </p>
   
-  <img src="https://smkdev.storage.googleapis.com/wp/Logo-Gits-Indonesia.png" alt="logo"/>
-   <img src="https://smkdev.storage.googleapis.com/wp/Logo-Gits-Indonesia.png" alt="logo"/>
-    <img src="https://smkdev.storage.googleapis.com/wp/Logo-Gits-Indonesia.png" alt="logo"/>
-     <img src="https://smkdev.storage.googleapis.com/wp/Logo-Gits-Indonesia.png" alt="logo"/>
-      <img src="  https://smkdev.storage.googleapis.com/wp/Logo-Eudeka.png" alt="logo"/>
-   <img src="  https://smkdev.storage.googleapis.com/wp/Logo-Eudeka.png" alt="logo"/>
-   <img src="  https://smkdev.storage.googleapis.com/wp/Logo-Eudeka.png" alt="logo"/>
+  <div class="splide" role="group" aria-label="Splide Basic HTML Example">
+  <div class="splide__track">
+		<ul class="splide__list">
+			<li class="splide__slide"><img src="https://smkdev.storage.googleapis.com/wp/Logo-Gits-Indonesia.png" alt="logo"/></li>
+			<li class="splide__slide"><img src="https://smkdev.storage.googleapis.com/wp/Logo-Gits-Indonesia.png" alt="logo"/></li>
+			<li class="splide__slide"><img src="https://smkdev.storage.googleapis.com/wp/Logo-Eudeka.png" alt="logo"/></li>
+      
+      <li class="splide__slide"><img src="https://smkdev.storage.googleapis.com/wp/Logo-Gits-Indonesia.png" alt="logo"/></li>
+      <li class="splide__slide"><img src="https://smkdev.storage.googleapis.com/wp/Logo-Eudeka.png" alt="logo"/></li>
+      <li class="splide__slide"><img src="https://smkdev.storage.googleapis.com/wp/Logo-Gits-Indonesia.png" alt="logo"/></li>
+      
+		</ul>
+  </div>
+</div>
     
   </section>
   
   
-  <section class="orientasi">
-  <p class="title-section">
+  <section id="services" class="orientasi">
+  <p class="title-section center">
   Orientasi Belajar SMKDEV 
   </p>
-  <p class="section-description">
+  <p class="section-description middle">
  Dapatkan pengalaman belajar berorientasi pengalaman kerja yang dapat mengantarkan Anda menjadi talenta yang dibutuhkan oleh industri digital terkini.
   </p>
 
+
 <section class="row">
-<section class="photo">
-  <img src="  https://smkdev.storage.googleapis.com/wp/Logo-Eudeka.png" alt="logo"/>
-  <p>
-  Learning Path Industri
-  </p>
-  <p>
-  Learning path disusun berdasarkan kebutuhan dunia industri.
-  </p>
-</section>
-<section class="photo">
-  <img src="  https://smkdev.storage.googleapis.com/wp/Logo-Eudeka.png" alt="logo"/>
-  <p>
-  Learning Path Industri
-  </p>
-  <p>
-  Learning path disusun berdasarkan kebutuhan dunia industri.
-  </p>
-</section>
-<section class="photo">
-  <img src="  https://smkdev.storage.googleapis.com/wp/Logo-Eudeka.png" alt="logo"/>
-  <p>
-  Learning Path Industri
-  </p>
-  <p>
-  Learning path disusun berdasarkan kebutuhan dunia industri.
-  </p>
-</section>
+  <div class="card">
+  <div class="card-img"></div>
+  <div class="card-info">
+    <p class="text-title">Learning Path Industri </p>
+    <p class="text-body">Learning path disusun berdasarkan kebutuhan dunia industri.</p>
+  </div>
+</div>
 
 
+<div class="card">
+  <div class="card-img"></div>
+  <div class="card-info">
+    <p class="text-title">Kurikulum Komprehensif</p>
+    <p class="text-body">Kurikulum komprehensif dan senantiasa di perbarui berdasarkan pengalaman di dunia industri</p>
+  </div>
+</div>
 
 
+<div class="card">
+  <div class="card-img"></div>
+  <div class="card-info">
+    <p class="text-title">Project-Based Learning</p>
+    <p class="text-body">Materi pembelajaran disusun dengan pendekatan - pendekatan project based learning</p>
+  </div>
+</div>
 </section>
+</section>
+
   
-  </section>
-  
- 
-  
-  <section class="collections">
-  <section class="column">
-    <p class="title-section">
-    Clothes
-
-for Him
+  <section class="alasan">
+  <section class="row">
+  <section class="alasan-kiri">
+    <p class="title-section" id="lowercase">
+    Mengapa memilih SMKDEV
     </p>
     <p class="section-description">
-    Look dashing while on the go
-
-with our casual wear items.
+    Pengalaman belajarmu yang lebih menyenangkan dengan
     </p>
-    
-    <button type="button" id="btn" class="button-ungu">
-    SHOP NOW
-    </button>
     </section>
-    
-    <img class="fashion" src="https://images.pexels.com/photos/3392032/pexels-photo-3392032.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="man-fashion" width="480px"  height="780px" />
+   
+    <section>
+   <div class="card2">
+  <div class="card-inner2">
+    <div class="card-front2">
+      <p>Kurikulum</p>
+    </div>
+    <div class="card-back2">
+      <p>Kurikulum berstandar industri global, senantiasa diperbaharui</p>
+    </div>
+  </div>
+</div>
+<div class="card2">
+  <div class="card-inner2">
+    <div class="card-front2" id="foto2">
+      <p>Metode</p>
+    </div>
+    <div class="card-back2">
+      <p>Metode belajar project-based learning, dapat menjadi portfolio siswa</p>
+    </div>
+  </div>
+</div>
+<div class="card2">
+  <div class="card-inner2">
+    <div class="card-front2" id="foto3">
+      <p>Mentor</p>
+    </div>
+    <div class="card-back2">
+      <p>Dibimbing langsung oleh mentor expert dari industri digital</p>
+    </div>
+  </div>
+</div>
+</section>
   </section>
+   </section>
   
   
-    <section class="collections">
-  <img class="fashion" src="https://images.pexels.com/photos/2914287/pexels-photo-2914287.jpeg" alt="fashionwoman" width="480px"/>
-  <section class="column">
-  <p class="title-section">
-  Accessories
+    <section class="talenta">
+   
+  <img class="fashion" src="https://images.pexels.com/photos/4467739/pexels-photo-4467739.jpeg" alt="digital" width=600 height=500/>
+
+  
+  <section id="talenta-kanan" class="column">
+  <p class="title-section" id="text-lightgreen">
+  Talenta Digital SMKDEV
   </p>
-  <p class="section-description">
-  Add shoes, bags, and more to complement your look.
-  </p>
-   <button type="button" class="button-ungu">
-  SHOP NOW
-  </button>
+
+  <ol class="section-description" id="text-lightgreen"><br>
+  <li>Daftar ke program pelatihan</li>
+  <li>Mengikuti hingga tuntas</li>
+  <li>Terdaftar di talent pool SMKDEV</li>
+  <li>Mengikuti program magang/kerja di partner industri SMKDEV</li>
+  <li>Saya telah menjadi talenta digital handal</li>
+  </ol>
   </section>
-  </section>
+ 
+   </section>
+ 
+
   
   
-  <section class="spotlight">
+  <section class="testi" id="testimony">
     <p class='garet28' id="title">
-    Look who's wearing Mintmade!
+    Apa Kata Mereka?
     </p>
     
     <section class="row">
-    <section class="photo">
-      <img src = "https://images.pexels.com/photos/794063/pexels-photo-794063.jpeg" alt="Jordanna" width="200px" />
-      <p class="garet14">
-      Jordanna  <br>
-(Jordanna's Closet)
-      </p>
-    </section>
     
-          <section class="photo">
-      <img src = "https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg" alt="Agatha" width="200px" />
-      <p class="garet14">
-      Neil  Tran<br>
-(Actor and Model)
-      </p>
-    </section>  
-    
-          <section class="photo">
-      <img src = "https://images.pexels.com/photos/3597043/pexels-photo-3597043.jpeg" alt="Neil" width="200px" />
-      <p class="garet14">
-      Agatha Lam <br>
+    <div class="card3">
+  <div class="card-img-21"></div>
+  <div class="card-info3">
+ 
+    <p class="text-body3"> membuat saya makin bersemangat coding! <br>
 
-(Host and Influencer)
-      </p>
-    </section>
-    
+(Rizal Maulana)</p>
+  </div>
+</div>
 
-    </section>
-    
+<div class="card3">
+  <div class="card-img-22"></div>
+  <div class="card-info3">
+   
+   <p class="text-body3">      Seru! bisa saling sharing pengalaman<br>
+(Agatha Lam)</p>
+  </div>
+</div>
+
+    </section> 
   </section>
   
-  <section class="features">
-    <img src="https://images.pexels.com/photos/2908889/pexels-photo-2908889.jpeg" alt="fashion" width="520px" height="620px" />
-     <section class="column">
-    <h3 class="garet28" id="text-black">
-    Why people love to shop at Mintmade Fashion
+  
+  <section class="mentor">
+
+    <h3 class="garet28 mentor-kiri" id="text-black">
+     Expert Mentor
     </h3>
-    <ul class="section-description">
-      <li>Order before 2 pm and get your purchase within the day.</li>
-  <li>Not your size? Avail of our hassle-free return policy.</li>
-  <li>Get 24/7 customer support.</li>
-  <li>We support contactless payment and cash on delivery.</li>
-    </ul>
-  </section>
+
+    <section class="row mentor-kanan">
+    <div class="slideshow-container">
+    <div class="mySlides fade">
+    
+     <section class="row kanan">
+      <img src="https://smkdev.storage.googleapis.com/wp/sudaryatno-fe5603-fe6f61-300x300.jpeg" width=120 height=120>
+      
+      <p class="garet14 text-mentor">
+      CTO GITS Indonesia<br><br>
+      <bold>- Sudaryatno</bold>
+      </p>
     </section>
+    
+     <section class="row kanan">
+      <img src="https://smkdev.storage.googleapis.com/wp/ibnu-sina-wardy-86f446-870bf6-a31bbc-a34c39-300x300.jpg" width=120 height=120>
+      
+      <p class="garet14 text-mentor">
+      CEO GITS Indonesia<br><br>
+      <bold>- Ibnu Sina Wardy</bold>
+      </p>
+    </section>
+    
+    <section class="row kanan">
+      <img src="https://smkdev.storage.googleapis.com/wp/image-4ecbfe-4eee03-300x300.png" width=120 height=120>
+      
+      <p class="garet14 text-mentor">
+      Backend developer SMKDEV<br><br>
+      <bold>- Helmi Adi Prasetyo</bold>
+      </p>
+    </section>
+    </div>
+    
+    <div class="mySlides fade">
+     <section class="row kanan">
+      <img src="https://smkdev.storage.googleapis.com/wp/Samuel-Pandohan-Terampil-Gultom.jpg" width=120 height=120>
+      
+      <p class="garet14 text-mentor">
+      Curriculum developer SMKDEV<br><br>
+      <bold>- Samuel Pandohan Terampil Gultom</bold>
+      </p>
+    </section>
+    
+    
+     <section class="row kanan">
+      <img src="https://smkdev.storage.googleapis.com/wp/Rachmawati-Ari-Taurisia.jpg" width=120 height=120>
+      
+      <p class="garet14 text-mentor">
+      Curriculum developer SMKDEV<br><br>
+      <bold>- Rachmawati Ari Taurisia</bold>
+      </p>
+    </section>
+    </div>
+    
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+
+</div>
+
+     </section>
+    
+    
+    </section>
+    
+    
+<!-- contact -->
   
-  <section class="contact">
-    <img class="header" src ="https://images.pexels.com/photos/3250348/pexels-photo-3250348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="fashion" height= 500px;/>
-    <p class="brand">
-    mintmade
-    </p>
+  <section id="contact" class="contact column">
+  
+  <p class="garet28 lightgreen" id="title">
+  Let's study now
+  </p>
+  
+  
       <section class="row">
     <p id="bogart24-left" class="section-description">
-    Instagram <br>
-Facebook <br>
-Twitter <br>
+    Phone<br>
+<span id="ctc-desc">(123) 456-7890 </span><br>
+    </p>
+    
+     <p id="bogart24" class="section-description">
+    Email <br>  <span id="ctc-desc">
+hello@world.com</span>
     </p>
     
   
-    <p id="bogart24-right" class="section-description">
-    (123) 456 7890 <br>
-hello@world.com
-    </p>
-    </section>
+    <p id="bogart24" class="section-description">
+    Social Media <br>
     
-    <p id="down" class="garet14">
-    123 Anywhere St., Any City<br>
-State, Country 12345
-    </p>
+    <span class="row icon">
+    <a class="row" href="https://www.instagram.com/smkdev.official/"> 
+    <img src="https://cdn-user-icons.flaticon.com/24959/24959482/1720530229442.svg?token=exp=1720545902~hmac=d7df04738b7fc0ca2ee0aeba599ee73b" height=35 /></a>
+    
+    <a class="row" href="https://www.tiktok.com/@smkdev.official">
+<img src="https://cdn-user-icons.flaticon.com/24959/24959482/1720530590160.svg?token=exp=1720531553~hmac=e0e8c5df292d43175c08b5614a9817d0" height=35></a>
+
+<a class="row" href="https://www.youtube.com/@smkdev">
+<img src="https://cdn-user-icons.flaticon.com/24959/24959482/1720530694035.svg?token=exp=1720531595~hmac=4399f4d7e2ecb88b7ac8fc9ed8fd6ac4" height=35 /> </a>
+</span>
+  
+  </p>
   </section>
   
     </section>
-  <script src="script.js"></script>
+  <script src="app.js"></script>
 </body>
 
 </html>
