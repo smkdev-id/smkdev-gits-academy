@@ -20,7 +20,7 @@ const Section = () => {
       <Mentor />
       <Blog />
       <Contact />
-      <IoLogoWhatsapp className="cursor-pointer text-white justify-center items-center fixed z-[999] bottom-4 right-4 p-4 block h-14 w-14 btn btn-primary btn-circle" />
+      {/* <IoLogoWhatsapp className="cursor-pointer text-white justify-center items-center fixed z-[999] bottom-4 right-4 p-4 block h-14 w-14 btn btn-primary btn-circle" /> */}
     </div>
   );
 };

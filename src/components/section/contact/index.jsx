@@ -1,13 +1,23 @@
 import { IoIosBusiness, IoIosPin, IoMdCall } from "react-icons/io";
 import Card from "./Card";
-import FormInput from "../ui/FormInput";
+import Input from "../ui/Input";
 
 const Contact = () => {
+  const form = [
+    { label: "Nama Anda", placeholder: "Type here ...", type: "text" },
+    { label: "Alamat Email", placeholder: "Type here ...", type: "text" },
+    { label: "Nomor WhatsApp", placeholder: "Type here ...", type: "text" },
+    {
+      label: "Nomor Satuan Pendidikan",
+      placeholder: "Type here ...",
+      type: "text",
+    },
+  ];
+
   const company = [
     {
       title: "Company information",
-      value:
-        "Creating High-Caliber Digital Talent",
+      value: "Creating High-Caliber Digital Talent",
       icon: IoIosBusiness,
     },
     {
@@ -38,8 +48,25 @@ const Contact = () => {
           );
         })}
       </div>
-      <form>
-        <FormInput label="tes" placeholder="tes" type="text" />
+      <form className="flex flex-wrap w-full px-0 lg:px-32 md:px-32">
+        {form.map((input, i) => (
+          <div key={i} className="w-full p-3 md:w-1/2 lg:w-1/2">
+            <Input
+              label={input.label}
+              placeholder={input.placeholder}
+              type={input.type}
+            />
+          </div>
+        ))}
+        <label className="w-full form-control">
+          <div className="px-4 label">
+            <span className="text-xs font-semibold lg:text-sm md:text-sm label-text">Pesan</span>
+          </div>
+          <textarea
+            className="m-3 textarea textarea-bordered textarea-lg focus:textarea-primary"
+          ></textarea>
+        </label>
+      <button className="mx-3 text-white btn btn-primary">Send Message</button>
       </form>
     </div>
   );
