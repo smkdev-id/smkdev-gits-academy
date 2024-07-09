@@ -29,9 +29,9 @@ const data: Data[] = [
 ]
 </script>
 <template>
-  <div class="distance">
+  <div class="distance py-8">
     <div>
-      <h2 class="text-center text-3xl text-blue-950">Orientasi Belajar SMKDEV</h2>
+      <h2 class="text-center text-3xl text-blue-950 font-semibold">Orientasi Belajar SMKDEV</h2>
       <div class="flex justify-center">
         <p class="text-lg mt-4 text-center max-w-prose">
           Dapatkan pengalaman belajar berorientasi pengalaman kerja yang dapat mengantarkan Anda
