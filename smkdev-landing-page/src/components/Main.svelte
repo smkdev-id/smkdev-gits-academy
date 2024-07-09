@@ -276,7 +276,7 @@
             Talenta Digital <span class="text-violet-400">SMKDEV</span> 
         </h3>
     </div>
-    <div class="flex flex-col gap-20 w-full bg-indigo-100 grid place-items-center">
+    <div class="flex flex-col gap-20 w-full bg-indigo-100 grid align-items-center">
         {#each talents as talent, index}
             <div class="flex gap-2 sm:gap-5">
                 <p
