@@ -9,7 +9,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const NavbarComponents = () => {
   return (
     <>
-      <Navbar expand='lg'>
+      <Navbar
+        expand='lg'
+        sticky='top'
+        className='p-3'
+        style={{ backgroundColor: '#fcfcfc' }}
+      >
         <Container>
           <Navbar.Brand href='#home'>
             <img

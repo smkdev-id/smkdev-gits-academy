@@ -24,8 +24,8 @@ function App() {
       <Talent />
       <Testimoni />
       <Mentor />
-      {/* <Artikel /> */}
-      {/* <Footer /> */}
+      <Artikel />
+      <Footer />
     </div>
   );
 }
