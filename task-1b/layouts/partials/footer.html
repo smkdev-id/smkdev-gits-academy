@@ -1,0 +1,14 @@
+				<footer class="site-footer text-light">
+					<div class="container">
+						<div class="site-footer-inner has-top-divider">
+							<div class="brand footer-brand">
+								<a href="#">
+									<img src="../../images/Logo-smkdev-long.png" alt="Logo" width="100" height="32">
+								</a>
+							</div>
+							{{ partial "nav.html" . }}
+							{{ partial "social.html" . }}
+							<div class="footer-copyright">&copy; {{ now.Format "2006"}} {{ .Site.Params.authorName | markdownify }}, all rights reserved</div>
+						</div>
+					</div>
+				</footer>

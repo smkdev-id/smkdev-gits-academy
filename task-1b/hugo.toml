@@ -1,0 +1,97 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "SMKDEV • Creating High-Caliber Digital Talent"
+
+[params]
+	dateFormat = "Jul 5, 2024" 
+	authorName = "Created with Hugo by Eko Edy Purwanto"
+	google_analytics_id = "GA-"
+	
+[menu]
+	[[menu.main]]
+		Name = "Contact"
+		URL = "https://api.whatsapp.com/send/?phone=6285162625514&text=Halo+%2ASMKDEV%2A%21&type=phone_number&app_absent=0"
+		weight = 1
+	
+	[[menu.main]]
+		Name = "About us"
+		URL = "#"
+		weight = 2
+	
+	[[menu.main]]
+		Name = "FAQ's"
+		URL = "#"
+		weight = 3
+	
+	[[menu.main]]
+		Name = "Support"
+		URL = "#"
+		weight = 4
+		
+[params.social]
+	LinkedInURL = "https://www.linkedin.com/company/smkdev/"
+	YouTubeURL = "https://www.youtube.com/@smkdev"
+	InstagramURL = "https://www.instagram.com/smkdev.official/"
+	TikTokURL = "https://www.tiktok.com/@smkdev.official"
+	TelegramURL = "https://t.me/+wPXVCS29UKgwNmJl"
+	WhatsAppURL = "https://chat.whatsapp.com/D5gVS4FbxSc2ij1zbZVxAV"
+		
+[params.content]
+	LeadTitle = "Jadilah Talenta Digital"
+	LeadDescription = "Belajar langsung dengan expert dari industri dengan kurikulum komprehensif berbasis project-based learning"
+	ButtonCaption = "Join with us"
+	ButtonURL = "https://www.smk.dev/"
+
+################### Feature Columns (do not exceed 4) ####################
+
+[[params.feature]]
+	FeatureTitle = "Learning Path Industri"
+	FeatureDescription = "Learning path disusun berdasarkan kebutuhan dunia industri."
+	FeatureImage = "images/Frame-1.png"
+	
+[[params.feature]]
+	FeatureTitle = "Kurikulum Komprehensif"
+	FeatureDescription = "Kurikulum komprehensif dan senantiasa di perbarui berdasarkan pengalaman di dunia industri."
+	FeatureImage = "images/Frame-2.png"
+
+[[params.feature]]
+	FeatureTitle = "Project-Based Learning"
+	FeatureDescription = "Materi pembelajaran disusun dengan pendekatan - pendekatan project based learning."
+	FeatureImage = "images/Frame-3.png"
+
+################### Testimoni Columns (do not exceed 3) ####################
+
+[[params.featureTesti]]
+	FeatureTitleTesti = "Erika Wulandari"
+	FeatureFromTesti = "Siswa SMKN 1 Jakarta"
+	FeatureDescriptionTesti = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+	FeatureImageTesti = "images/erika.jpeg"
+	
+[[params.featureTesti]]
+	FeatureTitleTesti = "Eko Edy P"
+	FeatureFromTesti = "Siswa SMK PNB Sidoarjo"
+	FeatureDescriptionTesti = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+	FeatureImageTesti = "images/eko.jpeg"
+
+[[params.featureTesti]]
+	FeatureTitleTesti = "M Alwi Irfani"
+	FeatureFromTesti = "Siswa SMK PGRI"
+	FeatureDescriptionTesti = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+	FeatureImageTesti = "images/alwi.jpg"
+
+################### Choice Columns (do not exceed 3) ####################
+
+[[params.Choice]]
+	[[params.Choice.Features]]
+		ChoiceTitle = "Kurikulum"
+		Description = "Kurikulum berstandar industri global, senantiasa diperbaharui"
+
+[[params.Choice]]
+	[[params.Choice.Features]]
+		ChoiceTitle = "Metode"
+		Description = "Metode belajar project-based learning, dapat menjadi portfolio siswa"	
+	
+[[params.Choice]]
+	[[params.Choice.Features]]
+		ChoiceTitle = "Mentor"
+		Description = "Dibimbing langsung oleh mentor expert dari industri digital"
