@@ -45,8 +45,8 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className='hidden md:block'>
-                        <a className='px-5 py-3 bg-black text-white rounded-md font-medium mr-2' href="#">Sign Up</a>
-                        <a className='px-5 py-3 bg-black text-white rounded-md font-medium' href="#">Sign In</a>
+                        <a className='px-5 py-3 bg-gray-900 text-white rounded-md font-medium shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mr-2' href="#">Sign Up</a>
+                        <a className='px-5 py-3 bg-gray-900 text-white rounded-md font-medium shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none' href="#">Sign In</a>
                     </div>
                 </div>
             </nav>
@@ -71,10 +71,10 @@ const Navbar = () => {
                         <li><a href="#" className="text-xl flex justify-between items-center">Community <span>›</span></a></li>
                         <li><a href="#" className="text-xl flex justify-between items-center">Blog <span>›</span></a></li>
                     </ul>
-                    <a href='#' className="mt-8 w-full block text-center bg-black text-white py-3 rounded-md font-medium">
+                    <a href='#' className="mt-8 w-full block text-center bg-gray-900 text-white py-3 rounded-md font-medium shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                         Sign In
                     </a>
-                    <a href='#' className="mt-4 w-full block text-center bg-black text-white py-3 rounded-md font-medium">
+                    <a href='#' className="mt-4 w-full block text-center bg-gray-900 text-white py-3 rounded-md font-medium shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                         Sign Up
                     </a>
                 </div>

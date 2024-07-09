@@ -8,12 +8,12 @@ import MantabOneLogo from "../assets/mitra/mantab-one.png"
 const Client = () => {
     return (
         <>
-            <div className="w-full text-start md:text-center bg-white p-5 mt-10">
+            <div className="text-start md:text-center bg-white px-5 py-12 mt-10">
                 <h1 className="font-bold text-xl text-[#47bb8e]">Dipercaya Oleh Mitra Industri</h1>
                 <h1 className="font-bold md:text-3xl text-2xl mt-4">Kualitas dan Keandalan Terjamin.<br/>
                 Pilihan Utama Para Pemimpin Industri.</h1>
                 {/* Desktop */}
-                <div className="hidden md:grid grid-cols-3 justify-center p-4">
+                <div className="hidden md:grid grid-cols-3 justify-center px-4">
                     <div className="place-self-center">
                         <img className="md:h-[200px] w-[150px] md:w-auto" src={ArkanaLogo} alt="ArkanaLogo"/>
                         <img className="md:h-[200px] w-[150px] md:w-auto" src={DigitsLogo} alt="DigitsLogo"/>
@@ -29,7 +29,7 @@ const Client = () => {
                 </div>
 
                 {/* Mobile View */}
-                <div className="md:hidden grid grid-cols-2 justify-center p-4">
+                <div className="md:hidden grid grid-cols-2 justify-center px-4">
                     <div className="place-self-center">
                         <img className="w-[150px]" src={ArkanaLogo} alt="ArkanaLogo"/>
                         <img className="w-[150px]" src={DigitsLogo} alt="DigitsLogo"/>
