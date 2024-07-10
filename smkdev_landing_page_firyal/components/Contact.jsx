@@ -23,8 +23,8 @@ export default function Contact() {
   return (
     <div className="max-w-6xl flex flex-row isolate bg-white mt-60 mb-20">
       <div className="w-1/2 pr-6">
-        <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Kontak SMKDEV
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+          Kontak <span className="text-[#004FC5]">SMKDEV</span>
         </h1>
         <p className="mt-2 text-lg leading-8 text-gray-600">
           Berapa investasi untuk menggunakan SMKDEV? Anda bisa mulai dengan
