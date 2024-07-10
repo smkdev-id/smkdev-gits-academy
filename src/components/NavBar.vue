@@ -22,13 +22,14 @@ import MenuIcon from './icons/MenuIcon.vue'
       </a>
     </div>
     <div class="flex-none">
-      <ul class="menu menu-horizontal px-1 pr-0 hidden md:flex">
+      <ul class="menu menu-horizontal px-1 pr-0 hidden md:flex items-center">
         <li><a>Learn</a></li>
         <li><a>Community</a></li>
         <li><a>Blog</a></li>
+        <li class="hidden md:block"><a class="btn bg-blue-950 text-white">Register</a></li>
       </ul>
       <ul class="flex md:hidden mr-6">
-        <li><a>Register</a></li>
+        <li><a class="btn bg-blue-950 text-white">Register</a></li>
       </ul>
     </div>
   </header>

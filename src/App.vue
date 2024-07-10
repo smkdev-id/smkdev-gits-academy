@@ -6,6 +6,9 @@ import OrientationLearningSection from './components/OrientationLearningSection.
 import WhyChooseUsSection from './components/WhyChooseUsSection.vue'
 import DigitalTalentSection from './components/DigitalTalentSection.vue'
 import TestimoniSection from './components/TestimoniSection.vue'
+import MentorsSection from './components/MentorsSection.vue'
+import PostSection from './components/PostSection.vue'
+import FooterSection from './components/FooterSection.vue'
 </script>
 <template>
   <NavBar />
@@ -16,5 +19,8 @@ import TestimoniSection from './components/TestimoniSection.vue'
     <WhyChooseUsSection />
     <DigitalTalentSection />
     <TestimoniSection />
+    <MentorsSection />
+    <PostSection />
+    <FooterSection />
   </main>
 </template>
