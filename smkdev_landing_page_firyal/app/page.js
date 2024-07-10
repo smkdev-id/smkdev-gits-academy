@@ -2,6 +2,7 @@ import { AnimatedCard } from "@/components/AnimatedCard";
 import Navbar from "@/components/ui/Navigation";
 import { HeroScroll } from "@/components/HeroScroll";
 import SwiperCompany from "@/components/SwiperCompany";
+import { Why } from "@/components/Why";
 
 export default function Home() {
   const words = ["Global", "Masa Depan Indonesia", "beautiful", "modern"];
@@ -17,6 +18,7 @@ export default function Home() {
         <SwiperCompany />
       </div>
       <AnimatedCard />
+      <Why />
     </main>
   );
 }
