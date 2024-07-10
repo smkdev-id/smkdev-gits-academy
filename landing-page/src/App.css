@@ -1,0 +1,280 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.logo {
+  height: 20px;
+  padding: 0em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Gaya Untuk Navbar */
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 0; /* Pastikan tidak ada margin default di sekitar .App */
+}
+
+header {
+  background-color: #282c34;
+  padding: 5px;
+  color: white;
+  width: 100%;
+  position: fixed; /* Tetap di atas ketika menggulir */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Pastikan header berada di atas elemen lain */
+  font-size: large;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  width: 100%; /* Pastikan navbar menggunakan lebar penuh */
+  max-width: 1200px; /* Tambahkan batas lebar jika diinginkan */
+  margin: 0 auto; /* Pusatkan navbar */
+}
+
+.navbar-logo img {
+  height: 80px; /* Sesuaikan ukuran gambar logo */
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0; /* Hapus margin default */
+  padding: 0; /* Hapus padding default */
+}
+
+.navbar-menu li {
+  display: inline;
+}
+
+.navbar-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.navbar-menu a:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.navbar-menu.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+main {
+  padding: 20px;
+  padding-top: 80px; /* Tambahkan padding top untuk menghindari overlap dengan header */
+}
+
+section {
+  margin: 20px 0;
+}
+
+/* Gaya untuk Footer  */
+
+footer {
+  background-color: #282c34; /* Warna latar belakang footer */
+  color: white; /* Warna teks footer */
+  padding: 20px 0; /* Padding atas dan bawah untuk ruang */
+  width: 100%; /* Lebar penuh */
+  text-align: center; /* Pusatkan teks di dalam footer */
+  position: fixed;
+  bottom: 0; /* Tempatkan footer di bagian bawah */
+  left: 0; /* Mulai dari tepi kiri layar */
+}
+
+main {
+  padding-bottom: 100px; /* Sesuaikan dengan tinggi footer untuk memberi ruang */
+}
+
+/* Gaya untuk menu */
+.menu-item {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.menu-description {
+  flex: 1; /* Memanjangkan deskripsi agar mengisi ruang tersisa */
+}
+.menu-description:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.menu-description.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.menu-image img {
+  max-width: 100%; /* Membuat gambar tetap dalam batas maksimum */
+  height: 500px; /* Tetap mempertahankan aspek rasio */
+  border-radius: 70px; /* Membuat sudut gambar menjadi bulat */
+}
+.menu-image:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.menu-image.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+/* mitra  */
+
+.mitra {
+  margin-top: 20px;
+}
+
+.mitra-description {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.mitra-image {
+  display: flex; /* Menggunakan flexbox untuk mengatur gambar berbaris */
+  justify-content: center; /* Pusatkan gambar di tengah */
+}
+
+.mitra-image img {
+  max-width: auto; /* Ukuran maksimum gambar */
+  height: 200px; /* Tetap mempertahankan aspek rasio */
+  margin: 0 10px; /* Ruang antara gambar */
+}
+
+.mitra-image:hover {
+  filter: drop-shadow(0 0 2em #e3e3e4aa);
+}
+.mitra-image.react:hover {
+  filter: drop-shadow(0 0 2em #e7eaebaa);
+}
+
+/* Orientasi */
+.orientasi {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.orientasi-description {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.orientasi-cards {
+  display: flex; /* Menggunakan flexbox untuk susunan horizontal */
+  justify-content: center; /* Pusatkan cards di tengah */
+  gap: 20px; /* Jarak antar cards */
+}
+
+.card {
+  background-color: #282c34;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 500px; /* Lebar card */
+}
+
+.card h3 {
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.9em;
+}
+
+
+/* Belajar */
+.belajar {
+  display: flex; /* Menggunakan flexbox untuk susunan horizontal */
+  justify-content: space-between; 
+  align-items: flex-start; /* Posisikan konten di atas */
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+}
+
+.belajar-cards {
+  display: flex; /* Menggunakan flexbox untuk susunan vertikal */
+  flex-direction: column; /* Susun card dari atas ke bawah */
+  gap: 20px; /* Jarak antara cards */
+}
+
+.belajar-description {
+  width: 40%; /* Lebar bagian kanan */
+  display: flex; /* Gunakan flexbox */
+  flex-direction: column; /* Susun konten dalam satu kolom */
+  justify-content: center; /* Pusatkan konten secara vertikal */
+  align-items: center; /* Pusatkan konten secara horizontal */
+}
+
+.belajar-description h1 {
+  margin-bottom: 10px;
+}
+
+/* Talenta */
+.talenta {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.talenta-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.talenta-header img {
+  max-width: 100%; /* Gambar tidak melebihi lebar container */
+  height: auto; /* Pertahankan rasio aspek */
+}
+
+.talenta-columns {
+  display: flex; /* Gunakan flexbox untuk susunan horizontal */
+  justify-content: space-between; /* Ruang di antara column */
+  padding: 50px;
+}
+
+.column {
+  width: calc(33.33% - 20px); /* Lebar setiap column */
+  padding: 10px; /* Ruang dalam setiap column */
+  background-color: #2b2b2b;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.column p {
+  font-size: 0.9em;
+}
