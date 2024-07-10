@@ -20,13 +20,24 @@ const MentorList: FC<Props> = ({ list }) => {
       <Swiper
         className="w-full cursor-pointer"
         spaceBetween={10}
-        slidesPerView={5}
+        slidesPerView={1}
         loop
         modules={[Autoplay]}
         autoplay={{
           pauseOnMouseEnter: false,
           delay: 1500,
           disableOnInteraction: false,
+        }}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+          1280: {
+            slidesPerView: 5,
+          },
         }}
       >
         {list.map((i, index) => (

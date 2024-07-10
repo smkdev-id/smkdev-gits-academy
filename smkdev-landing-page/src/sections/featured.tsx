@@ -132,7 +132,7 @@ const Featured: NextPage = () => {
             digital terkini.
           </p>
         </div>
-        <div className="flex w-full justify-between gap-x-6">
+        <div className="flex w-full flex-col justify-between gap-6 lg:flex-row">
           {cards.map((item, index) => (
             <FeaturedCard
               key={index}

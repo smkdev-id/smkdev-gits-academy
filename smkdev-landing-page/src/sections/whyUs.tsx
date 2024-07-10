@@ -71,9 +71,9 @@ const WhyUs: NextPage<Props> = ({}) => {
     },
   ];
   return (
-    <div className="bg-bg2 flex w-full justify-center overflow-visible">
-      <MediaQuery className="flex items-center justify-between gap-x-14 overflow-visible py-20">
-        <div className="flow-x-visible relative h-[230px] w-full overflow-visible">
+    <div className="flex w-full justify-center overflow-visible bg-bg2">
+      <MediaQuery className="flex flex-col items-center justify-between gap-14 overflow-visible py-20 lg:flex-row">
+        <div className="flow-x-visible relative h-[230px] w-full overflow-visible px-10 lg:px-0">
           <Swiper
             className="mt-6 h-full w-full"
             spaceBetween={0}

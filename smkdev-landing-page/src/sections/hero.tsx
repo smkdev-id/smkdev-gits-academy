@@ -8,9 +8,9 @@ interface Props {}
 
 const Hero: NextPage<Props> = ({}) => {
   return (
-    <div className="flex w-full justify-center py-40">
-      <MediaQuery className="flex items-center justify-center gap-x-8">
-        <div className="flex flex-col gap-y-9">
+    <div className="flex w-full justify-center py-20 lg:py-40">
+      <MediaQuery className="flex flex-col items-center justify-center gap-x-8 gap-y-10 lg:flex-row">
+        <div className="order-2 flex flex-col gap-y-9 lg:order-1">
           <h1 className="text-5xl font-semibold capitalize">
             jadilah talenta digital{" "}
             <Typewriter
@@ -28,8 +28,8 @@ const Hero: NextPage<Props> = ({}) => {
             komperhensif berbasis project-based learning
           </p>
         </div>
-        <div className="relative">
-          <div className="z-20 w-[415px]">
+        <div className="relative order-1 lg:order-2">
+          <div className="z-20 w-full lg:w-[415px]">
             <Image
               src="/assets/person1.jpg"
               alt="Person"
