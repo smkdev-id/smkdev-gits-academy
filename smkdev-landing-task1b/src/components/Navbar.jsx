@@ -41,7 +41,7 @@ const Navbar = () => {
                                 )}
                             </li>
                             <li><a className='text-xl hover:underline hover:underline-offset-8' href="#">Community</a></li>
-                            <li><a className='text-xl hover:underline hover:underline-offset-8' href="#">Blog</a></li>
+                            <li><a className='text-xl hover:underline hover:underline-offset-8' href="#">Artikel</a></li>
                         </ul>
                     </div>
                     <div className='hidden md:block'>
