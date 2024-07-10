@@ -1,0 +1,238 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1a173d;
+}
+
+.container {
+  padding: 5px 150px;
+}
+
+.header {
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#header__title {
+  color: white;
+  font-family: "Righteous", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 36px;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+}
+
+.menu__link {
+  font-family: "Righteous", sans-serif;
+  color: white;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  margin: 0;
+}
+
+.btn-signup {
+  color: white;
+  border-radius: 24px;
+  padding: 5px 15px;
+  background-color: #e25300;
+  border: none;
+}
+
+.btn-login {
+  color: white;
+  background-color: transparent;
+  border: 2px solid #e25300;
+  border-radius: 24px;
+  padding: 5px 15px;
+}
+
+.intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 75px;
+}
+
+.intro__content {
+  background: rgb(133, 100, 187);
+  background: linear-gradient(rgb(133, 100, 187) 0%, rgb(102, 44, 197) 85%);
+  padding: 50px;
+  border-radius: 25px;
+  height: 456px;
+  width: 625px;
+}
+
+.intro__title {
+  color: #fff;
+  font-family: "Righteous", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 70px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.intro__subtitle-text {
+  color: #fff;
+  font-family: "Righteous", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+}
+
+.intro__button {
+  margin-top: 15px;
+  border-radius: 24px;
+  padding: 10px 40px;
+  font-family: "Righteous", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.intro__button a {
+  text-decoration: none;
+}
+
+.image-opening {
+  /* transform: scaleX(-1); */
+  width: 400px;
+  height: 490px;
+}
+
+.explore {
+  margin-top: 50px;
+}
+
+.explore__typography {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore__typography h3 {
+  color: #fff;
+  font-family: "Righteous", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 48px;
+  margin-bottom: 2px;
+}
+
+.explore__typography p {
+  margin-top: 2px;
+  color: #fff;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+}
+
+.explore__content {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  height: 400px;
+  background: rgb(245, 194, 146);
+  background: radial-gradient(rgb(245, 194, 146) 25%, rgb(241, 150, 65) 85%);
+  border-radius: 35px;
+  gap: 45px;
+  justify-content: space-around;
+}
+
+.explore__content img {
+  margin-top: 30px;
+  width: 350px;
+  height: 350px;
+}
+
+.explore__content-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore__content-text h3 {
+  color: #fff;
+  font-family: "Righteous", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+.explore__content-text button {
+  background: rgb(133, 100, 187);
+  background: linear-gradient(rgb(133, 100, 187) 0%, rgb(102, 44, 197) 85%);
+  border: 2px solid #e25300;
+  border-radius: 28px;
+  padding: 15px 45px;
+  color: #fff;
+  font-family: "Righteous", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 28px;
+  margin-bottom: 45px;
+}
+
+.explore__content-text p {
+  margin-top: 2px;
+  color: #fff;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+}
+
+.footer {
+  margin-top: 280px;
+  height: 150px;
+}
+
+.divider {
+  background-color: #e25300;
+  height: 5px;
+  border-radius: 25px;
+  margin-bottom: 50px;
+}
+
+.footer__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__content p {
+  color: #fff;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 17px;
+}
+
+.footer__nav {
+  display: flex;
+  gap: 40px;
+}
