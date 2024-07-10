@@ -1,0 +1,75 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+.flickity-button {
+  display: none;
+}
+.flickity-page-dots {
+  display: none;
+}
+* {
+  outline: none !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.shadow-on-scroll {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style untuk text animasi */
+.dynamic-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2563eb;
+  white-space: nowrap; /* Agar teks tidak word-wrap */
+  overflow: hidden; /* Agar overflow dari animasi tersembunyi */
+  border-right: 0.15em solid orange; /* Efek cursor menulis */
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  margin-top: 20px; /* Tambahkan margin atas */
+}
+
+/* Keyframes untuk animasi menulis */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Keyframes untuk animasi cursor */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+.swiper-container {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  width: 180px; /* Ubah ukuran sesuai kebutuhan */
+}
+
+.swiper-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.swiper-slide .team-card {
+  width: 90%; /* Adjust this value as needed */
+}
