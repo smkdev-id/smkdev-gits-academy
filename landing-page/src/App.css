@@ -134,12 +134,17 @@ main {
 
 .menu-description {
   flex: 1; /* Memanjangkan deskripsi agar mengisi ruang tersisa */
+  transition: filter 300ms;
 }
 .menu-description:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
 .menu-description.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.menu-image {
+  transition: filter 300ms;
 }
 
 .menu-image img {
@@ -168,6 +173,7 @@ main {
 .mitra-image {
   display: flex; /* Menggunakan flexbox untuk mengatur gambar berbaris */
   justify-content: center; /* Pusatkan gambar di tengah */
+  transition: filter 300ms;
 }
 
 .mitra-image img {
@@ -206,6 +212,14 @@ main {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 500px; /* Lebar card */
+  transition: filter 300ms;
+}
+
+.card:hover {
+  filter: drop-shadow(0 0 2em #e3e3e4aa);
+}
+.card.react:hover {
+  filter: drop-shadow(0 0 2em #e7eaebaa);
 }
 
 .card h3 {
