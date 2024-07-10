@@ -224,10 +224,81 @@ p {
 }
 
 .card-icon {
-    width: 40px;
-    background-color: rgb(210, 224, 210);
+    width: 50%;
+    background-color: rgb(190, 205, 233);
     padding: 50px;    
     border-radius: 20px;      
+}
+
+.card-title {
+  color: rgb(3, 3, 91);
+}
+
+.card-desc {
+  text-align: left;
+  color: rgb(3, 3, 91);
+}
+
+/* Why section */
+.why {
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  padding: 50px;
+  margin-top: 20px;
+}
+
+.why-left {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.why-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.why-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border: 0.7px solid black;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.why-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title-why {
+  color: rgb(3, 3, 91);
+  font-size: large;
+  font-weight: bold;
+}
+
+.why-icon {
+    width: 15%;
+    background-color: rgb(190, 205, 233);  
+    border-radius: 6px;     
+    padding: 10px; 
+}
+
+.title-why-right {
+  font-size: 40px;
+  color: rgb(3, 3, 91);
+}
+
+.title-why-right > span {
+  color: blue;
 }
 
 footer {
