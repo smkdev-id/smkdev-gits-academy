@@ -1,38 +1,44 @@
-# create-svelte
+# Svelte SMKDEV Re-design
+
+This is task 1b to redesign the front view of the SMKDEV website
+
+## Prerequisites
+
+Before you continue, ensure you have met the following requirements on your machine.
+
+- Installed node npm dan git as well.
+
+## How to Install Locally
+
+- Change directory into the folder you want to put the code in
+
+```bash
+$ cd smkdev-landing-page
+```
+
+- Install all dependencies from the package.json file
+
+```bash
+$ npm install
+```
+
+- Run the development server on your machine
+
+```bash
+$ npm run dev
+```
+
+- Visit the site on your machine via [localhost:5173](localhost:5173)
+
+## Acknowledgements
+
+- [Font Awesom Icons](https://fontawesome.com/icons)
+- [Tailwind](https://tailwindcss.com/)
+- [slider swiper](https://swiperjs.com/)
+- [Asset from linkedin, internet, and github]()
+- [Svelte](svelte.dev)
+- [Jakartafonts] (https://fonts.google.com/)
+
+## create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
