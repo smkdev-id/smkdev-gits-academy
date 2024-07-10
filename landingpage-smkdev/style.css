@@ -89,10 +89,11 @@ body {
 
 }
 .top {
-   margin-top: 8rem;
+   margin-top: 10rem;
 }
 #ijo {
-  color: #3F4726
+  color: #3F4726;
+  margin-top: -2.2rem;
 }
 #header-desc {
   color: #000000;
@@ -161,7 +162,7 @@ body {
  width: 280px;
  height: 380px;
  background: #EFF0EC;
-border-radius: 1.6rem;
+ border-radius: 1.6rem;
  position: relative;
  overflow: visible;
  color: #000000;
@@ -174,12 +175,16 @@ border-radius: 1.6rem;
 }
 
 .card-img {
- background: url("https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") #00d no-repeat fixed;
+ background: url("https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") #00d repeat fixed;
  height: 50%;
  width: 100%;
  border-radius: 1.6rem;
  transition: .3s ease;
 }
+.card-project{
+  background: url("https://images.pexels.com/photos/4050320/pexels-photo-4050320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") #00d no-repeat fixed;
+  background-position: center;
+ }
 
 .card-info {
  padding: 14%;
@@ -287,6 +292,8 @@ border-radius: 1.6rem;
   height: 100%;
   backface-visibility: hidden;
   color: #EFF0EC;
+  text-shadow: 2px 2px 2px #888F70;
+  ;
 }
 
 .card-front2 {
@@ -349,12 +356,17 @@ border-radius: 1.6rem;
   display: flex;
   flex-direction: row;
 }
+#talenta-kanan >p{
+  margin-left: -8rem;
+}
+
 #talenta-kanan {
   margin-left: 2.8rem;
   margin-right: 6rem;
   text-wrap: pretty;
    display: flex;
    flex-direction: column;
+  
 }
 #talenta-kanan > p, li {
   text-align: left;
@@ -553,17 +565,17 @@ img {vertical-align: middle;}
 #bogart24{
   color: #D4DDB7;
   font-size: 1.8rem;
-
   margin: 20rem 6rem 4rem; 
 }
 #ctc-desc{
   color: #EFF0EC;
   font-size: 1.3rem;
+  line-height: 3.2rem;
 }
 .icon {
   display: flex;
   justify-content: center;
 }
-.icon img {
-  margin: .2rem .5rem;
+.icon svg {
+  padding: .3rem .5rem;
 }
