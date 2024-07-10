@@ -8,6 +8,7 @@ import DigitalTalentSection from './components/DigitalTalentSection.vue'
 import TestimoniSection from './components/TestimoniSection.vue'
 import MentorsSection from './components/MentorsSection.vue'
 import PostSection from './components/PostSection.vue'
+import ContactSection from './components/ContactSection.vue'
 import FooterSection from './components/FooterSection.vue'
 </script>
 <template>
@@ -21,6 +22,7 @@ import FooterSection from './components/FooterSection.vue'
     <TestimoniSection />
     <MentorsSection />
     <PostSection />
+    <ContactSection />
     <FooterSection />
   </main>
 </template>
