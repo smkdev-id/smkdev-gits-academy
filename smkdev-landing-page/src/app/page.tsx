@@ -1,5 +1,7 @@
 import { Topnav } from "@/components";
 import {
+  Article,
+  Contact,
   Featured,
   Hero,
   Mentor,
@@ -20,6 +22,8 @@ export default function Home() {
       <TalentDigital />
       <Testimoni />
       <Mentor />
+      <Article />
+      <Contact />
     </main>
   );
 }

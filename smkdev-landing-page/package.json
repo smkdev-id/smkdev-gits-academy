@@ -9,17 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/next-js": "^2.2.0",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@hcaptcha/react-hcaptcha": "^1.10.1",
+    "formik": "^2.4.6",
     "framer-motion": "^11.2.13",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
     "react-fast-marquee": "^1.6.5",
+    "react-google-recaptcha": "^3.1.0",
+    "react-hook-form": "^7.52.1",
     "swiper": "^11.1.4",
-    "typewriter-effect": "^2.21.0"
+    "typewriter-effect": "^2.21.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -24,6 +24,4 @@
 
 .flow-x-visible * {
   overflow: visible !important;
-  /* overflow-y: hidden !important; */
-  /* overflow-x: visible !important; */
 }

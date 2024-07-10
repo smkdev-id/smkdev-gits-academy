@@ -8,6 +8,12 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "smkdev.storage.googleapis.com",
+        port: "",
+        pathname: "/wp/**",
+      },
     ],
   },
 };
