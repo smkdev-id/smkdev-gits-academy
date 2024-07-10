@@ -6,8 +6,10 @@
       mereka?
     </p>
 
-    <div class="flex flex-row overflow-x-hidden justify-center items-start gap-4 px-4 mt-4">
-      <div class="flex flex-col text-start border max-w-[450px]">
+    <div
+      class="flex flex-row flex-wrap overflow-x-hidden justify-center items-start gap-4 px-4 mt-4"
+    >
+      <div class="flex flex-col text-start border max-w-[400px]">
         <div class="card">
           <div class="card-body">
             <p>
@@ -22,7 +24,7 @@
         </div>
       </div>
 
-      <div class="flex flex-col text-start border max-w-[450px]">
+      <div class="flex flex-col text-start border max-w-[400px]">
         <div class="card">
           <div class="card-body">
             <p>
@@ -43,7 +45,7 @@
         </div>
       </div>
 
-      <div class="flex flex-col text-start border max-w-[450px]">
+      <div class="flex flex-col text-start border max-w-[400px]">
         <div class="card">
           <div class="card-body">
             <p>
