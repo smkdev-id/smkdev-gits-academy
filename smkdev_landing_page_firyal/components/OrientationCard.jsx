@@ -23,9 +23,9 @@ export function OrientationCard() {
   ];
 
   return (
-    <div className="py-40 px-20 flex flex-col items-center justify-center">
-      <h1 className="text-3xl px-20 font-bold">Orientasi Belajar SMKDEV</h1>
-      <h1 className="text-xl px-20 flex justify-center text-center pb-20 pt-4">
+    <div className="py-40 max-w-6xl flex flex-col items-center justify-center">
+      <h1 className="text-3xl font-bold">Orientasi Belajar SMKDEV</h1>
+      <h1 className="text-xl flex justify-center text-center pb-20 pt-4">
         Dapatkan pengalaman belajar berorientasi pengalaman kerja yang dapat
         mengantarkan Anda menjadi talenta yang dibutuhkan oleh industri digital
         terkini.

@@ -6,10 +6,11 @@ import CompanySwiper from "@/components/CompanySwiper";
 import { OrientationCard } from "@/components/OrientationCard";
 import { TestimonialsScroll } from "@/components/TestimonialsScroll";
 import { MentorCard } from "@/components/MentorCard";
+import { ArticelBento } from "@/components/ArticelBento";
+import Contact from "@/components/Contact";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
-  const words = ["Global", "Masa Depan Indonesia", "beautiful", "modern"];
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <Navbar />
@@ -35,6 +36,9 @@ export default function Home() {
       </div>
       <TestimonialsScroll />
       <MentorCard />
+      <ArticelBento />
+      <Contact />
+      <Footer />
     </main>
   );
 }

@@ -23,7 +23,7 @@ export function WhyCard() {
   ];
 
   return (
-    <div className="relative py-20 px-20 flex flex-row justify-center">
+    <div className="relative py-20 max-w-6xl flex flex-row justify-center">
       <div className="absolute inset-0 -z-10 flex justify-center items-center w-full h-auto">
         <Image
           src="/decoration.png"
@@ -33,7 +33,7 @@ export function WhyCard() {
           className="opacity-30"
         />
       </div>
-      <div className="flex flex-col w-1/2 justify-center px-20 z-9">
+      <div className="flex flex-col w-1/2 justify-center z-9">
         <h1 className="text-3xl font-bold">
           Mengapa Harus Memilih Belajar di{" "}
           <span className="text-[#004FC5]">SMKDEV?</span>

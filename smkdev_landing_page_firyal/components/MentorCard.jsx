@@ -38,7 +38,7 @@ export function MentorCard() {
   ];
 
   return (
-    <div className="relative mt-20 py-20 px-20 flex flex-col justify-center">
+    <div className="relative mt-20 py-20 max-w-6xl flex flex-col justify-center">
       <div className="flex flex-col justify-center text-center">
         <h1 className="text-3xl font-bold">
           Expert <span className="text-[#004FC5]">Mentor</span>
@@ -71,7 +71,7 @@ export function MentorCard() {
                 rotate: 0,
                 zIndex: 9,
               }}
-              className="w-1/5 h-[260px] mt-4 rounded-xl mr-5 p-4 bg-white border-neutral-200 border flex-shrink-0 overflow-hidden"
+              className="w-1/5 h-[260px] mt-4 rounded-xl mr-6 p-4 bg-white border-neutral-200 border flex-shrink-0 overflow-hidden"
             >
               <div className="flex justify-center">
                 <Image

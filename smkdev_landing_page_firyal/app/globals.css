@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.swiper {
+/* .swiper {
   width: 70%;
-}
+} */
 
 .swiper-slide {
   height: auto;

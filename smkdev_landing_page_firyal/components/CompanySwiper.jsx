@@ -20,6 +20,7 @@ export default function CompanySwiper() {
   ];
   return (
     <Swiper
+      className="max-w-6xl"
       loop={true}
       spaceBetween={50}
       slidesPerView={7}
