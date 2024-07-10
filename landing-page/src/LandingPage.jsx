@@ -5,6 +5,12 @@ import belajarCoding from './assets/belajar-coding.jpg';
 import gitsid from './assets/gitsid.png';
 import eudeka from './assets/eudeka.png';
 import talenta from './assets/talenta.png';
+import book from './assets/book.png';
+import laptop from './assets/laptop.png';
+import document from './assets/document.png';
+import pencil from './assets/pencil.png';
+import kuri from './assets/kuri.png';
+import presentation from './assets/presentation.png';
 
 const LandingPage = () => {
   return (
@@ -48,6 +54,8 @@ const Header = () => {
 const Footer = () => {
   return (
     <footer>
+        <p>Creating High-Caliber Digital Talent</p>
+        <p>Summarecon Bandung, Jl. Magna Barat Blok MD No.02, Rancabolang, Kec. Gedebage, Kota Bandung, Jawa Barat 40295</p>
         <p>© 2024 SMKDEV – PT Eureka Merdeka Indonesia. All Rights Reserved.</p>
     </footer>
   );
@@ -94,14 +102,17 @@ const Orientasi = () => {
       </div>
       <div className="orientasi-cards">
         <div className="card">
+          <img src={book} alt='book'/>
           <h3>Learning Path Industri</h3>
           <p>Learning path disusun berdasarkan kebutuhan dunia industri.</p>
         </div>
         <div className="card">
+          <img src={document} alt='document'/>
           <h3>Kurikulum Komprehensif</h3>
           <p>Kurikulum komprehensif dan senantiasa di perbarui berdasarkan pengalaman di dunia industri</p>
         </div>
         <div className="card">
+          <img src={laptop} alt='laptop'/>
           <h3>Project-Based Learning</h3>
           <p>Materi pembelajaran disusun dengan pendekatan - pendekatan project based learning</p>
         </div>
@@ -115,14 +126,17 @@ const Belajar = () => {
     <div className="belajar">
       <div className="belajar-cards">
         <div className="card">
+          <img src={kuri} alt='kuri'/>
           <h3>Kurikulum</h3>
           <p>Kurikulum berstandar industri global, senantiasa diperbaharui</p>
         </div>
         <div className="card">
+          <img src={pencil} alt='pencil'/>
           <h3>Metode</h3>
           <p>Metode belajar project-based learning, dapat menjadi portfolio siswa</p>
         </div>
         <div className="card">
+          <img src={presentation} alt='presentation'/>
           <h3>Mentor</h3>
           <p>Dibimbing langsung oleh mentor expert dari industri digital</p>
         </div>
@@ -140,7 +154,7 @@ const Talenta = () => {
     <div className="talenta">
       <div className="talenta-header">
         <h1>Talenta Digital SMKDEV</h1>
-        <img src={talenta} alt="Talenta Image" /> {/* Ganti dengan path dan alt yang sesuai */}
+        <img src={talenta} alt="Talenta Image" />
         <h1>Apa Kata Mereka?</h1>
         <p>Mereka telah merasakan serunya belajar skill digital di SMKDEV. Apakah kamu ingin seperti mereka?</p>
       </div>

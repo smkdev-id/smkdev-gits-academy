@@ -63,7 +63,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  /* padding: 10px 0; */
   width: 100%; /* Pastikan navbar menggunakan lebar penuh */
   max-width: 1200px; /* Tambahkan batas lebar jika diinginkan */
   margin: 0 auto; /* Pusatkan navbar */
@@ -112,13 +112,14 @@ section {
 footer {
   background-color: #282c34; /* Warna latar belakang footer */
   color: white; /* Warna teks footer */
-  padding: 20px 0; /* Padding atas dan bawah untuk ruang */
+  padding: 10px 0; /* Padding atas dan bawah untuk ruang */
   width: 100%; /* Lebar penuh */
   text-align: center; /* Pusatkan teks di dalam footer */
-  position: fixed;
-  bottom: 0; /* Tempatkan footer di bagian bawah */
+  position: static; /* Tidak fixed, footer akan mengikuti alur dokumen */
   left: 0; /* Mulai dari tepi kiri layar */
+  bottom: 0; /* Tetap di bagian bawah saat mengikuti alur dokumen */
 }
+
 
 main {
   padding-bottom: 100px; /* Sesuaikan dengan tinggi footer untuk memberi ruang */
@@ -183,7 +184,7 @@ main {
 }
 
 .mitra-image:hover {
-  filter: drop-shadow(0 0 2em #e3e3e4aa);
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
 .mitra-image.react:hover {
   filter: drop-shadow(0 0 2em #e7eaebaa);
@@ -206,6 +207,10 @@ main {
   gap: 20px; /* Jarak antar cards */
 }
 
+.orientasi-cards img{
+  height: 50px;
+}
+
 .card {
   background-color: #282c34;
   padding: 20px;
@@ -216,7 +221,7 @@ main {
 }
 
 .card:hover {
-  filter: drop-shadow(0 0 2em #e3e3e4aa);
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
 .card.react:hover {
   filter: drop-shadow(0 0 2em #e7eaebaa);
@@ -247,6 +252,10 @@ main {
   gap: 20px; /* Jarak antara cards */
 }
 
+.belajar-cards img {
+  height: 50px;
+}
+
 .belajar-description {
   width: 40%; /* Lebar bagian kanan */
   display: flex; /* Gunakan flexbox */
@@ -270,9 +279,17 @@ main {
   margin-bottom: 20px;
 }
 
+.talenta-header img:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.talenta-header img.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
 .talenta-header img {
   max-width: 100%; /* Gambar tidak melebihi lebar container */
   height: auto; /* Pertahankan rasio aspek */
+  transition: filter 300ms;
 }
 
 .talenta-columns {
