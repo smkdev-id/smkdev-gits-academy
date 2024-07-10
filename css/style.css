@@ -1,0 +1,50 @@
+body{
+	font-family: 'Poppins';
+}
+
+.nav-smk a{
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.dashboard{
+	width: 8rem;
+	color: white;
+	background-color: #1c3965;
+	text-decoration: none;
+}
+
+
+.judul-hero{
+	margin-top: 7rem;
+	text-align: left;
+}
+
+.judul-hero span{
+	color: #004fc5;
+}
+.judul-hero p{
+	font-size: 20px;
+	color: #172f54;
+}
+.gambar-hero{
+	box-sizing: border-box;
+}
+.hero{
+	padding: 60px 0 60px 0;
+	margin: 0 85px 50px 85px;
+}
+
+.partner{
+	background-color: #f3f8fb;
+	height: 100vh;
+	margin-bottom: 50px;
+}
+.partner h1{
+	color: ;
+}
+
+.judul-kurikulum{
+	width: 60%;
+	margin: auto;
+}
