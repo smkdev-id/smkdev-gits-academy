@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export function Why() {
+export function WhyCard() {
   const dataOrientation = [
     {
       desc: "Kurikulum berstandar industri global, senantiasa diperbaharui",
@@ -24,7 +24,7 @@ export function Why() {
 
   return (
     <div className="relative py-20 px-20 flex flex-row justify-center">
-      <div className="absolute inset-0 z-0 flex justify-center items-center w-full h-auto">
+      <div className="absolute inset-0 -z-10 flex justify-center items-center w-full h-auto">
         <Image
           src="/decoration.png"
           width="1500"
@@ -33,7 +33,7 @@ export function Why() {
           className="opacity-30"
         />
       </div>
-      <div className="flex flex-col w-1/2 justify-center px-20 z-10">
+      <div className="flex flex-col w-1/2 justify-center px-20 z-9">
         <h1 className="text-3xl font-bold">
           Mengapa Harus Memilih Belajar di{" "}
           <span className="text-[#004FC5]">SMKDEV?</span>
@@ -46,7 +46,7 @@ export function Why() {
         </h1>
       </div>
 
-      <div className="flex flex-col justify-center items-center w-1/2 z-10">
+      <div className="flex flex-col justify-center items-center w-1/2 z-9">
         <div className="flex flex-col">
           {dataOrientation.map((item, idx) => {
             return (
@@ -58,12 +58,12 @@ export function Why() {
                 whileHover={{
                   scale: 1.1,
                   rotate: Math.random() * 10 - 5,
-                  zIndex: 100,
+                  zIndex: 9,
                 }}
                 whileTap={{
                   scale: 1.1,
                   rotate: 0,
-                  zIndex: 100,
+                  zIndex: 9,
                 }}
                 className="w-210 mt-4 rounded-xl mr-12 p-4 bg-white border-neutral-200 border flex-shrink-0 overflow-hidden"
               >

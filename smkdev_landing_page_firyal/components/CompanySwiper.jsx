@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import Image from "next/image";
 
-export default function SwiperCompany() {
+export default function CompanySwiper() {
   const dataLogo = [
     { image: "/logo_gitsindo.png", name: "GITS Indonesia" },
     { image: "/logo_digits.png", name: "Digits.id" },

@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export function AnimatedCard() {
+export function OrientationCard() {
   const dataOrientation = [
     {
       desc: "Learning path disusun menyesuaikan dengan perkembangan dan kebutuhan dunia industri.",
@@ -46,12 +46,12 @@ export function AnimatedCard() {
                 whileHover={{
                   scale: 1.1,
                   rotate: Math.random() * 15 - 10,
-                  zIndex: 100,
+                  zIndex: 9,
                 }}
                 whileTap={{
                   scale: 1.1,
                   rotate: 0,
-                  zIndex: 100,
+                  zIndex: 9,
                 }}
                 className="w-60 rounded-xl mr-12 p-4  bg-white border-neutral-200 border  flex-shrink-0 overflow-hidden"
               >
