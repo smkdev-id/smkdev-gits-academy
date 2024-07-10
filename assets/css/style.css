@@ -1,0 +1,121 @@
+.bg-navy {
+    background-color: #001f3f;
+}
+
+.hover\:bg-dark-navy:hover {
+    background-color: #00163a;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('path/to/your/paper-plane.png') no-repeat center;
+    background-size: contain;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.icon-container {
+    height: 12rem;
+    /* Adjust height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f4f6;
+    /* Tailwind's bg-gray-200 */
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.icon {
+    font-size: 6rem;
+    /* Adjust icon size as needed */
+    color: #28a745;
+    /* Tailwind's text-green-500 */
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card:hover .icon-container {
+    background-color: #e2e8f0;
+    /* Tailwind's bg-gray-300 */
+}
+
+.card:hover .icon {
+    font-size: 3rem;
+    top: 10%;
+    left: 10%;
+    transform: translate(0, 0);
+}
+
+.testimonial-card {
+    min-width: 24rem;
+    /* Lebar minimal setiap card */
+    max-width: 32rem;
+    /* Lebar maksimal setiap card */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.drag-scroll {
+    cursor: grab;
+}
+
+.drag-scroll:active {
+    cursor: grabbing;
+}
+
+.scroll-container {
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+    scroll-snap-type: x mandatory;
+    cursor: grab;
+    padding-bottom: 16px;
+}
+
+.scroll-item {
+    scroll-snap-align: start;
+    margin-right: 16px;
+    /* Add margin between cards */
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar for Webkit browsers */
+}

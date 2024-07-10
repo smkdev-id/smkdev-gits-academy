@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMK DEV</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+   <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="bg-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <img src="/assets/images/SMKDEV-Logo-Long.png" alt="Logo" class="h-10">
+            <div class="flex items-center relative">
+                <div class="relative">
+                    <button onclick="toggleDropdown()"
+                        class="text-gray-800 hover:text-gray-600 mx-2 focus:outline-none">
+                        Learn
+                    </button>
+                    <div id="dropdownMenu"
+                        class="absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1">
+                        <a href="https://www.smk.dev/bootcamp/" class="text-gray-700 hover:bg-gray-100 px-4 py-2 block">Bootcamp</a>
+                        <a href="https://www.smk.dev/expert-class/" class="text-gray-700 hover:bg-gray-100 px-4 py-2 block">Expert Class</a>
+                        <a href="https://www.smk.dev/challenges/" class="text-gray-700 hover:bg-gray-100 px-4 py-2 block">Challengges</a>
+                    </div>
+                </div>
+                <a href="#" class="text-gray-800 hover:text-gray-600 mx-2">Community</a>
+                <a href="#" class="text-gray-800 hover:text-gray-600 mx-2">Blog</a>
+                <button class="bg-navy text-white py-2 px-6 ml-4 rounded-full hover:bg-dark-navy">Dashboard</button>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Section 1 -->
+    <section class="container mx-auto my-16 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 p-4">
+            <h1 class="text-4xl font-bold mb-4">Jadilah Talenta Digital Masa Depan Indonesia</h1>
+            <p class="text-lg text-gray-700">Belajar langsung dengan expert dari industri dengan kurikulum komprehensif
+                berbasis project-based learning</p>
+        </div>
+        <div class="md:w-1/2 md:ml-auto p-4">
+            <img src="/assets/images/skils.jpg" class="w-80 h-auto rounded-md" alt="Deskripsi gambar">
+        </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="container mx-auto my-16 ">
+        <h2 class="text-3xl font-bold text-center mb-8" style="color: #275D84;">Dipercaya Oleh Mitra Industri</h2>
+        <div class="flex justify-around items-center mt-4">
+            <img src="https://i0.wp.com/gits.id/wp-content/uploads/2023/10/Logo-Main.png?w=112&ssl=1" alt="Partner 1"
+                class="h-12 object-contain">
+            <img src="https://eudeka.storage.googleapis.com/wp/cropped-eudeka-logo-300x86.png" alt="Partner 2"
+                class="h-12 object-contain">
+            <img src="https://hitopia.id/wp-content/uploads/2023/04/Logo-Hitopia-Blue-Horizontal-Bold.png"
+                alt="Partner 3" class="h-12 object-contain">
+            <img src="https://arkana.co.id/web/image/website/1/logo/Arkana%20Solusi%20Digital?unique=60ad789"
+                alt="Partner 4" class="h-12 object-contain">
+            <img src="https://mantab.one/wp-content/uploads/2024/05/logo.png" alt="Partner 4"
+                class="h-12 object-contain">
+        </div>
+    </section>
+
+
+
+
+    <!-- Section 3 -->
+    <section class="container mx-auto my-16">
+        <h2 class="text-3xl font-bold text-center mb-8">Orientasi Belajar SMKDEV</h2>
+        <blockquote class="text-lg text-gray-600 text-center mb-8">Dapatkan pengalaman belajar berorientasi pengalaman
+            kerja yang dapat mengantarkan Anda menjadi talenta yang dibutuhkan oleh industri digital terkini.
+        </blockquote>
+        <div class="flex flex-wrap justify-around">
+            <div class="bg-white shadow-md rounded p-6 m-4 w-80">
+                <svg class="h-16 w-16 mx-auto mb-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                <h3 class="text-xl font-bold mb-2">Learning Path Industri</h3>
+                <p class="text-gray-700">Learning path disusun berdasarkan kebutuhan dunia industri.</p>
+            </div>
+            <div class="bg-white shadow-md rounded p-6 m-4 w-80">
+                <svg class="h-16 w-16 mx-auto mb-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V5l7 7-7 7z"></path>
+                </svg>
+                <h3 class="text-xl font-bold mb-2">Kurikulum Komprehensif</h3>
+                <p class="text-gray-700">Kurikulum komprehensif dan senantiasa di perbarui berdasarkan pengalaman di
+                    dunia industri</p>
+            </div>
+            <div class="bg-white shadow-md rounded p-6 m-4 w-80">
+                <svg class="h-16 w-16 mx-auto mb-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                </svg>
+                <h3 class="text-xl font-bold mb-2">Project-Based Learning</h3>
+                <p class="text-gray-700">Materi pembelajaran disusun dengan pendekatan - pendekatan project based
+                    learning</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- section 4 -->
+    <div class="background"></div>
+    <section class="container mx-auto py-12 relative">
+        <div class="flex flex-wrap -mx-4">
+            <!-- Card 1 -->
+            <div class="w-full md:w-1/3 px-4 mb-8">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card">
+                    <div class="icon-container">
+                        <i class="fas fa-book icon"></i>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold mb-2 text-gray-800">Kurikulum</h2>
+                        <p class="text-gray-600 mb-4">Kurikulum berstandar industri global, senantiasa diperbaharui</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="w-full md:w-1/3 px-4 mb-8">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card">
+                    <div class="icon-container">
+                        <i class="fas fa-pencil-alt icon"></i>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold mb-2 text-gray-800">Metode</h2>
+                        <p class="text-gray-600 mb-4">Metode belajar project-based learning, dapat menjadi portfolio
+                            siswa</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="w-full md:w-1/3 px-4 mb-8">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card">
+                    <div class="icon-container">
+                        <i class="fas fa-chalkboard-teacher icon"></i>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold mb-2 text-gray-800">Mentor</h2>
+                        <p class="text-gray-600 mb-4">Dibimbing langsung oleh mentor expert dari industri digital</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section with Full Image -->
+
+    <section class="relative">
+        <h2 class="text-3xl font-bold text-center mb-8">Talenta Digital SMKDEV</h2>
+        <div class="h-96">
+            <img src="https://smkdev.storage.googleapis.com/wp/Professional-5-Steps-SMKDEV-Build-Digital-Talent-2.png"
+                alt="Full Image" class="w-full h-full object-contain">
+        </div>
+    </section>
+
+    <section class="py-12 mb-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Apa Kata Mereka</h2>
+            <h3 class="text-xl text-gray-600 mb-8 text-center">Mereka telah merasakan serunya belajar skill digital di
+                SMKDEV. Apakah kamu ingin seperti mereka?</h3>
+            <div class="flex overflow-x-auto space-x-4 no-scrollbar drag-scroll" id="testimonialContainer">
+                <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card mb-8">
+                    <p class="text-gray-700">Seru! Bisa ketemu orang-orang hebat yang udah bikin banyak project keren.
+                        Bisa saling sharing pengalaman ngoding juga. Pokoknya seru deh!</p>
+                    <p class="text-gray-600 mt-4"><b>Hasban Fardani</b></p>
+                    <p class="text-gray-500">Siswa SMKN 11 Bandung</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card mb-8">
+                    <p class="text-gray-700">Kebetulan aku switch career dari guru ngaji, terus aku baca perkembangan
+                        sekarang tuh karir yang dibutuhkan di dunia IT itu gak jauh dari programming ataupun olah data.
+                        Karena kab data itu “gold”nya zaman now.</p>
+                    <p class="text-gray-700">Nah kebetulan SMKDEV ada Bootcamp dan webinar Data Analyst. Saya
+                        tertariknya sama materi Chrun yang ternyata bisa jadi dasar pengambilan keputusan dalam
+                        menentukan strategi untuk meningkatkan pangsa pasar atau meningkatkan loyalty customer kita.</p>
+                    <p class="text-gray-600 mt-4"><b>Rahmatulloh</b></p>
+                    <p class="text-gray-500">Pengajar Pondok Al Fatih Depok</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card mb-8">
+                    <p class="text-gray-700">Sejak bergabung dengan komunitas SMKDEV saya mendapat pengalaman yang
+                        banyak terlebih lagi melalui banyak event seperti community bonding talk yang membantu
+                        mengembangkan soft skill saya, dengan adanya coding challenge juga membuat saya bersemangat
+                        untuk meningkatkan skill pemrograman khususnya problem solving dengan lebih baik lagi,
+                        terimakasih SMKDEV dan tim</p>
+                    <p class="text-gray-600 mt-4"><b>Karel Trisnanto Utomo</b></p>
+                    <p class="text-gray-500">Frontend Web Developer, POLITEKNIK HARAPAN BERSAMA</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card mb-8">
+                    <p class="text-gray-700">Menjadi bagian keluarga SMKDev membantu mengembangkan keterampilan
+                        pemrograman saya (melalui event Coding Challenge misalnya). Selain itu, dukungan pemecahan
+                        masalah teknis, diskusi bersama, berbagi pengalaman (di Comunity Bounding misalnya) dan
+                        kesempatan berkolaborasi dalam sebuah proyek menjadi hal "menarik" yang tidak bisa saya
+                        lewatkan.</p>
+                    <p class="text-gray-600 mt-4"><b>Asep Dwi Saputra</b></p>
+                    <p class="text-gray-500">Teknik Informatika STMIK Widya Utama</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card mb-8">
+                    <p class="text-gray-700">Merupakan pengalaman yang sangat menyenangkan bagi saya, mencoba hal baru
+                        dan memecahkan suatu masalah. Selain itu, saya juga mendapatkan kesempatan untuk menjalin banyak
+                        hubungan dan koneksi dengan orang-orang yang memiliki minat serupa. Dengan ini, saya dapat
+                        berbagi pengetahuan dan pengalaman saya dengan orang lain, serta menerima wawasan dan ilmu baru
+                        melalui berbagai perspektif yang berbeda.</p>
+                    <p class="text-gray-600 mt-4"><b>Muhammad Iqbal Pasha Al Farabi</b></p>
+                    <p class="text-gray-500">Teknik Infomatika ITENAS</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card mb-8">
+                    <p class="text-gray-700">Saya merasa sangat bahagia dan bangga karena berhasil menjadi pemenang
+                        dalam SMKDEV Coding Challenge. Selama kompetisi ini, menurut saya, pengalaman ini telah
+                        memperluas wawasan dan keterampilannya dalam pemrograman. Saya berterima kasih kepada tim
+                        penyelenggara SMKDEV karena memberikan kesempatan ini dan memberikan tantangan yang
+                        menginspirasi serta mengapresiasi kerja keras peserta lain.</p>
+                    <p class="text-gray-700">SMKDEV Coding Challenge adalah pengalaman berharga yang telah memotivasi
+                        saya untuk terus belajar dan berkembang dalam dunia pemrograman.</p>
+                    <p class="text-gray-600 mt-4"><b>Shevabey Rahman</b></p>
+                    <p class="text-gray-500">Sistem Informasi Universitas Ahmad Dahlan</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card mb-8">
+                    <p class="text-gray-700">Pada program SMKDEV Scholarship ini memberi saya kesempatan untuk
+                        berkenalan dan berinteraksi langsung dengan pengajar profesional di bidang data analyst. Pada
+                        program ini juga saya mendapatkan wawasan tentang berbagai peluang karier dalam analisis data
+                        dan teknologi informasi dan membantu saya merencanakan masa depan karir di data analyst.</p>
+                    <p class="text-gray-600 mt-4"><b>Guruh Maulana</b></p>
+                    <p class="text-gray-500">STMIK IKMI Cirebon</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card mb-8">
+                    <p class="text-gray-700">Scholarship SMKDEV itu kece banget, walaupun aku dapat Scholarship 100%,
+                        kualitas kelasnya gak sembarangan. Kelas meet yang diadain malem bikin aku gak bingung bagi
+                        waktu sama kegiatan lainnya. Terus, kak Samuel juga ramah banget. Gak kayak yang bikin aku jadi
+                        'segan bertanya'. Materinya juga oke, bikin otakku berasa pening nyusun kode buat submission.
+                        Terima kasih, SMKDEV!</p>
+                    <p class="text-gray-600 mt-4"><b>Tiara Febrianie</b></p>
+                    <p class="text-gray-500">SMKN 11 Malang</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card mb-8">
+                    <p class="text-gray-700">SMKDEV Scholarship ini sangat menarik, karena memiliki penyampaian yang
+                        seru dan mudah dipahami. Selain itu juga di dalam bootcamp ini selalu ada di sela-sela kegiatan
+                        mengadakan mini games berhadiah</p>
+                    <p class="text-gray-600 mt-4"><b>Rizal Maulana</b></p>
+                    <p class="text-gray-500">SMK NEGERI 1 CIMAHI</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 mb-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Expert Mentor</h2>
+            <h3 class="text-xl text-gray-600 mb-8 text-center">SMKDEV menghadirkan expert dari industri untuk
+                mendampingi proses belajarmu.</h3>
+            <div class="relative">
+                <!-- Mentor Cards -->
+                <div class="grid grid-cols-5 gap-4">
+                    <div class="bg-white rounded-lg shadow-lg p-6 mentor-card">
+                        <img src="https://smkdev.storage.googleapis.com/wp/image-4ecbfe-4eee03-300x300.png"
+                            alt="Mentor 1" class="rounded-full w-24 h-24 mx-auto mb-4">
+                        <h3 class="text-xl font-bold text-center">Helmi Adi Prasetyo</h3>
+                        <p class="text-gray-600 text-center">Backend Developer, SMKDEV</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 mentor-card">
+                        <img src="https://smkdev.storage.googleapis.com/wp/Samuel-Pandohan-Terampil-Gultom.jpg"
+                            alt="Mentor 2" class="rounded-full w-24 h-24 mx-auto mb-4">
+                        <h3 class="text-xl font-bold text-center">Samuel Pandohan Terampil Gultom</h3>
+                        <p class="text-gray-600 text-center">Curriculum Developer, SMKDEV</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 mentor-card">
+                        <img src="https://smkdev.storage.googleapis.com/wp/Rachmawati-Ari-Taurisia.jpg" alt="Mentor 3"
+                            class="rounded-full w-24 h-24 mx-auto mb-4">
+                        <h3 class="text-xl font-bold text-center">Rachmawati Ari Taurisia</h3>
+                        <p class="text-gray-600 text-center">Curriculum Developer, SMKDEV</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 mentor-card">
+                        <img src="https://smkdev.storage.googleapis.com/wp/sudaryatno-fe5603-fe6f61-300x300.jpeg"
+                            alt="Mentor 4" class="rounded-full w-24 h-24 mx-auto mb-4">
+                        <h3 class="text-xl font-bold text-center">Sudaryatno</h3>
+                        <p class="text-gray-600 text-center">CTO, GITS Indonesia</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 mentor-card">
+                        <img src="https://smkdev.storage.googleapis.com/wp/ibnu-sina-wardy-86f446-870bf6-a31bbc-a34c39-300x300.jpg"
+                            alt="Mentor 5" class="rounded-full w-24 h-24 mx-auto mb-4">
+                        <h3 class="text-xl font-bold text-center">Mentor Name 5</h3>
+                        <p class="text-gray-600 text-center">CEO, GITS Indonesia</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Section -->
+    <section class="py-12 mb-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Artikel Pilihan SMKDEV</h2>
+            <div class="grid grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 article-card">
+                    <img src="https://smkdev.storage.googleapis.com/wp/Visualization-Of-Human-and-AI-Collaboration.png"
+                        alt="Article 1" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Prompt Engineering: Keterampilan, Prospek Karir Dan Kursus AI
+                    </h3>
+                    <p class="text-gray-600">Kenapa prompt engineering penting untuk AI generatif seperti ChatGPT dan
+                        Google Gemini? Pelajari keterampilan, prospe</p>
+                    <a href="https://www.smk.dev/prompt-engineering-karir-kursus-ai-generatif/"
+                        class="block mt-4 text-blue-500 hover:underline">BACA LEBIH LANJUT >>></a>
+                </div>
+                <!-- Article 2 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 article-card">
+                    <img src="https://smkdev.storage.googleapis.com/wp/an-image-depicting-a-data-analyst-sitting-in-front-upscaled-58d136-58e992-600x600.png"
+                        alt="Article 2" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Eksplorasi Potensi Bisnis: Peran Vital Data Analyst</h3>
+                    <p class="text-gray-600">Halo GenZ! Kalian pasti tahu kan kalau sekarang ini dunia udah makin
+                        canggih, semua serba digital. Tapi, tahukah kalian bahwa</p>
+                    <a href="https://www.smk.dev/eksplorasi-potensi-bisnis-peran-vital-data-analyst/"
+                        class="block mt-4 text-blue-500 hover:underline">BACA LEBIH LANJUT >>></a>
+
+
+                </div>
+                <!-- Article 3 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 article-card">
+                    <img src="https://smkdev.storage.googleapis.com/wp/strategi-efektif-churnrate.png" alt="Article 3"
+                        class="rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Strategi menurunkan Churn Rate untuk Pertumbuhan Bisnis
+                    </h3>
+                    <p class="text-gray-600">Memahami Churn Rate dan Strategi menurunkannya Apa itu Churn Rate? Churn
+                        rate adalah persentase pelanggan yang berhenti menggunakan produk atau </p>
+                    <a href="https://www.smk.dev/pahami-churn-rate-kunci-kesuksesan-di-digital-marketplace/"
+                        class="block mt-4 text-blue-500 hover:underline">BACA LEBIH LANJUT >>></a>
+
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-8">
+                <a href="https://www.smk.dev/blog"
+                    class="bg-navy text-white py-2 px-6 ml-4 rounded-full hover:bg-dark-navy">Lihat Semua Artikel</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-12 mb-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Kontak SMKDEV</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Kolom Kiri (Judul) -->
+                <div>
+                    <h3 class="text-xl font-medium text-gray-800 mb-4">Berapa investasi untuk menggunakan SMKDEV? Anda
+                        bisa mulai dengan <b>GRATIS.</b></h3>
+                    <p class="text-gray-600">Kami akan segera merespons pesan Anda secepatnya.</p>
+                </div>
+                <!-- Kolom Kanan (Form) -->
+                <div class="max-w-lg">
+                    <form action="#" method="POST" class="space-y-4">
+                        <!-- Nama -->
+                        <div>
+                            <label for="nama" class="block text-sm font-medium text-gray-700">Nama</label>
+                            <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" required
+                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <!-- Alamat Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Alamat Email</label>
+                            <input type="email" id="email" name="email" placeholder="Masukkan alamat email Anda"
+                                required
+                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <!-- WhatsApp -->
+                        <div>
+                            <label for="whatsapp" class="block text-sm font-medium text-gray-700">WhatsApp</label>
+                            <input type="text" id="whatsapp" name="whatsapp" placeholder="Masukkan nomor WhatsApp Anda"
+                                required
+                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <!-- Nama Satuan atau Instansi -->
+                        <div>
+                            <label for="instansi" class="block text-sm font-medium text-gray-700">Nama Satuan atau
+                                Instansi</label>
+                            <input type="text" id="instansi" name="instansi"
+                                placeholder="Masukkan nama satuan atau instansi Anda"
+                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <!-- Pesan -->
+                        <div>
+                            <label for="pesan" class="block text-sm font-medium text-gray-700">Pesan</label>
+                            <textarea id="pesan" name="pesan" rows="4" placeholder="Tulis pesan Anda di sini" required
+                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500"></textarea>
+                        </div>
+                        <!-- Tombol Kirim Pesan -->
+                        <div>
+                            <button type="submit"
+                                class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Kirim
+                                Pesan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-gray-300">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <h3 class="text-xl font-semibold">Creating High-Caliber Digital Talent</h3>
+                    <p class="text-sm">Summarecon Bandung, Jl. Magna Barat Blok MD No.02, Rancabolang, Kec. Gedebage, Kota Bandung, Jawa Barat 40295</p>
+                </div>
+                <div class="flex items-center justify-center space-x-4 lg:justify-end">
+                    <a href="https://www.youtube.com/@smkdev" class="text-gray-300 hover:text-gray-400"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/company/smkdev" class="text-gray-300 hover:text-gray-400"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/smkdev.official/" class="text-gray-300 hover:text-gray-400"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@smkdev.official" class="text-gray-300 hover:text-gray-400"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://t.me/+wPXVCS29UKgwNmJl" class="text-gray-300 hover:text-gray-400"><i class="fab fa-telegram"></i></a>
+                    <a href="https://chat.whatsapp.com/D5gVS4FbxSc2ij1zbZVxAV" class="text-gray-300 hover:text-gray-400"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById("dropdownMenu");
+            dropdown.classList.toggle("hidden");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.focus:outline-none')) {
+                var dropdowns = document.getElementsByClassName("absolute");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (!openDropdown.classList.contains('hidden')) {
+                        openDropdown.classList.add('hidden');
+                    }
+                }
+            }
+        }
+
+        const container = document.getElementById('testimonialContainer');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        container.addEventListener('mousedown', (e) => {
+            isDown = true;
+            container.classList.add('active');
+            startX = e.pageX - container.offsetLeft;
+            scrollLeft = container.scrollLeft;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            isDown = false;
+            container.classList.remove('active');
+        });
+
+        container.addEventListener('mouseup', () => {
+            isDown = false;
+            container.classList.remove('active');
+        });
+
+        container.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - container.offsetLeft;
+            const walk = (x - startX) * 2; // Scroll-fast
+            container.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+
+</html>
