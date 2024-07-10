@@ -86,6 +86,19 @@ img {
   border-radius: 40px; 
 }
 
+.testimoni-section-wrapper {
+  padding: 3rem;
+}
+.testimoni-card {
+  display: flex;
+  gap: 1rem;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* Scroll */
 .go-top-btn {
   position: fixed;
