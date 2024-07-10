@@ -5,6 +5,10 @@ import Client from './components/Client';
 import LearnOrientation from './components/LearnOrientation';
 import Talent from './components/Talent';
 import Testimonial from './components/Testimonial';
+import Mentor from './components/Mentor';
+import Article from './components/Article';
+import Contact from "./components/Contact";
+import Footer from './components/Footer';
 
 function App() {
 
@@ -21,6 +25,10 @@ function App() {
         <LearnOrientation/>
         <Talent/>
         <Testimonial/>
+        <Mentor/>
+        <Article/>
+        <Contact/>
+        <Footer/>
       </div>
     </>
   )

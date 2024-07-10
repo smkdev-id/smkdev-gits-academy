@@ -36,26 +36,6 @@ const LearnOrientation = () => {
                         <p className="text-gray-600">Kurikulum dirancang menggunakan metode pembelajaran praktis melalui pengerjaan proyek.</p>
                     </div>
                 </div>
-                
-                {/* <div class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg mt-10">
-                    <div
-                        class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border">
-                        <img
-                        src={BookImage}
-                        alt="BookImage"
-                        className="h-1/2" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-3">
-                        <h5 class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900">
-                            Jalur Belajar Profesional
-                        </h5>
-                        </div>
-                        <p class="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
-                        Kurikulum dirancang sesuai tuntutan pasar kerja.
-                        </p>
-                    </div>
-                </div>  */}
             </div>
         </>
     )
