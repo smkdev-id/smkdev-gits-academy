@@ -3,6 +3,9 @@
     import { onMount } from 'svelte';
     import Testimoni from "./Testimoni.svelte";
     import Mentor from './Mentor.svelte';
+    import Blog from "./Blog.svelte";
+    import Contact from "./Contact.svelte";
+    import Footer from "./Footer.svelte"
     // Import Swiper bundle with all modules installed
     import Swiper from 'swiper/bundle';
 
@@ -162,6 +165,36 @@
             twitter: "#",
             github: "#",
             linkedin: "#",
+        },
+    ];
+    let blogs = [
+        {
+            linkDetailBlog : "#",
+            samllImg: "/images/smallImg1.png",
+            category : "General",
+            title : "Prompt Engineering: Keterampilan, Prospek Karir Dan Kursus AI",
+            description : "Kenapa prompt engineering penting untuk AI generatif seperti ChatGPT dan Google Gemini? Pelajari keterampilan, prospek"
+        },
+        {
+            linkDetailBlog : "#",
+            samllImg: "/images/smallImg1.png",
+            category : "General",
+            title : "Panduan Pemula Menguasai AI Tools (Alat AI)",
+            description : "Pelajari cara menguasai alat AI dengan panduan pemula ini. Temukan langkah-langkah, alat populer, dan tips untuk sukses dalam memanfaatkan teknologi"
+        },
+        {
+            linkDetailBlog : "#",
+            samllImg: "/images/smallImg1.png",
+            category : "Data Sains",
+            title : "Strategi menurunkan Churn Rate untuk Pertumbuhan Bisnis",
+            description : "Memahami Churn Rate dan Strategi menurunkannya Apa itu Churn Rate? Churn rate adalah persentase pelanggan yang berhenti menggunakan produk atau"
+        },
+        {
+            linkDetailBlog : "#",
+            samllImg: "/images/smallImg1.png",
+            category : "General",
+            title : "Mengoptimalkan ROI dengan Strategi Analisis Data yang Efektif",
+            description : "  Dalam era digital yang semakin maju, data telah menjadi salah satu aset paling berharga bagi perusahaan. Namun, nilai sejati"
         },
     ]
     onMount(() => {
@@ -479,12 +512,27 @@
     </div>
     </section>
     <!-- Article -->
-    <section class="py-10 lg:py-28 flex flex-col gap-16 px-6 lg:px-[300px]" id="learning">
-        <div class="flex flex-col gap-2 text-center">
-            <h3 class="font-semibold text-3xl sm:text-4xl">
-                Artikel Pilihan <span class="poppins text-violet-400">SMKDEV</span> 
-            </h3>
+    <section class="py-10 lg:pt-30 flex flex-col gap-8 px-6 lg:px-[300px]" id="blog">
+        <h3 class="font-semibold text-3xl sm:text-4xl text-center">
+            Artikel Pilihan <span class="poppins text-violet-400">SMKDEV</span> 
+        </h3>
+        <div class="mx-auto grid max-w-screen-lg justify-center px-4 grid-cols-2 sm:gap-4 sm:px-8 md:grid-cols-3">
+            {#each blogs as blog }
+                <Blog blog = {blog}>
+                </Blog>
+            {/each}
         </div>
+        <a href="#" class="blueShadow relative overflow-hidden px-10 py-2 mx-auto group rounded-md bg-violet-900 text-slate-950">
+            <div
+                class="absolute top-0 right-full w-full h-full bg-violet-400 opacity-20 group-hover:translate-x-full z-0 duration-200"
+            />
+            <h4 class="relative text-sm z-9 text-white text-center">NEXT</h4>
+    </a>
     </section>
+    <!-- Contact -->
+     <section class="py-10 lg:py-5 px-6 lg:px-[300px] bg-violet-50">
+        <Contact>
+        </Contact>
+     </section>
 </main>
 

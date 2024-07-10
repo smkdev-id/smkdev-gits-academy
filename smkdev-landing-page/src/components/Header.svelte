@@ -68,7 +68,7 @@
             : " py-4 bg-transparent border-transparent")}
 >
     <h1 class="font-medium">
-        <a href="/"><img src="/images/logo-smkdev.png" width="110" height="23" alt=""></a>
+        <a href="/"><img src="/images/logo-smkdev.png" width="110" height="23" alt="smkdev"></a>
     </h1>
     <div class="desktop-menu items-center gap-4">
         {#each tabs as tab, index}
