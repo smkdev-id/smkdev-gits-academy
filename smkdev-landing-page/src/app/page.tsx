@@ -1,4 +1,4 @@
-import { Topnav } from "@/components";
+import { Footer, Topnav } from "@/components";
 import {
   Article,
   Contact,
@@ -15,6 +15,7 @@ export default function Home() {
   return (
     <main className="w-full">
       <Topnav />
+
       <Hero />
       <Mitra />
       <Featured />
@@ -24,6 +25,8 @@ export default function Home() {
       <Mentor />
       <Article />
       <Contact />
+
+      <Footer />
     </main>
   );
 }

@@ -9,8 +9,10 @@ import PinterestGrid from "./PinterestGrid";
 import Topnav from "./Topnav";
 import WhyUsCard from "./WhyUsCard";
 import FormField from "./FormField";
+import Footer from "./Footer";
 
 export {
+    Footer,
     FormField,
     ContactForm,
     ArticleCard,
