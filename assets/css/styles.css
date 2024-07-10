@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: #fcfcfc;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: rgb(41, 41, 41);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.navbar-custom {
+  background-color: #fcfcfc;
+  border-bottom: 1px solid #616364;
+}
+
+.navbar-brand img {
+  width: 150px;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+/* Gerak */
+#typing {
+  width: 0;
+  color: blue;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 4s steps(22) 1s infinite alternate;
+}
+
+#typing::after {
+  content: '|';
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 15ch;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* End Gerak */
+
+.hero {
+  padding: 25px 50px;
+}
+
+.hero h1 {
+  margin-bottom: 10px;
+}
+
+.typing-container {
+  display: flex;
+  align-items: center;
+}
+
+.img-banner {
+  border-radius: 40px; 
+}
+
+/* Scroll */
+.go-top-btn {
+  position: fixed;
+  bottom: 35px;
+  right: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 60px;
+  width: 60px;
+  background: #fff;
+  border: 3px solid #333;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.go-top-btn img {
+  width: 40px;
+  height: 40px;
+}
+/* END Scroll */
+
+.artikel-section-wrapper {
+  padding: 2rem 0;
+}
+.artikel-card {
+  margin-bottom: 1rem;
+}
+.card-img-top {
+  width: 100%;
+  height: auto;
+}
+.text-decoration-none {
+  text-decoration: none;
+}
+/* footer */
+.footer-wrapper {
+  padding: 2rem;
+}
+.footer-logo-container p {
+  margin-top: 1rem;
+}
+.footer-icons-group p {
+  margin-bottom: 0.5rem;
+}
+.footer-icons .fs-3 {
+  font-size: 1.5rem;
+}
+.footer-copyright p {
+  margin-top: 1rem;
+}
