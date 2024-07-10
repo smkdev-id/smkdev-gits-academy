@@ -1,5 +1,5 @@
 "use client";
-import { WhyUsCard } from "@/components";
+import { MediaQuery, WhyUsCard } from "@/components";
 import { NextPage } from "next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCards } from "swiper/modules";
@@ -72,7 +72,7 @@ const WhyUs: NextPage<Props> = ({}) => {
   ];
   return (
     <div className="bg-bg2 flex w-full justify-center overflow-visible">
-      <div className="flex w-[60%] items-center justify-between gap-x-14 overflow-visible py-20">
+      <MediaQuery className="flex items-center justify-between gap-x-14 overflow-visible py-20">
         <div className="flow-x-visible relative h-[230px] w-full overflow-visible">
           <Swiper
             className="mt-6 h-full w-full"
@@ -118,7 +118,7 @@ const WhyUs: NextPage<Props> = ({}) => {
             mentor dari dunia industri.
           </p>
         </div>
-      </div>
+      </MediaQuery>
     </div>
   );
 };

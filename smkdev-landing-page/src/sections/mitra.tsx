@@ -1,3 +1,4 @@
+import { MediaQuery } from "@/components";
 import { NextPage } from "next";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
@@ -14,7 +15,7 @@ const Mitra: NextPage = () => {
 
   return (
     <div className="bg-bg2 flex w-full justify-center py-16">
-      <div className="flex w-[60%] flex-col items-center justify-center gap-y-3">
+      <MediaQuery className="flex flex-col items-center justify-center gap-y-3">
         <h1 className="text-center text-xl font-semibold capitalize text-primary">
           Dipercaya Oleh Mitra Industri
         </h1>
@@ -32,7 +33,7 @@ const Mitra: NextPage = () => {
             </div>
           ))}
         </Marquee>
-      </div>
+      </MediaQuery>
     </div>
   );
 };

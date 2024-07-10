@@ -1,5 +1,13 @@
 import { Topnav } from "@/components";
-import { Featured, Hero, Mitra, WhyUs } from "@/sections";
+import {
+  Featured,
+  Hero,
+  Mentor,
+  Mitra,
+  TalentDigital,
+  Testimoni,
+  WhyUs,
+} from "@/sections";
 
 export default function Home() {
   return (
@@ -9,6 +17,9 @@ export default function Home() {
       <Mitra />
       <Featured />
       <WhyUs />
+      <TalentDigital />
+      <Testimoni />
+      <Mentor />
     </main>
   );
 }

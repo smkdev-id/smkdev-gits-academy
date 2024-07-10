@@ -1,4 +1,5 @@
 "use client";
+import { MediaQuery } from "@/components";
 import { NextPage } from "next";
 import Image from "next/image";
 import Typewriter from "typewriter-effect";
@@ -8,9 +9,9 @@ interface Props {}
 const Hero: NextPage<Props> = ({}) => {
   return (
     <div className="flex w-full justify-center py-40">
-      <div className="flex w-[60%] items-center justify-center gap-x-8">
+      <MediaQuery className="flex items-center justify-center gap-x-8">
         <div className="flex flex-col gap-y-9">
-          <h1 className="text-5xl font-semibold capitalize leading-snug">
+          <h1 className="text-5xl font-semibold capitalize">
             jadilah talenta digital{" "}
             <Typewriter
               options={{
@@ -49,7 +50,7 @@ const Hero: NextPage<Props> = ({}) => {
             />
           </div>
         </div>
-      </div>
+      </MediaQuery>
     </div>
   );
 };

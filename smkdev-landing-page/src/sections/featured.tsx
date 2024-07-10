@@ -1,4 +1,4 @@
-import { FeaturedCard } from "@/components";
+import { FeaturedCard, MediaQuery } from "@/components";
 import { NextPage } from "next";
 
 const Featured: NextPage = () => {
@@ -121,7 +121,7 @@ const Featured: NextPage = () => {
 
   return (
     <div className="flex w-full justify-center py-20">
-      <div className="flex w-[60%] flex-col items-center justify-center">
+      <MediaQuery className="flex flex-col items-center justify-center">
         <div className="mb-10 flex w-full flex-col items-center gap-y-3">
           <h1 className="text-center text-3xl font-semibold text-primary">
             Orientasi Belajar SMKDEV
@@ -142,7 +142,7 @@ const Featured: NextPage = () => {
             />
           ))}
         </div>
-      </div>
+      </MediaQuery>
     </div>
   );
 };

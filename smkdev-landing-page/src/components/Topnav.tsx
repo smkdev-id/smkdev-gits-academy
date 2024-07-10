@@ -4,6 +4,7 @@ import Image from "next/image";
 import { FC, useEffect, useState } from "react";
 import ActionMenu from "./DropdownMenu";
 import ButtonLink from "./Button";
+import MediaQuery from "./MediaQuery";
 
 interface Props {}
 
@@ -36,7 +37,7 @@ const Topnav: FC<Props> = ({}) => {
         isScrolled ? "border-b border-gray-200 py-3" : "py-5"
       } sticky top-0 z-50 flex w-full items-center justify-center bg-white transition-all ease-in-out`}
     >
-      <div className="flex w-[95%] items-center justify-between md:w-[80%] lg:w-[60%]">
+      <MediaQuery className="flex items-center justify-between">
         <div className="w-[130px]">
           <Image
             src="/assets/Logo-Smkdev.png"
@@ -63,7 +64,7 @@ const Topnav: FC<Props> = ({}) => {
             Dashboard
           </ButtonLink>
         </div>
-      </div>
+      </MediaQuery>
     </header>
   );
 };
