@@ -27,7 +27,7 @@ export default function SwiperCompany() {
       onSwiper={(swiper) => console.log(swiper)}
     >
       {dataLogo.map((item) => (
-        <SwiperSlide key={item.name} className="h-6 w-auto">
+        <SwiperSlide key={item.name}>
           <Image alt={item.name} src={item.image} width={150} height={150} />
         </SwiperSlide>
       ))}

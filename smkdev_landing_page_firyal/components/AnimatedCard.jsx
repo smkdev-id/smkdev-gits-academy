@@ -4,43 +4,74 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 export function AnimatedCard() {
-  const images = [
-    "https://images.unsplash.com/photo-1517322048670-4fba75cbbb62?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1573790387438-4da905039392?q=80&w=3425&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1555400038-63f5ba517a47?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1554931670-4ebfabf6e7a9?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1546484475-7f7bd55792da?q=80&w=2581&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  const dataOrientation = [
+    {
+      desc: "Learning path disusun menyesuaikan dengan perkembangan dan kebutuhan dunia industri.",
+      name: "Learning Path Industri",
+      image: "/paper.png",
+    },
+    {
+      desc: "Kurikulum komprehensif dan senantiasa di perbarui berdasarkan pengalaman di dunia industri",
+      name: "Kurikulum Komprehensif",
+      image: "/book.png",
+    },
+    {
+      desc: "Materi pembelajaran disusun dengan pendekatan - pendekatan project based learning",
+      name: "Project-Based Learning",
+      image: "/laptop.png",
+    },
   ];
+
   return (
-    <div className="py-40 flex items-center justify-center">
+    <div className="py-40 px-20 flex flex-col items-center justify-center">
+      <h1 className="text-3xl px-20 font-bold">Orientasi Belajar SMKDEV</h1>
+      <h1 className="text-xl px-20 flex justify-center text-center pb-20 pt-4">
+        Dapatkan pengalaman belajar berorientasi pengalaman kerja yang dapat
+        mengantarkan Anda menjadi talenta yang dibutuhkan oleh industri digital
+        terkini.
+      </h1>
       <div className="flex justify-center items-center">
-        {images.map((image, idx) => (
-          <motion.div
-            key={"images" + idx}
-            style={{
-              rotate: Math.random() * 20 - 10,
-            }}
-            whileHover={{
-              scale: 1.1,
-              rotate: 0,
-              zIndex: 100,
-            }}
-            whileTap={{
-              scale: 1.1,
-              rotate: 0,
-              zIndex: 100,
-            }}
-            className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden"
-          >
-            <Image
-              src={image}
-              alt="bali images"
-              width="500"
-              height="500"
-              className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover flex-shrink-0"
-            />
-          </motion.div>
-        ))}
+        <div className="flex flex-wrap">
+          {dataOrientation.map((item, idx) => {
+            const words = item.name.split(" ");
+            const lastWord = words.pop();
+            const restOfName = words.join(" ");
+
+            return (
+              <motion.div
+                key={"item" + idx}
+                style={{
+                  rotate: 0,
+                }}
+                whileHover={{
+                  scale: 1.1,
+                  rotate: Math.random() * 15 - 10,
+                  zIndex: 100,
+                }}
+                whileTap={{
+                  scale: 1.1,
+                  rotate: 0,
+                  zIndex: 100,
+                }}
+                className="w-60 rounded-xl mr-12 p-4  bg-white border-neutral-200 border  flex-shrink-0 overflow-hidden"
+              >
+                <div className="w-1/5 flex justify-center rounded-br-lg">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    width={30}
+                    height={30}
+                  />
+                </div>
+                <h1 className="font-bold text-lg pt-4">
+                  <span className="text-black">{restOfName}</span>{" "}
+                  <span className="text-[#00A92F]">{lastWord}</span>
+                </h1>
+                <p className=" line-clamp-4 ">{item.desc}</p>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

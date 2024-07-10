@@ -1,6 +1,6 @@
 import { AnimatedCard } from "@/components/AnimatedCard";
 import Navbar from "@/components/ui/Navigation";
-import { HeroScroll } from "@/components/AlurTalenta";
+import { HeroScroll } from "@/components/HeroScroll";
 import SwiperCompany from "@/components/SwiperCompany";
 
 export default function Home() {
@@ -16,6 +16,7 @@ export default function Home() {
         </h1>
         <SwiperCompany />
       </div>
+      <AnimatedCard />
     </main>
   );
 }
