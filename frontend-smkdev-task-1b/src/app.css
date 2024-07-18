@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  padding: 0;
+  margin: 0;
+}
+* {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.blueShadow {
+  box-shadow: 0px 14px 55px rgba(109, 40, 217, 0.45);
+}
+
+.specialSpin {
+  animation: spin 5s linear infinite;
+}
+#typewriter {
+  font-weight: bold;
+}
+
+#cursor {
+  animation: blink 1s linear infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 100%;
+  }
+  50% {
+    opacity: 0%;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.blur-load {
+  background-size: cover;
+  background-position: center;
+}
+
+.img {
+  object-position: center;
+  object-fit: cover;
+}
