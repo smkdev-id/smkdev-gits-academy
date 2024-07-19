@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/alwi09/config"
 	"github.com/alwi09/controller"
@@ -35,9 +36,8 @@ func StartServer() {
 	// intialize router
 	router := router.NewRouter(controller)
 
-	port := ":8080"
-	fmt.Printf("Server is running on port %s", port)
-	if err := http.ListenAndServe(port, router); err != nil {
+	fmt.Printf("Server is running on port %s", os.Getenv("APP_PORT"))
+	if err := http.ListenAndServe(os.Getenv("APP_PORT"), router); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}
 }

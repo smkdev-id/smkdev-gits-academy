@@ -7,3 +7,6 @@ export DB_PORT=3306
 export DB_USER=<your-db-user>
 export DB_PASSWORD=<your-db-password>
 export DB_NAME=<your-db-name>
+
+# APPLICATION
+export APP_PORT=":8080"
