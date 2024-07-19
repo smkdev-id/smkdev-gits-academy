@@ -1,0 +1,48 @@
+services:
+  mysql-container:
+    container_name: mysql-container
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=123
+      - MYSQL_DATABASE=task2
+    networks:
+      - app-network
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - 3307:3306
+    healthcheck:
+      test:
+        ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p123"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+
+  todoapp-container:
+    image: todoapp:v1
+    container_name: todoapp-container
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - app-network
+    depends_on:
+      mysql-container:
+        condition: service_healthy
+    environment:
+      - DB_DRIVER=mysql
+      - DB_HOST=mysql-container
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=123
+      - DB_NAME=task2
+      - APP_PORT=:8080
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
