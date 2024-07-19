@@ -98,7 +98,7 @@ sudo docker exec -it mysql-container /bin/bash
 - if you inside `mysql-container`, then go `mysql`, command :
 
 ```bash
-home# mysql -u rooot -p
+home# mysql -u root -p
 home# password:123
 ```
 
