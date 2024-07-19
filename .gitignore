@@ -3,5 +3,5 @@ frontend/task-1b/dist
 frontend/task-1b/node_modules
 
 #  backend
-backend/task-2b/env.sh
-backend/task-2b/go.sum
+backend/task-2a/env.sh
+backend/task-2a/go.sum
