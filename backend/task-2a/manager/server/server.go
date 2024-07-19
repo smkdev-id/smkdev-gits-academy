@@ -6,7 +6,11 @@ import (
 	"net/http"
 
 	"github.com/alwi09/config"
+	"github.com/alwi09/controller"
 	"github.com/alwi09/manager"
+	"github.com/alwi09/repository"
+	"github.com/alwi09/router"
+	"github.com/alwi09/service"
 )
 
 func StartServer() {
@@ -23,11 +27,17 @@ func StartServer() {
 		log.Fatalf("Failed to initialize database: %v", err)
 	}
 
-	fmt.Println(mysqlManager)
+	// initialize repository, service and controller
+	repository := repository.NewTodoRepository(mysqlManager.Conn())
+	service := service.NewTodoService(repository)
+	controller := controller.NewTodoController(service)
+
+	// intialize router
+	router := router.NewRouter(controller)
 
 	port := ":8080"
 	fmt.Printf("Server is running on port %s", port)
-	if err := http.ListenAndServe(port, nil); err != nil {
+	if err := http.ListenAndServe(port, router); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}
 }
