@@ -27,7 +27,7 @@ func NewTodoRepository(db *sql.DB) TodoRepository {
 
 // FindAll implements TodoRepository
 func (r *todoRepository) FindAll() ([]entity.Todo, error) {
-	SQL := "SELECT id, title, description, status, created_at, updated_at FROM todo"
+	SQL := "SELECT id, title, description, is_completed, created_at, updated_at FROM todo"
 	rows, err := r.DB.Query(SQL)
 	if err != nil {
 		return nil, err
@@ -40,13 +40,13 @@ func (r *todoRepository) FindAll() ([]entity.Todo, error) {
 		var todo entity.Todo
 		var createdAtStr, updatedAtStr sql.NullString
 
-		if err := rows.Scan(&todo.Id, &todo.Title, &todo.Description, &todo.Status, &createdAtStr, &updatedAtStr); err != nil {
+		if err := rows.Scan(&todo.Id, &todo.Title, &todo.Description, &todo.IsCompleted, &createdAtStr, &updatedAtStr); err != nil {
 			return nil, err
 		}
 
 		// Parse string to time.Time only if it's not null
 		if createdAtStr.Valid {
-			if createdAt, err := time.Parse("2006-01-02 15:04:05", createdAtStr.String); err == nil {
+			if createdAt, err := time.Parse(time.DateTime, createdAtStr.String); err == nil {
 				todo.CreatedAt = createdAt
 			} else {
 				return nil, err
@@ -56,13 +56,13 @@ func (r *todoRepository) FindAll() ([]entity.Todo, error) {
 		}
 
 		if updatedAtStr.Valid {
-			if updatedAt, err := time.Parse("2006-01-02 15:04:05", updatedAtStr.String); err == nil {
-				todo.UpdatedAt = updatedAt
+			if updatedAt, err := time.Parse(time.DateTime, updatedAtStr.String); err == nil {
+				todo.UpdatedAt = &updatedAt
 			} else {
 				return nil, err
 			}
 		} else {
-			todo.UpdatedAt = time.Time{}
+			todo.UpdatedAt = nil
 		}
 
 		todos = append(todos, todo)
@@ -73,18 +73,18 @@ func (r *todoRepository) FindAll() ([]entity.Todo, error) {
 
 // FindById implements TodoRepository
 func (r *todoRepository) FindById(id string) (*entity.Todo, error) {
-	SQL := "SELECT id, title, description, status, created_at, updated_at FROM todo WHERE id = ?"
+	SQL := "SELECT id, title, description, is_completed, created_at, updated_at FROM todo WHERE id = ?"
 	row := r.DB.QueryRow(SQL, id)
 	var todo entity.Todo
 	var createdAtStr, updatedAtStr sql.NullString
 
-	if err := row.Scan(&todo.Id, &todo.Title, &todo.Description, &todo.Status, &createdAtStr, &updatedAtStr); err != nil {
+	if err := row.Scan(&todo.Id, &todo.Title, &todo.Description, &todo.IsCompleted, &createdAtStr, &updatedAtStr); err != nil {
 		return nil, err
 	}
 
 	// Parse string to time.Time only if it's not null
 	if createdAtStr.Valid {
-		if createdAt, err := time.Parse("2006-01-02 15:04:05", createdAtStr.String); err == nil {
+		if createdAt, err := time.Parse(time.DateTime, createdAtStr.String); err == nil {
 			todo.CreatedAt = createdAt
 		} else {
 			return nil, err
@@ -94,13 +94,13 @@ func (r *todoRepository) FindById(id string) (*entity.Todo, error) {
 	}
 
 	if updatedAtStr.Valid {
-		if updatedAt, err := time.Parse("2006-01-02 15:04:05", updatedAtStr.String); err == nil {
-			todo.UpdatedAt = updatedAt
+		if updatedAt, err := time.Parse(time.DateTime, updatedAtStr.String); err == nil {
+			todo.UpdatedAt = &updatedAt
 		} else {
 			return nil, err
 		}
 	} else {
-		todo.UpdatedAt = time.Time{}
+		todo.UpdatedAt = nil
 	}
 
 	return &todo, nil
@@ -108,8 +108,8 @@ func (r *todoRepository) FindById(id string) (*entity.Todo, error) {
 
 // Create implements TodoRepository
 func (r *todoRepository) Create(todo *entity.Todo) (*entity.Todo, error) {
-	SQL := "INSERT INTO todo (id, title, description, status, created_at) VALUES (?, ?, ?, ?, ?)"
-	_, err := r.DB.Exec(SQL, todo.Id, todo.Title, todo.Description, todo.Status, todo.CreatedAt)
+	SQL := "INSERT INTO todo (id, title, description, is_completed, created_at) VALUES (?, ?, ?, ?, ?)"
+	_, err := r.DB.Exec(SQL, todo.Id, todo.Title, todo.Description, todo.IsCompleted, todo.CreatedAt)
 	if err != nil {
 		return nil, err
 	}
@@ -118,8 +118,8 @@ func (r *todoRepository) Create(todo *entity.Todo) (*entity.Todo, error) {
 
 // Update implements TodoRepository
 func (r *todoRepository) Update(id string, todo *entity.Todo) (*entity.Todo, error) {
-	SQL := "UPDATE todo SET title = ?, description = ?, status = ?, updated_at = ? WHERE id = ?"
-	_, err := r.DB.Exec(SQL, todo.Title, todo.Description, todo.Status, todo.UpdatedAt, id)
+	SQL := "UPDATE todo SET title = ?, description = ?, is_completed = ?, updated_at = ? WHERE id = ?"
+	_, err := r.DB.Exec(SQL, todo.Title, todo.Description, todo.IsCompleted, todo.UpdatedAt, id)
 	if err != nil {
 		return nil, err
 	}

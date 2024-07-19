@@ -38,13 +38,20 @@ func (s *todoService) FindAll() (*[]response.TodoResponse, error) {
 
 	var dataList []response.TodoResponse
 	for _, todo := range todos {
+		var updatedAt string
+		if todo.UpdatedAt != nil {
+			updatedAt = todo.UpdatedAt.Local().String()
+		} else {
+			updatedAt = ""
+		}
+
 		dataList = append(dataList, response.TodoResponse{
 			Id:          todo.Id,
 			Title:       todo.Title,
 			Description: todo.Description,
-			Status:      todo.Status,
-			CreatedAt:   todo.CreatedAt.String(),
-			UpdatedAt:   todo.UpdatedAt.String(),
+			IsCompleted: todo.IsCompleted,
+			CreatedAt:   todo.CreatedAt.Local().String(),
+			UpdatedAt:   updatedAt,
 		})
 	}
 
@@ -57,13 +64,20 @@ func (s *todoService) FindById(id string) (*response.TodoResponse, error) {
 		return nil, err
 	}
 
+	var updatedAt string
+	if todo.UpdatedAt != nil {
+		updatedAt = todo.UpdatedAt.Local().String()
+	} else {
+		updatedAt = ""
+	}
+
 	data := response.TodoResponse{
 		Id:          todo.Id,
 		Title:       todo.Title,
 		Description: todo.Description,
-		Status:      todo.Status,
-		CreatedAt:   todo.CreatedAt.String(),
-		UpdatedAt:   todo.UpdatedAt.String(),
+		IsCompleted: todo.IsCompleted,
+		CreatedAt:   todo.CreatedAt.Local().String(),
+		UpdatedAt:   updatedAt,
 	}
 
 	return &data, nil
@@ -78,8 +92,9 @@ func (s *todoService) Create(todoReq *request.TodoCreateRequest) (*response.Todo
 		Id:          util.GenerateUUID(),
 		Title:       todoReq.Title,
 		Description: todoReq.Description,
-		Status:      true,
-		CreatedAt:   time.Now().UTC().Local(),
+		IsCompleted: false,
+		CreatedAt:   time.Now().Local(),
+		UpdatedAt:   nil,
 	}
 
 	todo, err := s.todoRepository.Create(&newTodo)
@@ -87,13 +102,21 @@ func (s *todoService) Create(todoReq *request.TodoCreateRequest) (*response.Todo
 		return nil, err
 	}
 
+	// Convert time.Time to string
+	var updatedAt string
+	if todo.UpdatedAt != nil {
+		updatedAt = todo.UpdatedAt.Local().String()
+	} else {
+		updatedAt = ""
+	}
+
 	data := response.TodoResponse{
 		Id:          todo.Id,
 		Title:       todo.Title,
 		Description: todo.Description,
-		Status:      todo.Status,
-		CreatedAt:   todo.CreatedAt.String(),
-		UpdatedAt:   todo.UpdatedAt.String(),
+		IsCompleted: todo.IsCompleted,
+		CreatedAt:   todo.CreatedAt.Local().String(),
+		UpdatedAt:   updatedAt,
 	}
 
 	return &data, nil
@@ -111,8 +134,9 @@ func (s *todoService) Update(id string, todoReq *request.TodoUpdateRequest) (*re
 
 	todo.Title = todoReq.Title
 	todo.Description = todoReq.Description
-	todo.Status = todoReq.Status || true
-	todo.UpdatedAt = time.Now().UTC().Local()
+	todo.IsCompleted = todoReq.IsCompleted
+	updatedAt := time.Now().Local()
+	todo.UpdatedAt = &updatedAt
 
 	todoRes, err := s.todoRepository.Update(id, todo)
 	if err != nil {
@@ -123,9 +147,9 @@ func (s *todoService) Update(id string, todoReq *request.TodoUpdateRequest) (*re
 		Id:          todoRes.Id,
 		Title:       todoRes.Title,
 		Description: todoRes.Description,
-		Status:      todoRes.Status,
-		CreatedAt:   todoRes.CreatedAt.String(),
-		UpdatedAt:   todoRes.UpdatedAt.String(),
+		IsCompleted: todoRes.IsCompleted,
+		CreatedAt:   todoRes.CreatedAt.Local().String(),
+		UpdatedAt:   todoRes.UpdatedAt.Local().String(),
 	}
 
 	return &data, nil

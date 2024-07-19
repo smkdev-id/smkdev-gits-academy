@@ -2,12 +2,14 @@ package controller
 
 import (
 	"encoding/json"
+	"errors"
 	"log"
 	"net/http"
 
 	"github.com/alwi09/dto/request"
 	"github.com/alwi09/dto/response"
 	"github.com/alwi09/service"
+	"github.com/go-playground/validator/v10"
 )
 
 type TodoController struct {
@@ -28,9 +30,9 @@ func (c *TodoController) GetAll(rw http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		rw.WriteHeader(http.StatusInternalServerError)
 		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			Status:  http.StatusInternalServerError,
-			Message: "Failed to find all todos",
-			Error:   "Check internet connection",
+			StatusCode: http.StatusInternalServerError,
+			Message:    "Failed to find all todos",
+			Error:      "Check internet connection",
 		})
 		http.Error(rw, err.Error(), http.StatusInternalServerError)
 		log.Printf("Failed to find all todos: %v", err.Error())
@@ -39,9 +41,9 @@ func (c *TodoController) GetAll(rw http.ResponseWriter, r *http.Request) {
 
 	rw.WriteHeader(http.StatusOK)
 	json.NewEncoder(rw).Encode(response.CommonResponse[[]response.TodoResponse]{
-		Status:  http.StatusOK,
-		Message: "Find all todos successfully",
-		Data:    *todos,
+		StatusCode: http.StatusOK,
+		Message:    "Find all todos successfully",
+		Data:       *todos,
 	})
 }
 
@@ -52,9 +54,9 @@ func (c *TodoController) FindById(rw http.ResponseWriter, r *http.Request, id st
 	if id == "" {
 		rw.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			Status:  http.StatusBadRequest,
-			Message: "Failed to find todo",
-			Error:   "id is required",
+			StatusCode: http.StatusBadRequest,
+			Message:    "Failed to find todo",
+			Error:      "id is required",
 		})
 		http.Error(rw, "id is required", http.StatusBadRequest)
 		log.Printf("Failed to find todo: id is required")
@@ -66,9 +68,9 @@ func (c *TodoController) FindById(rw http.ResponseWriter, r *http.Request, id st
 	if err != nil {
 		rw.WriteHeader(http.StatusInternalServerError)
 		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			Status:  http.StatusNotFound,
-			Message: "Failed to find todo",
-			Error:   "Todo not found",
+			StatusCode: http.StatusNotFound,
+			Message:    "Failed to find todo",
+			Error:      "Todo not found",
 		})
 		http.Error(rw, err.Error(), http.StatusInternalServerError)
 		log.Printf("Failed to find todo: %v", err.Error())
@@ -77,9 +79,9 @@ func (c *TodoController) FindById(rw http.ResponseWriter, r *http.Request, id st
 
 	rw.WriteHeader(http.StatusOK)
 	json.NewEncoder(rw).Encode(response.CommonResponse[response.TodoResponse]{
-		Status:  http.StatusOK,
-		Message: "Find todo successfully",
-		Data:    *todo,
+		StatusCode: http.StatusOK,
+		Message:    "Find todo successfully",
+		Data:       *todo,
 	})
 }
 
@@ -91,9 +93,9 @@ func (c *TodoController) Create(rw http.ResponseWriter, r *http.Request) {
 	if err := json.NewDecoder(r.Body).Decode(&todoReq); err != nil {
 		rw.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			Status:  http.StatusBadRequest,
-			Message: "Failed to create todo",
-			Error:   "Invalid request body",
+			StatusCode: http.StatusBadRequest,
+			Message:    "Failed to create todo",
+			Error:      "Invalid request body",
 		})
 		http.Error(rw, err.Error(), http.StatusBadRequest)
 		log.Printf("Failed to create todo: %v", err.Error())
@@ -102,12 +104,27 @@ func (c *TodoController) Create(rw http.ResponseWriter, r *http.Request) {
 
 	todo, err := c.todoService.Create(&todoReq)
 
+	// if error from validation request
 	if err != nil {
+		var validationError validator.ValidationErrors
+		if errors.As(err, &validationError) {
+			rw.WriteHeader(http.StatusBadRequest)
+			json.NewEncoder(rw).Encode(response.ErrorResponse{
+				StatusCode: http.StatusBadRequest,
+				Message:    "Failed to create todo",
+				Error:      "Validation error",
+			})
+			http.Error(rw, err.Error(), http.StatusBadRequest)
+			log.Printf("Validation error: %v", validationError)
+			return
+		}
+
+		// if error not from validation request or other error
 		rw.WriteHeader(http.StatusInternalServerError)
 		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			Status:  http.StatusInternalServerError,
-			Message: "Failed to create todo",
-			Error:   "Check internet connection",
+			StatusCode: http.StatusInternalServerError,
+			Message:    "Failed to create todo",
+			Error:      "Check internet connection",
 		})
 		http.Error(rw, err.Error(), http.StatusInternalServerError)
 		log.Printf("Failed to create todo: %v", err.Error())
@@ -116,9 +133,9 @@ func (c *TodoController) Create(rw http.ResponseWriter, r *http.Request) {
 
 	rw.WriteHeader(http.StatusOK)
 	json.NewEncoder(rw).Encode(response.CommonResponse[response.TodoResponse]{
-		Status:  http.StatusOK,
-		Message: "Create todo successfully",
-		Data:    *todo,
+		StatusCode: http.StatusOK,
+		Message:    "Create todo successfully",
+		Data:       *todo,
 	})
 }
 
@@ -130,9 +147,9 @@ func (c *TodoController) Update(rw http.ResponseWriter, r *http.Request, id stri
 	if id == "" {
 		rw.WriteHeader(http.StatusNotFound)
 		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			Status:  http.StatusNotFound,
-			Message: "Failed to update todo",
-			Error:   "id is required",
+			StatusCode: http.StatusNotFound,
+			Message:    "Failed to update todo",
+			Error:      "id is required",
 		})
 		http.Error(rw, "id is required", http.StatusNotFound)
 		log.Printf("Failed to update todo: id is required")
@@ -143,9 +160,9 @@ func (c *TodoController) Update(rw http.ResponseWriter, r *http.Request, id stri
 	if err != nil {
 		rw.WriteHeader(http.StatusNotFound)
 		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			Status:  http.StatusNotFound,
-			Message: "Failed to update todo",
-			Error:   "Todo not found",
+			StatusCode: http.StatusNotFound,
+			Message:    "Failed to update todo",
+			Error:      "Todo not found",
 		})
 		http.Error(rw, err.Error(), http.StatusNotFound)
 		log.Printf("Failed to update todo: %v", err.Error())
@@ -155,9 +172,9 @@ func (c *TodoController) Update(rw http.ResponseWriter, r *http.Request, id stri
 	if err := json.NewDecoder(r.Body).Decode(&todoReq); err != nil {
 		rw.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			Status:  http.StatusBadRequest,
-			Message: "Failed to update todo",
-			Error:   "Invalid request body",
+			StatusCode: http.StatusBadRequest,
+			Message:    "Failed to update todo",
+			Error:      "Invalid request body",
 		})
 		http.Error(rw, err.Error(), http.StatusBadRequest)
 		log.Printf("Failed to update todo: %v", err.Error())
@@ -165,12 +182,28 @@ func (c *TodoController) Update(rw http.ResponseWriter, r *http.Request, id stri
 	}
 
 	updatedTodo, err := c.todoService.Update(existingTodo.Id, &todoReq)
+
+	// if error from validation request
 	if err != nil {
+		var validationError validator.ValidationErrors
+		if errors.As(err, &validationError) {
+			rw.WriteHeader(http.StatusBadRequest)
+			json.NewEncoder(rw).Encode(response.ErrorResponse{
+				StatusCode: http.StatusBadRequest,
+				Message:    "Failed to update todo",
+				Error:      "Validation error",
+			})
+			http.Error(rw, err.Error(), http.StatusBadRequest)
+			log.Printf("Validation error: %v", validationError)
+			return
+		}
+
+		// if error not from validation request or other error
 		rw.WriteHeader(http.StatusInternalServerError)
 		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			Status:  http.StatusInternalServerError,
-			Message: "Failed to update todo",
-			Error:   "Check internet connection",
+			StatusCode: http.StatusInternalServerError,
+			Message:    "Failed to update todo",
+			Error:      "Check internet connection",
 		})
 		http.Error(rw, err.Error(), http.StatusInternalServerError)
 		log.Printf("Failed to update todo: %v", err.Error())
@@ -179,9 +212,9 @@ func (c *TodoController) Update(rw http.ResponseWriter, r *http.Request, id stri
 
 	rw.WriteHeader(http.StatusOK)
 	json.NewEncoder(rw).Encode(response.CommonResponse[response.TodoResponse]{
-		Status:  http.StatusOK,
-		Message: "Update todo successfully",
-		Data:    *updatedTodo,
+		StatusCode: http.StatusOK,
+		Message:    "Update todo successfully",
+		Data:       *updatedTodo,
 	})
 }
 
@@ -191,9 +224,9 @@ func (c *TodoController) Delete(rw http.ResponseWriter, r *http.Request, id stri
 	if id == "" {
 		rw.WriteHeader(http.StatusNotFound)
 		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			Status:  http.StatusNotFound,
-			Message: "Failed to delete todo",
-			Error:   "id is required",
+			StatusCode: http.StatusNotFound,
+			Message:    "Failed to delete todo",
+			Error:      "id is required",
 		})
 		http.Error(rw, "id is required", http.StatusNotFound)
 		log.Printf("Failed to delete todo: id is required")
@@ -204,9 +237,9 @@ func (c *TodoController) Delete(rw http.ResponseWriter, r *http.Request, id stri
 	if err != nil {
 		rw.WriteHeader(http.StatusNotFound)
 		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			Status:  http.StatusNotFound,
-			Message: "Failed to delete todo",
-			Error:   "Todo not found",
+			StatusCode: http.StatusNotFound,
+			Message:    "Failed to delete todo",
+			Error:      "Todo not found",
 		})
 		http.Error(rw, err.Error(), http.StatusNotFound)
 		log.Printf("Failed to delete todo: %v", err.Error())
@@ -217,9 +250,9 @@ func (c *TodoController) Delete(rw http.ResponseWriter, r *http.Request, id stri
 	if err != nil {
 		rw.WriteHeader(http.StatusInternalServerError)
 		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			Status:  http.StatusInternalServerError,
-			Message: "Failed to delete todo",
-			Error:   "Check internet connection.",
+			StatusCode: http.StatusInternalServerError,
+			Message:    "Failed to delete todo",
+			Error:      "Check internet connection.",
 		})
 		http.Error(rw, err.Error(), http.StatusInternalServerError)
 		log.Printf("Failed to delete todo: %v", err.Error())
@@ -228,7 +261,7 @@ func (c *TodoController) Delete(rw http.ResponseWriter, r *http.Request, id stri
 
 	rw.WriteHeader(http.StatusOK)
 	json.NewEncoder(rw).Encode(response.CommonResponse[interface{}]{
-		Status:  http.StatusOK,
-		Message: "Delete todo successfully",
+		StatusCode: http.StatusOK,
+		Message:    "Delete todo successfully",
 	})
 }
