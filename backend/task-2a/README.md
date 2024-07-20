@@ -66,7 +66,7 @@ go run main.go
 
 ## How to run using Docker
 
-1. setup your environment variable :
+1. setup your environment variable in file `env.sh` :
 
 ```sh
 #!bin/bash
@@ -83,53 +83,54 @@ export DB_NAME=task2
 export APP_PORT=":8080"
 ```
 
+- next, open terminal :
+
+```bash
+source env.sh
+```
+
 2. run with command :
+
+```bash
+sudo docker compose build
+```
 
 ```bash
 sudo docker compose up -d
 ```
 
-- if you down :
+- if you want to down/stop all :
 
 ```bash
 sudo docker compose down -v
 ```
 
-1. you can inside to `mysql-container`, using command :
+3. you can inside to container `mysql-container`, using command :
 
 ```bash
 sudo docker exec -it mysql-container /bin/bash
 ```
 
-- if you inside `mysql-container`, then go to `mysql`, command :
+- if you inside `mysql-container`, then go to `mysql CLI`, exec command :
 
 ```bash
 home# mysql -u root -p
 home# password:123
 ```
 
-4. inside to `mysql` :
+4. inside to `mysql`, so check your table exist :
 
 ```bash
-mysql> use task2;
+mysql>  SHOW DATABASES;
+        USE task2;
+        SHOW TABLES;
 ```
 
-5. create yout table :
+5. check your table name is `todo` must _exist_ in database 💯
 
-```bash
-mysql> CREATE TABLE todo (
-            id VARCHAR(55) PRIMARY KEY NOT NULL,
-            title VARCHAR(255) NOT NULL,
-            description VARCHAR(555) NOT NULL,
-            is_completed BOOLEAN NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP
-        );
-```
+# ROUTER, REQUEST AND RESPONSE TODO
 
-## ROUTER, REQUEST AND RESPONSE
-
-1. URL Pattern: `/todos`
+1. URL Pattern: `/api/v1/todos`
 
 - Find All Todos - RESPONSE
   - HTTP methods: `GET`
@@ -168,7 +169,7 @@ mysql> CREATE TABLE todo (
 }
 ```
 
-2. URL Pattern: `/todos`
+2. URL Pattern: `/api/v1/todos`
 
 - Create Todo - REQUEST
   - HTTP methods: `POST`
@@ -182,7 +183,6 @@ mysql> CREATE TABLE todo (
 ```
 
 - Create Todo - RESPONSE
-  - HTTP methods: `POST`
   - Content-Type: application/json
 
 ```json
@@ -200,7 +200,7 @@ mysql> CREATE TABLE todo (
 }
 ```
 
-3. `/todos/:id`
+3. URL Pattern: `/api/v1/todos/:id`
 
 - Find Todo By Id - RESPONSE
   - HTTP methods: `GET`
@@ -221,7 +221,7 @@ mysql> CREATE TABLE todo (
 }
 ```
 
-4. `/todos/:id`
+4. URL Pattern: `/api/v1/todos/:id`
 
 - Update Todo - REQUEST
   - HTTP methods: `PUT`
@@ -236,7 +236,6 @@ mysql> CREATE TABLE todo (
 ```
 
 - Update Todo - RESPONSE
-  - HTTP methods: `PUT`
   - Content-Type: application/json
 
 ```json
@@ -254,9 +253,11 @@ mysql> CREATE TABLE todo (
 }
 ```
 
-5. DELETE Todo - RESPONSE
-   - HTTP methods: `DELETE`
-   - Content-Type: application/json
+5. URL Pattern: `/api/v1/todos/:id`
+
+- DELETE Todo - RESPONSE
+  - HTTP methods: `DELETE`
+  - Content-Type: application/json
 
 ```json
 {
@@ -266,9 +267,9 @@ mysql> CREATE TABLE todo (
 }
 ```
 
-## ERROR RESPONSE
+## ERROR RESPONSE TODO
 
-1. CREATE
+1. _CREATE TODO_
 
 - error data type, if your input inside to body not correct.
 
@@ -291,6 +292,82 @@ json: cannot unmarshal number into Go struct field TodoCreateRequest.title of ty
 }
 Key: 'TodoCreateRequest.Title' Error:Field validation for 'Title' failed on the 'min' tag
 
+```
+
+- other error
+
+```json
+Internal Server Error
+```
+
+2. _FIND ALL TODOS_
+
+- error when find all todos.
+
+```json
+Internal Server Error
+```
+
+3. _FIND TODO BY ID_
+
+- error not found todo when id not correct.
+
+```json
+{"status_code":404,"message":"Failed to find todo","error":"Todo not found"}
+sql: no rows in result set
+```
+
+- other error.
+
+```json
+Internal Server Error
+```
+
+4. _UPDATE TODO_
+
+- error not found todo when id not correct.
+
+```json
+{"status_code":404,"message":"Failed to find todo","error":"Todo not found"}
+sql: no rows in result set
+```
+
+- error data type, if your input inside to body not correct.
+
+```json
+{
+  "status_code":400,
+  "message":"Failed to update todo",
+  "error":"Invalid request body"
+}
+json: cannot unmarshal number into Go struct field TodoUpdateRequest.title of type string
+```
+
+- error bad request or validation, if you inside to body not correct.
+
+```json
+{
+  "status_code":400,
+  "message":"Failed to update todo",
+  "error":"Validation error"
+}
+Key: 'TodoUpdateRequest.Title' Error:Field validation for 'Title' failed on the 'min' tag
+
+```
+
+- other error
+
+```json
+Internal Server Error
+```
+
+5. _DELETE TODO_
+
+- error not found todo when id not correct.
+
+```json
+{"status_code":404,"message":"Failed to find todo","error":"Todo not found"}
+sql: no rows in result set
 ```
 
 - other error

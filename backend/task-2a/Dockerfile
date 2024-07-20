@@ -4,7 +4,7 @@ FROM golang:1.20.4-alpine AS builder
 # Add label to the image
 LABEL author="Mohammad Alwi Irfani"
 LABEL email=alwi.irfani1927@gmail.com
-LABEL github=github.com.alwi09
+LABEL github=github.com/alwi09
 
 # Executes the apk command to update the Alpine Linux packages and install Git.
 RUN apk update && apk add --no-cache git

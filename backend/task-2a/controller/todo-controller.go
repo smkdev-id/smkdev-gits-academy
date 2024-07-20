@@ -51,18 +51,6 @@ func (c *TodoController) FindById(rw http.ResponseWriter, r *http.Request, id st
 
 	rw.Header().Set("Content-Type", "application/json")
 
-	if id == "" {
-		rw.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			StatusCode: http.StatusBadRequest,
-			Message:    "Failed to find todo",
-			Error:      "id is required",
-		})
-		http.Error(rw, "id is required", http.StatusBadRequest)
-		log.Printf("Failed to find todo: id is required")
-		return
-	}
-
 	todo, err := c.todoService.FindById(id)
 
 	if err != nil {
@@ -144,18 +132,6 @@ func (c *TodoController) Update(rw http.ResponseWriter, r *http.Request, id stri
 
 	rw.Header().Set("Content-Type", "application/json")
 
-	if id == "" {
-		rw.WriteHeader(http.StatusNotFound)
-		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			StatusCode: http.StatusNotFound,
-			Message:    "Failed to update todo",
-			Error:      "id is required",
-		})
-		http.Error(rw, "id is required", http.StatusNotFound)
-		log.Printf("Failed to update todo: id is required")
-		return
-	}
-
 	existingTodo, err := c.todoService.FindById(id)
 	if err != nil {
 		rw.WriteHeader(http.StatusNotFound)
@@ -220,18 +196,6 @@ func (c *TodoController) Update(rw http.ResponseWriter, r *http.Request, id stri
 
 func (c *TodoController) Delete(rw http.ResponseWriter, r *http.Request, id string) {
 	rw.Header().Set("Content-Type", "application/json")
-
-	if id == "" {
-		rw.WriteHeader(http.StatusNotFound)
-		json.NewEncoder(rw).Encode(response.ErrorResponse{
-			StatusCode: http.StatusNotFound,
-			Message:    "Failed to delete todo",
-			Error:      "id is required",
-		})
-		http.Error(rw, "id is required", http.StatusNotFound)
-		log.Printf("Failed to delete todo: id is required")
-		return
-	}
 
 	existingTodo, err := c.todoService.FindById(id)
 	if err != nil {

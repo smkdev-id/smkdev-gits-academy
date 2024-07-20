@@ -11,7 +11,7 @@ func NewRouter(todoController *controller.TodoController) *http.ServeMux {
 	mux := http.NewServeMux()
 
 	// set routes for create todo and find all todos
-	mux.HandleFunc("/todos", func(rw http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/api/v1/todos", func(rw http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case http.MethodGet:
 			todoController.GetAll(rw, r)
@@ -22,14 +22,14 @@ func NewRouter(todoController *controller.TodoController) *http.ServeMux {
 		}
 	})
 
-	//  set routes for find todo by id, update todo and delete todo
-	mux.HandleFunc("/todos/", func(rw http.ResponseWriter, r *http.Request) {
+	//  set routes for find todo by id, update todo and delete todo with pattern : /api/v1/todos/:id
+	mux.HandleFunc("/api/v1/todos/", func(rw http.ResponseWriter, r *http.Request) {
 		parts := strings.Split(r.URL.Path, "/")
-		if len(parts) != 3 || parts[2] == "" {
+		if len(parts) != 5 || parts[4] == "" {
 			rw.WriteHeader(http.StatusNotFound)
 			return
 		}
-		id := parts[2]
+		id := parts[4]
 
 		switch r.Method {
 		case http.MethodGet:

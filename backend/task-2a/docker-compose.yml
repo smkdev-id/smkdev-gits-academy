@@ -18,6 +18,26 @@ services:
       timeout: 10s
       retries: 10
 
+  migrate-container:
+    container_name: migrate-container
+    image: migrate/migrate
+    volumes:
+      - ./db/migration:/migrations
+    depends_on:
+      mysql-container:
+        condition: service_healthy
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        migrate \
+          -path=/migrations \
+          -database "mysql://root:123@tcp(mysql-container:3306)/task2?parseTime=true" \
+          -verbose up
+    networks:
+      - app-network
+    restart: "on-failure"
+
   todoapp-container:
     image: todoapp:v1
     container_name: todoapp-container

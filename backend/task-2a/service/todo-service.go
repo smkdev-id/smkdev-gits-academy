@@ -163,14 +163,3 @@ func (s *todoService) Delete(id string) error {
 
 	return s.todoRepository.Delete(id)
 }
-
-// func toTodoResponse(todo *entity.Todo) response.TodoResponse {
-// 	return response.TodoResponse{
-// 		Id:          todo.Id,
-// 		Title:       todo.Title,
-// 		Description: todo.Description,
-// 		Status:      todo.Status,
-// 		CreatedAt:   todo.CreatedAt,
-// 		UpdatedAt:   todo.UpdatedAt,
-// 	}
-// }
