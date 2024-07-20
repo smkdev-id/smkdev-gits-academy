@@ -84,7 +84,7 @@ func updateTodoHandler(db *sql.DB) echo.HandlerFunc {
 }
 
 /*
-desc 	: handler to update todo
+desc 	: handler to delete todo
 method 	: DELETE
 */
 func deleteTodoHandler(db *sql.DB) echo.HandlerFunc {

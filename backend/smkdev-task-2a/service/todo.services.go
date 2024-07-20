@@ -8,6 +8,7 @@ import (
 	"github.com/google/uuid"
 )
 
+// data model for Todo
 type Todo struct {
 	Id          string    `json:"id"`
 	CreatedAt   time.Time `json:"createdAt"`
@@ -16,6 +17,7 @@ type Todo struct {
 	Status      bool      `json:"status"`
 }
 
+// function to add new todo to the database
 func (t *Todo) Create(db *sql.DB) error {
 	t.Id = uuid.New().String()
 	t.CreatedAt = time.Now()
@@ -26,6 +28,7 @@ func (t *Todo) Create(db *sql.DB) error {
 	return err
 }
 
+// function to get todo by id from database
 func GetTodoById(db *sql.DB, Id string) (*Todo, error) {
 	t := new(Todo)
 	err := db.QueryRow("SELECT id, createdAt, title, description, status FROM todos WHERE id = ?", Id).Scan(&t.Id, &t.CreatedAt, &t.Title, &t.Description, &t.Status)
@@ -36,6 +39,7 @@ func GetTodoById(db *sql.DB, Id string) (*Todo, error) {
 	return t, nil
 }
 
+// function to update todo by id from database
 func (t *Todo) Update(db *sql.DB) error {
 	_, err := db.Exec("UPDATE todos SET title = ?, description = ?, status = ? WHERE id = ?", t.Title, t.Description, t.Status, t.Id)
 	if err != nil {
@@ -44,6 +48,7 @@ func (t *Todo) Update(db *sql.DB) error {
 	return err
 }
 
+// function to delete todo based on id from database
 func DeleteTodoById(db *sql.DB, id string) error {
 	_, err := db.Exec("DELETE FROM todos WHERE id = ?", id)
 	if err != nil {
@@ -52,6 +57,7 @@ func DeleteTodoById(db *sql.DB, id string) error {
 	return err
 }
 
+// function to get all todos
 func GetAllTodos(db *sql.DB) ([]*Todo, error) {
 	rows, err := db.Query("SELECT id, createdAt, title, description, status FROM todos")
 	if err != nil {
