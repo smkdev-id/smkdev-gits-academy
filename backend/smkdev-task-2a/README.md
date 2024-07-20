@@ -1,6 +1,6 @@
 # REST API CRUD Todo-List
 
-These examples are taken from a Todo application built with [Golang](https://go.dev/) using the [Echo framework](github.com/labstack/echo/v4) and [SQLite](https://www.sqlite.org/). The JSON responses are designed in a way that is easy to interpret and use.
+Todo application built with [Golang](https://go.dev/) using the [Echo framework](github.com/labstack/echo/v4) and [SQLite](https://www.sqlite.org/). The JSON responses are designed in a way that is easy to interpret and use.
 
 Where full URLs are provided in responses they will be rendered as if service
 is running on 'http://localhost:8080/'.
