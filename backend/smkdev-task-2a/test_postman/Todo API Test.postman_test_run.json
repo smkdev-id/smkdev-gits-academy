@@ -1,0 +1,128 @@
+{
+	"id": "4f47beb3-8041-4e21-8f64-affa814c5edf",
+	"name": "Todo API Test",
+	"timestamp": "2024-07-20T11:45:07.427Z",
+	"collection_id": "0-343bd7b2-bdbc-45dc-9813-a66a5799fef7",
+	"folder_id": 0,
+	"environment_id": "5e01020c-14e3-47f2-84f8-5567f83b2067",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "9a8d7f06-68b1-4224-b5d3-e761bc6a5914",
+			"name": "Update todo by id",
+			"url": "http://localhost:8080/d55f7b49-8a6d-4888-8989-f0d8558efdfa",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				15
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "023fdd35-9380-4032-b073-bee93cac2374",
+			"name": "Adding todo",
+			"url": "http://localhost:8080/",
+			"time": 7,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6dfe8252-cf35-4166-96e1-498ba8e9e60b",
+			"name": "Getting todos",
+			"url": "http://localhost:8080/",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "1fd440eb-0093-4c58-b340-524cf5b05ab5",
+			"name": "Getting todos by id",
+			"url": "http://localhost:8080/dq2",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c17d0998-dad8-471f-aca7-db61348d63fa",
+			"name": "Delete todo by id",
+			"url": "http://localhost:8080/dffsddw3",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 32,
+	"collection": {
+		"requests": [
+			{
+				"id": "9a8d7f06-68b1-4224-b5d3-e761bc6a5914",
+				"method": "PUT"
+			},
+			{
+				"id": "023fdd35-9380-4032-b073-bee93cac2374",
+				"method": "POST"
+			},
+			{
+				"id": "6dfe8252-cf35-4166-96e1-498ba8e9e60b",
+				"method": "GET"
+			},
+			{
+				"id": "1fd440eb-0093-4c58-b340-524cf5b05ab5",
+				"method": "GET"
+			},
+			{
+				"id": "c17d0998-dad8-471f-aca7-db61348d63fa",
+				"method": "DELETE"
+			}
+		]
+	}
+}
