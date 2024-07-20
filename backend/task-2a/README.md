@@ -21,13 +21,19 @@ export DB_NAME=<your-db-name>
 export APP_PORT=":8080"
 ```
 
-2. generate migrate create ⤵️ , open your terminal :
+2. after setup, you can run command :
+
+```bash
+source env.sh
+```
+
+3. generate migrate create ⤵️ , open your terminal :
 
 ```bash
 make migrate-crete
 ```
 
-3. setup your table in `db/migration/<date-exec>_task2.up.sql`.
+4. setup your table in `db/migration/<date-exec>_task2.up.sql`.
 
 ```sql
 CREATE TABLE todo (
@@ -40,7 +46,7 @@ CREATE TABLE todo (
 ) ENGINE=INNODB;
 ```
 
-4. if you have written table, you can exec with command :
+5. if you have written table, you can exec with command :
 
 ```bash
 make migrate-up
@@ -50,12 +56,6 @@ make migrate-up
 
 ```bash
 make migrate-down
-```
-
-5. after you can do migration up your table, you can run command :
-
-```bash
-source env.sh
 ```
 
 6. so do this command :
