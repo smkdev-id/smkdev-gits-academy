@@ -1,26 +1,27 @@
 package main
 
 import (
-	"database/sql"
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 
 	"github.com/labstack/echo/v4"
-	_ "github.com/mattn/go-sqlite3"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 )
 
 type Todo struct {
-	ID       int64  `json:"id"`
-	Todo     string `json:"todo"`
-	Finished bool   `json:"finished"`
+	ID       int64  `json:"id" gorm:"primaryKey"`
+	Todo     string `json:"todo" gorm:"type:text; not null"`
+	Finished bool   `json:"finished" gorm:"type:not null"`
 }
 
 func main() {
 	// Initialize ECHO
 	e := echo.New()
 	// Initialize Database
-	sqliteDatabase, err := sql.Open("sqlite3", "./database-todo.db")
+	sqliteDatabase, err := gorm.Open(sqlite.Open("database-todo.db"), &gorm.Config{})
 	if err != nil {
 		log.Println("Database Not Found. Creating one....")
 		file, err := os.Create("database-todo.db") // Create SQLite file
@@ -29,77 +30,127 @@ func main() {
 		}
 		file.Close()
 	}
-	defer sqliteDatabase.Close()
-	createTable(sqliteDatabase)
-
-	// Insert Record(debug)
-	insertTodo(sqliteDatabase, "Menggoreng Nasi", false)
-	insertTodo(sqliteDatabase, "Menggoreng Kayu", true)
+	// Table Migrate
+	sqliteDatabase.AutoMigrate(&Todo{})
 
 	// Routes
 	e.GET("/", fetchAllTodos(sqliteDatabase))
+	e.POST("/", createTodo(sqliteDatabase))
+	e.PUT("/:id", updateTodo(sqliteDatabase))
+	e.DELETE("/:id", deleteTodo(sqliteDatabase))
 
 	// Logger Server
 	e.Logger.Fatal(e.Start(":8000"))
 }
 
-// Func Create Table If Not Exist
-func createTable(db *sql.DB) {
-	createTodoQuery := `CREATE TABLE IF NOT EXISTS todo (
-		"id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,		
-		"todo" TEXT,
-		"finished" BOOL	
-	  );`
-
-	log.Println("Create todo table if not exist...")
-	statement, err := db.Prepare(createTodoQuery)
-	if err != nil {
-		log.Fatal(err.Error())
-	}
-	statement.Exec()
-	log.Println("Todo Table Is Successfully Created")
-}
-
-// Func for fetch all todos
-func fetchAllTodos(db *sql.DB) echo.HandlerFunc {
+// Routes HandlerFunc
+func fetchAllTodos(db *gorm.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
-		var obj Todo
-		var arrobj []Todo
+		var todoData []Todo
+		result := db.Find(&todoData)
 
-		row, err := db.Query("SELECT * FROM todo")
-		if err != nil {
-			log.Fatalln(err.Error())
-		}
-		defer row.Close()
-		for row.Next() {
-
-			err = row.Scan(&obj.ID, &obj.Todo, &obj.Finished)
-
-			if err != nil {
-				log.Println(err)
-			}
-
-			arrobj = append(arrobj, obj)
-
+		if result.Error != nil {
+			return c.JSON(http.StatusInternalServerError, map[string]interface{}{
+				"message": "failed to fetch toods",
+				"error":   result.Error.Error(),
+			})
 		}
 
 		return c.JSON(http.StatusOK, map[string]interface{}{
-			"message": "Success",
-			"data":    arrobj,
+			"message": "success",
+			"data":    todoData,
 		})
 	}
-
 }
 
-func insertTodo(db *sql.DB, todo string, finished bool) {
-	log.Println("Inserting todo record ...")
-	insertTodo := `INSERT INTO todo(todo, finished) VALUES (?, ?)`
-	statement, err := db.Prepare(insertTodo)
-	if err != nil {
-		log.Fatalln(err.Error())
+func createTodo(db *gorm.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		var request Todo
+		if err := c.Bind(&request); err != nil {
+			return err
+		}
+
+		newTodo := new(Todo)
+		newTodo.Todo = request.Todo
+		newTodo.Finished = false
+
+		result := db.Create(&newTodo)
+
+		if result.Error != nil {
+			return c.JSON(http.StatusInternalServerError, map[string]interface{}{
+				"message": "failed to insert data",
+				"error":   result.Error.Error(),
+			})
+		}
+
+		return c.JSON(http.StatusOK, map[string]interface{}{
+			"message": "success",
+			"data":    newTodo,
+		})
+
 	}
-	_, err = statement.Exec(todo, finished)
-	if err != nil {
-		log.Fatalln(err.Error())
+}
+
+func updateTodo(db *gorm.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		var id = c.Param("id")
+		var request Todo
+
+		intVar, errid := strconv.Atoi(id)
+
+		if err := c.Bind(&request); err != nil {
+			return err
+		}
+
+		if errid != nil {
+			return c.JSON(http.StatusInternalServerError, map[string]interface{}{
+				"message": "invalid id.",
+			})
+		}
+
+		var todoData []Todo
+
+		db.First(&todoData, intVar)
+
+		if len(todoData) == 0 {
+			return c.JSON(http.StatusNotFound, map[string]interface{}{
+				"message": "id not found.",
+			})
+		}
+
+		db.Save(Todo{ID: int64(intVar), Todo: todoData[len(todoData)-1].Todo, Finished: request.Finished})
+
+		return c.JSON(http.StatusOK, map[string]interface{}{
+			"message": "success",
+		})
+
+	}
+}
+
+func deleteTodo(db *gorm.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		var id = c.Param("id")
+		intVar, err := strconv.Atoi(id)
+		var todos []Todo
+
+		if err != nil {
+			return c.JSON(http.StatusInternalServerError, map[string]interface{}{
+				"message": "invalid id.",
+			})
+		}
+
+		db.First(&todos, intVar)
+
+		if len(todos) == 0 {
+			return c.JSON(http.StatusNotFound, map[string]interface{}{
+				"message": "id not found.",
+			})
+		}
+
+		db.Delete(&Todo{}, intVar)
+
+		return c.JSON(http.StatusOK, map[string]interface{}{
+			"message": "success",
+		})
 	}
 }
