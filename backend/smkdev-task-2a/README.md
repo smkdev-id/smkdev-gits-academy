@@ -123,13 +123,13 @@ Content examples
 
 ```json
 {
-    "status_code": 201,
-    "message": "Create successfully",
+    "status_code": 200,
+    "message": "successfully get todo by id",
     "data": {
-        "id": "de0735b7-aa25-42ac-96d3-5b492eb8b541",
-        "createdAt": "2024-07-20T23:24:57.4396065+07:00",
-        "title": "Menyelesaikan soal Matematika",
-        "description": "Selesaikan soal matematika 1 soal per 1 jam",
+        "id": "d55f7b49-8a6d-4888-8989-f0d8558efdfa",
+        "createdAt": "2024-07-20T15:12:35.4954943+07:00",
+        "title": "2024 Menjadi Billioner Muda",
+        "description": "menjadi kaya, harus kerja keras pantang menyerah, serta tawakal rajin ibadah",
         "status": true
     }
 }
