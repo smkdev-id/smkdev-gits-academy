@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"time"
 
 	"github.com/labstack/echo/v4"
 	"gorm.io/driver/sqlite"
@@ -12,9 +13,11 @@ import (
 )
 
 type Todo struct {
-	ID       int64  `json:"id" gorm:"primaryKey"`
-	Todo     string `json:"todo" gorm:"type:text; not null"`
-	Finished bool   `json:"finished" gorm:"type:not null"`
+	ID          int64     `json:"id" gorm:"primaryKey"`
+	Todo        string    `json:"todo" gorm:"type:text; not null"`
+	Finished    bool      `json:"finished" gorm:"not null"`
+	Created_At  time.Time `json:"created_at" gorm:"not null"`
+	Finished_At time.Time `json:"finished_at" gorm:"default:null"`
 }
 
 func main() {
@@ -73,6 +76,7 @@ func createTodo(db *gorm.DB) echo.HandlerFunc {
 		newTodo := new(Todo)
 		newTodo.Todo = request.Todo
 		newTodo.Finished = false
+		newTodo.Created_At = time.Now()
 
 		result := db.Create(&newTodo)
 
@@ -118,7 +122,14 @@ func updateTodo(db *gorm.DB) echo.HandlerFunc {
 			})
 		}
 
-		db.Save(Todo{ID: int64(intVar), Todo: todoData[len(todoData)-1].Todo, Finished: request.Finished})
+		result := db.Save(Todo{ID: int64(intVar), Todo: todoData[len(todoData)-1].Todo, Finished: request.Finished, Created_At: todoData[len(todoData)-1].Created_At, Finished_At: time.Now()})
+
+		if result.Error != nil {
+			return c.JSON(http.StatusInternalServerError, map[string]interface{}{
+				"message": "failed to save todo",
+				"error":   result.Error.Error(),
+			})
+		}
 
 		return c.JSON(http.StatusOK, map[string]interface{}{
 			"message": "success",
@@ -147,7 +158,14 @@ func deleteTodo(db *gorm.DB) echo.HandlerFunc {
 			})
 		}
 
-		db.Delete(&Todo{}, intVar)
+		result := db.Delete(&Todo{}, intVar)
+
+		if result.Error != nil {
+			return c.JSON(http.StatusInternalServerError, map[string]interface{}{
+				"message": "failed to delete todo.",
+				"error":   result.Error.Error(),
+			})
+		}
 
 		return c.JSON(http.StatusOK, map[string]interface{}{
 			"message": "success",
