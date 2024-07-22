@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "axe/forms": "off",
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "scroll-behavior"
+        ]
+      }
+    ]
+  }
+}
