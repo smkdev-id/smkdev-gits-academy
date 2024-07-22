@@ -5,7 +5,6 @@ Proyek ini adalah sebuah API sederhana untuk manajemen pengguna menggunakan Go, 
 ## Fitur
 
 - Membuat pengguna baru
-- Mendapatkan informasi pengguna berdasarkan ID
 - Memperbarui informasi pengguna
 - Menghapus pengguna
 - Mendapatkan daftar semua pengguna
