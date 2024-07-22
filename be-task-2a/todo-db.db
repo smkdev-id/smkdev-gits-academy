@@ -1,0 +1,36 @@
+CREATE TABLE IF NOT EXISTS todo (
+    id SERIAL PRIMARY KEY,
+    task VARCHAR(255) NOT NULL,
+    due_date DATE,
+    status VARCHAR(20) CHECK (status IN ('pending', 'in_progress', 'completed')) DEFAULT 'pending',
+    priority VARCHAR(20) CHECK (priority IN ('low', 'medium', 'high')) DEFAULT 'medium',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Add a trigger to update the updated_at column on row update
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+CREATE TRIGGER update_todo_updated_at
+BEFORE UPDATE ON todo
+FOR EACH ROW
+EXECUTE FUNCTION update_updated_at_column();
+
+INSERT INTO todo (task, due_date, status, priority)
+VALUES
+    ('Task 1', '2024-07-25', 'pending', 'low'),
+    ('Task 2', '2024-07-26', 'in_progress', 'medium'),
+    ('Task 3', '2024-07-27', 'completed', 'high'),
+    ('Task 4', '2024-07-28', 'pending', 'medium'),
+    ('Task 5', '2024-07-29', 'in_progress', 'low'),
+    ('Task 6', '2024-07-30', 'completed', 'medium'),
+    ('Task 7', '2024-07-31', 'pending', 'high'),
+    ('Task 8', '2024-08-01', 'in_progress', 'low'),
+    ('Task 9', '2024-08-02', 'completed', 'medium'),
+    ('Task 10', '2024-08-03', 'pending', 'high');
