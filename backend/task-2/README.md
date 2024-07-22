@@ -20,7 +20,9 @@ Welcome to the Simple TodoList project! This application is designed to help you
 
 **Database:** PostgreSQL on Docker
 
-**Framework/Library/Package:** Viper, pq driver, validator, logrus, uuid, 
+**Security Tool:** osv.dev
+
+**Framework/Library/Package:** net/http built in go, pq driver, validator, logrus, uuid, viper, 
 
 
 **Architecture:** Clean Architercture reference by [bxcodec/go-clean-arch](https://github.com/bxcodec/go-clean-arch)
