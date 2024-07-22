@@ -1,0 +1,229 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Todolist RESTful API",
+    "description": "API Spec for Todolist RESTful API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api"
+    }
+  ],
+  "paths": {
+    "/Todolist": {
+      "get": {
+        "tags": [
+          "Todolist API"
+        ],
+        "description": "List all Todolist",
+        "summary": "List all Todolist",
+        "responses": {
+          "200": {
+            "description": "Success get all Todolist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Todolist"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Todolist API"],
+        "description": "Create new Todolist",
+        "summary": "Create new Todolist",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateTodolist"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success Create Todolist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Todolist"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Todolist/{TodolistId}" : {
+      "get" : {
+        "tags": ["Todolist API"],
+        "summary": "Get Todolist by Id",
+        "description": "Get Todolist by id",
+        "parameters": [
+          {
+            "name": "TodolistId",
+            "in": "path",
+            "description": "Todolist Id"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Success get Todolist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Todolist"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags": ["Todolist API"],
+        "summary": "Update Todolist by Id",
+        "description": "Update Todolist by Id",
+        "parameters": [
+          {
+            "name": "TodolistId",
+            "in": "path",
+            "description": "Todolist Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateTodolist"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200" : {
+            "description": "Success get Todolist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Todolist"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Todolist API"],
+        "summary": "Delete Todolist by Id",
+        "description": "Delete Todolist by id",
+        "parameters": [
+          {
+            "name": "TodolistId",
+            "in": "path",
+            "description": "Todolist Id"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Success delete Todolist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateOrUpdateTodolist" : {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "completed": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Todolist" : {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          },
+          "completed": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
