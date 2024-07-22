@@ -8,7 +8,7 @@ import (
 type (
 	TodoListRepository interface {
 		Save(todoList model.TodoList) error
-		FindAll() error
+		FindAll() (model.TodoLists, error)
 		Update(id string) error
 		Delete(id string) error
 	}
@@ -24,8 +24,31 @@ func (t *todoListRepository) Delete(id string) error {
 }
 
 // FindAll implements TodoListRepository.
-func (t *todoListRepository) FindAll() error {
-	panic("unimplemented")
+func (t *todoListRepository) FindAll() (model.TodoLists, error) {
+	SQL := `SELECT id, title, description, status, created_at, updated_at, deleted_at FROM "todo"`
+
+	rows, err := t.DB.Query(SQL)
+	if err != nil {
+		return nil, err
+	}
+	var todolists model.TodoLists
+	for rows.Next() {
+		var todolist model.TodoList
+		err := rows.Scan(
+			&todolist.Id,
+			&todolist.Title,
+			&todolist.Description,
+			&todolist.Status,
+			&todolist.CreatedAt,
+			&todolist.UpdatedAt,
+			&todolist.DeletedAt,
+		)
+		if err != nil {
+			return nil, err
+		}
+		todolists = append(todolists, todolist)
+	}
+	return todolists, nil
 }
 
 // Update implements TodoListRepository.
@@ -35,6 +58,7 @@ func (t *todoListRepository) Update(id string) error {
 
 func (t *todoListRepository) Save(todoList model.TodoList) error {
 	SQL := `INSERT INTO "todo"(id, title, description, status, created_at, updated_at, deleted_at) VALUES ($1, $2, $3, $4, $5, $6, $7)`
+
 	_, err := t.DB.Exec(SQL,
 		&todoList.Id,
 		&todoList.Title,

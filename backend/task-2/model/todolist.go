@@ -1,6 +1,8 @@
 package model
 
-import "time"
+import (
+	"database/sql"
+)
 
 type (
 	Status string
@@ -10,9 +12,9 @@ type (
 		Title       string
 		Description string
 		Status      Status
-		CreatedAt   time.Time
-		UpdatedAt   time.Time
-		DeletedAt   time.Time
+		CreatedAt   sql.NullTime
+		UpdatedAt   sql.NullTime
+		DeletedAt   sql.NullTime
 	}
 
 	TodoLists []TodoList

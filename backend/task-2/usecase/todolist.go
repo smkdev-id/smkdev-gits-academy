@@ -5,6 +5,7 @@ import (
 	"EkoEdyPurwanto/task-2/model/dto/req"
 	"EkoEdyPurwanto/task-2/repository/postgres"
 	"EkoEdyPurwanto/task-2/utility/common"
+	"database/sql"
 	"time"
 
 	"github.com/go-playground/validator/v10"
@@ -14,6 +15,7 @@ import (
 type (
 	TodoListUseCase interface {
 		Create(payload req.CreateRequest) error
+		GetAll() (model.TodoLists, error)
 	}
 	todoListUseCase struct {
 		Repository postgres.TodoListRepository
@@ -22,6 +24,7 @@ type (
 	}
 )
 
+// Create implements TodoListUseCase.
 func (t *todoListUseCase) Create(payload req.CreateRequest) error {
 	// struct validation
 	err := t.Validate.Struct(payload)
@@ -36,9 +39,9 @@ func (t *todoListUseCase) Create(payload req.CreateRequest) error {
 		Title:       payload.Title,
 		Description: payload.Description,
 		Status:      model.StatusPending,
-		CreatedAt:   time.Now(),
-		UpdatedAt:   time.Time{},
-		DeletedAt:   time.Time{},
+		CreatedAt:   sql.NullTime{Time: time.Now(), Valid: true},
+		UpdatedAt:   sql.NullTime{Time: time.Time{}, Valid: false},
+		DeletedAt:   sql.NullTime{Time: time.Time{}, Valid: false},
 	}
 
 	// save todolist
@@ -48,6 +51,16 @@ func (t *todoListUseCase) Create(payload req.CreateRequest) error {
 		return err
 	}
 	return nil
+}
+
+// GetAll implements TodoListUseCase.
+func (t *todoListUseCase) GetAll() (model.TodoLists, error) {
+	todolists, err := t.Repository.FindAll()
+	if err != nil {
+		return nil, err
+	}
+
+	return todolists, nil
 }
 
 // NewTodoListUseCase Constructor
