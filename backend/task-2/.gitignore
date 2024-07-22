@@ -35,3 +35,6 @@ tmp
 
 # ENV
 env.sh
+
+# DB MIGRATE
+db
