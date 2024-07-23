@@ -12,7 +12,7 @@ type (
 		FindAll() (model.TodoLists, error)
 		FindByIdentifier(identifier string) (model.TodoLists, error)
 		Update(identifier req.UpdateRequest) error
-		Delete(id string) error
+		Delete(identifier req.DeleteRequest) error
 	}
 
 	todoListRepository struct {
@@ -110,10 +110,10 @@ func (t *todoListRepository) Update(identifier req.UpdateRequest) error {
 }
 
 // Delete implements TodoListRepository.
-func (t *todoListRepository) Delete(id string) error {
+func (t *todoListRepository) Delete(identifier req.DeleteRequest) error {
 	SQL := `DELETE FROM "todo" WHERE id = $1`
 
-	_, err := t.DB.Exec(SQL, id)
+	_, err := t.DB.Exec(SQL, identifier.Id)
 	if err != nil {
 		return err
 	}

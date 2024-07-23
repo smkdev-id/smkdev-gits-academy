@@ -21,4 +21,8 @@ type (
 		Status    model.Status `json:"status"`
 		UpdatedAt time.Time    `json:"updated_at"`
 	}
+
+	DeleteRequest struct {
+		Id string `json:"id"`
+	}
 )

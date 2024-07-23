@@ -110,7 +110,7 @@ func (t *TodoListController) updateHandler(w http.ResponseWriter, r *http.Reques
 // deleteHandler implements TodoListController.
 func (t *TodoListController) deleteHandler(w http.ResponseWriter, r *http.Request) {
 
-	var payload string
+	var payload req.DeleteRequest
 	if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
 		http.Error(w, "Invalid request body", http.StatusBadRequest)
 		return

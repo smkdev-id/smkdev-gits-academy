@@ -18,7 +18,7 @@ type (
 		GetAll() (model.TodoLists, error)
 		GetByPayload(payload string) (model.TodoLists, error)
 		UpdateStatus(payload req.UpdateRequest) error
-		Delete(payload string) error
+		Delete(payload req.DeleteRequest) error
 	}
 	todoListUseCase struct {
 		Repository postgres.TodoListRepository
@@ -99,10 +99,12 @@ func (t *todoListUseCase) UpdateStatus(payload req.UpdateRequest) error {
 }
 
 // Delete implements TodoListUseCase.
-func (t *todoListUseCase) Delete(payload string) error {
-	// validation
-	if payload == "" {
-		return fmt.Errorf("id is required")
+func (t *todoListUseCase) Delete(payload req.DeleteRequest) error {
+	// struct validation
+	err := t.Validate.Struct(payload)
+	if err != nil {
+		t.Logger.Warnf("Invalid request body : %+v", err)
+		return err
 	}
 
 	if err := t.Repository.Delete(payload); err != nil {
