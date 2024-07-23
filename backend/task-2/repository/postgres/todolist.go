@@ -9,6 +9,7 @@ type (
 	TodoListRepository interface {
 		Save(todoList model.TodoList) error
 		FindAll() (model.TodoLists, error)
+		FindByIdentifier(identifier string) (model.TodoLists, error)
 		Update(id string) error
 		Delete(id string) error
 	}
@@ -17,6 +18,36 @@ type (
 		DB *sql.DB
 	}
 )
+
+// FindByIdentifier implements TodoListRepository.
+func (t *todoListRepository) FindByIdentifier(identifier string) (model.TodoLists, error) {
+	SQL := `SELECT id, title, description, status, created_at, updated_at, deleted_at FROM "todo" WHERE status = $1 `
+
+	rows, err := t.DB.Query(SQL, identifier)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	
+	var todolists model.TodoLists
+	for rows.Next() {
+		var todolist model.TodoList
+		err := rows.Scan(
+			&todolist.Id,
+			&todolist.Title,
+			&todolist.Description,
+			&todolist.Status,
+			&todolist.CreatedAt,
+			&todolist.UpdatedAt,
+			&todolist.DeletedAt,
+		)
+		if err != nil {
+			return nil, err
+		}
+		todolists = append(todolists, todolist)
+	}
+	return todolists, nil
+}
 
 // Delete implements TodoListRepository.
 func (t *todoListRepository) Delete(id string) error {

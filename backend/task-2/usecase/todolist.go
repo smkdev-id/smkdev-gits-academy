@@ -16,6 +16,7 @@ type (
 	TodoListUseCase interface {
 		Create(payload req.CreateRequest) error
 		GetAll() (model.TodoLists, error)
+		GetByPayload(payload string) (model.TodoLists, error)
 	}
 	todoListUseCase struct {
 		Repository postgres.TodoListRepository
@@ -23,6 +24,16 @@ type (
 		Logger     *logrus.Logger
 	}
 )
+
+// GetByPayload implements TodoListUseCase.
+func (t *todoListUseCase) GetByPayload(payload string) (model.TodoLists, error) {
+	todolists, err := t.Repository.FindByIdentifier(payload)
+	if err != nil {
+		return nil, err
+	}
+
+	return todolists, nil
+}
 
 // Create implements TodoListUseCase.
 func (t *todoListUseCase) Create(payload req.CreateRequest) error {

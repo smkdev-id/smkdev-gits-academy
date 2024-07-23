@@ -17,8 +17,9 @@ type TodoListController struct {
 func (t *TodoListController) Route() {
 	apiMux := http.NewServeMux()
 
-	apiMux.Handle("create/todos", helper.Post(http.HandlerFunc(t.createHandler)))
-	apiMux.Handle("fetch/todos", helper.Get(http.HandlerFunc(t.getAllHandler)))
+	apiMux.Handle("/create/todos", helper.Post(http.HandlerFunc(t.createHandler)))
+	apiMux.Handle("/fetch/todos", helper.Get(http.HandlerFunc(t.getAllHandler)))
+	apiMux.Handle("/fetch/todos/byIdentifier", helper.Get(http.HandlerFunc(t.getByPayloadHandler)))
 
 	t.Engine.Handle("/api/v1/", http.StripPrefix("/api/v1", apiMux))
 }
@@ -51,6 +52,32 @@ func (t *TodoListController) getAllHandler(w http.ResponseWriter, r *http.Reques
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
+	if err := json.NewEncoder(w).Encode(todolists); err != nil {
+		http.Error(w, "Failed to encode response", http.StatusInternalServerError)
+		return
+	}
+}
+
+func (t *TodoListController) getByPayloadHandler(w http.ResponseWriter, r *http.Request) {
+	payload := r.URL.Query().Get("status")
+	if payload == "" {
+		http.Error(w, "Missing identifier", http.StatusBadRequest)
+		return
+	}
+
+	todolists, err := t.UseCase.GetByPayload(payload)
+	if err != nil {
+		http.Error(w, "Failed to retrieve todo lists", http.StatusInternalServerError)
+		return
+	}
+
+	if len(todolists) == 0 {
+		http.Error(w, "No todo lists found", http.StatusNotFound)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
 	if err := json.NewEncoder(w).Encode(todolists); err != nil {
 		http.Error(w, "Failed to encode response", http.StatusInternalServerError)
 		return
