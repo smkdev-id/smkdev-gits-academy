@@ -1,10 +1,23 @@
-# TODO APP
+# TODO APP 📑
 
 Create, Read, Update, Delete (CRUD) application of todo.
 
 ---
 
-## FEATURES
+## TECH STACK 🧑‍💻
+
+- [Go](https://go.dev/)
+- [Golang Migrate](https://github.com/golang-migrate/migrate)
+- [MySQL](https://github.com/go-sql-driver/mysql)
+- [Golang Validator](https://github.com/go-playground/validator)
+- [Viper](https://github.com/spf13/viper)
+- [Testify](https://github.com/stretchr/testify)
+- [Mockery](https://github.com/vektra/mockery)
+- [Go SQL Mock](https://github.com/DATA-DOG/go-sqlmock)
+
+---
+
+## FEATURES 🛫
 
 - **FIND ALL TODOS**: looking all todos created have exist in database using `GET` method.
 - **FIND BY ID**: find specific todo with id params into URL using `GET` method.
@@ -14,17 +27,18 @@ Create, Read, Update, Delete (CRUD) application of todo.
 
 ---
 
-- [TODO APP](#todo-app)
-  - [FEATURES](#features)
-  - [HOW TO RUN TESTING](#how-to-run-testing)
-  - [HOW TO RUN APPLICATION](#how-to-run-application)
-  - [HOW TO RUN USING DOCKER](#how-to-run-using-docker)
-  - [ROUTER, REQUEST AND RESPONSE TODO](#router-request-and-response-todo)
-  - [ERROR RESPONSE TODO](#error-response-todo)
+- [TODO APP 📑](#todo-app-)
+  - [TECH STACK 🧑‍💻](#tech-stack-)
+  - [FEATURES 🛫](#features-)
+  - [HOW TO RUN TESTING 🧪](#how-to-run-testing-)
+  - [HOW TO RUN APPLICATION 🏃](#how-to-run-application-)
+  - [HOW TO RUN USING DOCKER 🏃‍♀️](#how-to-run-using-docker-️)
+  - [ROUTER, REQUEST AND RESPONSE TODO 💁](#router-request-and-response-todo-)
+  - [ERROR RESPONSE TODO :ambulance:](#error-response-todo-ambulance)
 
 ---
 
-## HOW TO RUN TESTING
+## HOW TO RUN TESTING 🧪
 
 ```bash
 go test -v ./test/...
@@ -32,7 +46,7 @@ go test -v ./test/...
 
 ---
 
-## HOW TO RUN APPLICATION
+## HOW TO RUN APPLICATION 🏃
 
 1. you can setup `env.sh` file, get example from `env.example.sh` file.
 
@@ -96,7 +110,7 @@ go run main.go
 
 ---
 
-## HOW TO RUN USING DOCKER
+## HOW TO RUN USING DOCKER 🏃‍♀️
 
 1. setup your environment variable in file `env.sh` :
 
@@ -162,7 +176,7 @@ mysql>  SHOW DATABASES;
 
 ---
 
-## ROUTER, REQUEST AND RESPONSE TODO
+## ROUTER, REQUEST AND RESPONSE TODO 💁
 
 1. URL Pattern: `/api/v1/todos`
 
@@ -303,7 +317,7 @@ mysql>  SHOW DATABASES;
 
 ---
 
-## ERROR RESPONSE TODO
+## ERROR RESPONSE TODO :ambulance:
 
 1. _CREATE TODO_
 

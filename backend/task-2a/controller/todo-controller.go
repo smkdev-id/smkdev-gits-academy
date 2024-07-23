@@ -54,13 +54,13 @@ func (c *TodoController) FindById(rw http.ResponseWriter, r *http.Request, id st
 	todo, err := c.todoService.FindById(id)
 
 	if err != nil {
-		rw.WriteHeader(http.StatusInternalServerError)
+		rw.WriteHeader(http.StatusNotFound)
 		json.NewEncoder(rw).Encode(response.ErrorResponse{
 			StatusCode: http.StatusNotFound,
 			Message:    "Failed to find todo",
 			Error:      "Todo not found",
 		})
-		http.Error(rw, err.Error(), http.StatusInternalServerError)
+		http.Error(rw, err.Error(), http.StatusNotFound)
 		log.Printf("Failed to find todo: %v", err.Error())
 		return
 	}
@@ -119,9 +119,9 @@ func (c *TodoController) Create(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	rw.WriteHeader(http.StatusOK)
+	rw.WriteHeader(http.StatusCreated)
 	json.NewEncoder(rw).Encode(response.CommonResponse[response.TodoResponse]{
-		StatusCode: http.StatusOK,
+		StatusCode: http.StatusCreated,
 		Message:    "Create todo successfully",
 		Data:       *todo,
 	})
@@ -216,7 +216,7 @@ func (c *TodoController) Delete(rw http.ResponseWriter, r *http.Request, id stri
 		json.NewEncoder(rw).Encode(response.ErrorResponse{
 			StatusCode: http.StatusInternalServerError,
 			Message:    "Failed to delete todo",
-			Error:      "Check internet connection.",
+			Error:      "Check internet connection",
 		})
 		http.Error(rw, err.Error(), http.StatusInternalServerError)
 		log.Printf("Failed to delete todo: %v", err.Error())

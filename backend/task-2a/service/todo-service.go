@@ -156,10 +156,15 @@ func (s *todoService) Update(id string, todoReq *request.TodoUpdateRequest) (*re
 }
 
 func (s *todoService) Delete(id string) error {
-	_, err := s.todoRepository.FindById(id)
+	existingTodo, err := s.todoRepository.FindById(id)
 	if err != nil {
 		return err
 	}
 
-	return s.todoRepository.Delete(id)
+	err = s.todoRepository.Delete(existingTodo.Id)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
