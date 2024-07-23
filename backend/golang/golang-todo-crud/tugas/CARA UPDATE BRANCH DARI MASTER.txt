@@ -1,0 +1,21 @@
+CARA UPDATE BRANCH DARI MASTER
+- pastikan branch teman-teman yang digunakan sebelumnya. cek dengan git branch
+- git pull origin master
+- merapihkan projek frontend dalam satu folder. ex: frontend-smkdev
+- git add . && git commit -m "message nya apa"
+- git push -u origin sapategu
+
+Silahkan menunggu informasi update task terbaru, agar bisa dikerjakan setelah merapihkan repo branch teman-teman :)
+
+- folder backend: backend-smkdev
+- kerjain tugas teman-teman di dalam folder backend-smkdev
+
+- cd  ../ -> staging area
+- git add backend-smkdev && git commit -m "message nya apa"
+- git push -u origin sapategu
+.
+.
+.
+.
+https://github.com/smkdev-id/smkdev-gits-academy/tree/sapategu
+
