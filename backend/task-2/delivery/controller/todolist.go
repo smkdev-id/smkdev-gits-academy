@@ -26,6 +26,7 @@ func (t *TodoListController) Route() {
 	t.Engine.Handle("/api/v1/", http.StripPrefix("/api/v1", apiMux))
 }
 
+// createHandler implements TodoListController.
 func (t *TodoListController) createHandler(w http.ResponseWriter, r *http.Request) {
 
 	var payload req.CreateRequest
@@ -43,6 +44,7 @@ func (t *TodoListController) createHandler(w http.ResponseWriter, r *http.Reques
 	w.Write([]byte("TodoList created successfully"))
 }
 
+// getAllHandler implements TodoListController.
 func (t *TodoListController) getAllHandler(w http.ResponseWriter, r *http.Request) {
 
 	todolists, err := t.UseCase.GetAll()
@@ -60,6 +62,7 @@ func (t *TodoListController) getAllHandler(w http.ResponseWriter, r *http.Reques
 	}
 }
 
+// getByPayloadHandler implements TodoListController.
 func (t *TodoListController) getByPayloadHandler(w http.ResponseWriter, r *http.Request) {
 	payload := r.URL.Query().Get("status")
 	if payload == "" {
@@ -86,6 +89,7 @@ func (t *TodoListController) getByPayloadHandler(w http.ResponseWriter, r *http.
 	}
 }
 
+// updateHandler implements TodoListController.
 func (t *TodoListController) updateHandler(w http.ResponseWriter, r *http.Request) {
 
 	var payload req.UpdateRequest
@@ -103,6 +107,7 @@ func (t *TodoListController) updateHandler(w http.ResponseWriter, r *http.Reques
 	w.Write([]byte("Status update successfully"))
 }
 
+// deleteHandler implements TodoListController.
 func (t *TodoListController) deleteHandler(w http.ResponseWriter, r *http.Request) {
 
 	var payload string
