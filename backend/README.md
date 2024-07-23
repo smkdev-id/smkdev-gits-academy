@@ -1,6 +1,6 @@
 # Todo List API
 
-This is a simple CRUD API for managing a todo list, built using Golang with the Echo framework, GORM for ORM, and SQLite for the database.
+This is a simple CRUD API for managing a todo list, built using Golang with the Echo framework, and SQLite for the database.
 
 ## Technologies
 
