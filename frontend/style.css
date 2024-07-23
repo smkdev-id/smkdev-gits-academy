@@ -1,0 +1,23 @@
+body{
+    font-family: "Open Sans";
+    padding: 0;
+    margin: 0;
+}
+
+nav{
+    background-color: white;
+    color: navy;
+    padding: 20px 50px;
+}
+
+.nav-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
