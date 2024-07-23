@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"EkoEdyPurwanto/task-2/model"
+	"EkoEdyPurwanto/task-2/model/dto/req"
 	"database/sql"
 )
 
@@ -10,7 +11,7 @@ type (
 		Save(todoList model.TodoList) error
 		FindAll() (model.TodoLists, error)
 		FindByIdentifier(identifier string) (model.TodoLists, error)
-		Update(id string) error
+		Update(identifier req.UpdateRequest) error
 		Delete(id string) error
 	}
 
@@ -19,39 +20,23 @@ type (
 	}
 )
 
-// FindByIdentifier implements TodoListRepository.
-func (t *todoListRepository) FindByIdentifier(identifier string) (model.TodoLists, error) {
-	SQL := `SELECT id, title, description, status, created_at, updated_at, deleted_at FROM "todo" WHERE status = $1 `
+// Save implements TodoListRepository.
+func (t *todoListRepository) Save(todoList model.TodoList) error {
+	SQL := `INSERT INTO "todo"(id, title, description, status, created_at, updated_at, deleted_at) VALUES ($1, $2, $3, $4, $5, $6, $7)`
 
-	rows, err := t.DB.Query(SQL, identifier)
+	_, err := t.DB.Exec(SQL,
+		&todoList.Id,
+		&todoList.Title,
+		&todoList.Description,
+		&todoList.Status,
+		&todoList.CreatedAt,
+		&todoList.UpdatedAt,
+		&todoList.DeletedAt,
+	)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	defer rows.Close()
-	
-	var todolists model.TodoLists
-	for rows.Next() {
-		var todolist model.TodoList
-		err := rows.Scan(
-			&todolist.Id,
-			&todolist.Title,
-			&todolist.Description,
-			&todolist.Status,
-			&todolist.CreatedAt,
-			&todolist.UpdatedAt,
-			&todolist.DeletedAt,
-		)
-		if err != nil {
-			return nil, err
-		}
-		todolists = append(todolists, todolist)
-	}
-	return todolists, nil
-}
-
-// Delete implements TodoListRepository.
-func (t *todoListRepository) Delete(id string) error {
-	panic("unimplemented")
+	return nil
 }
 
 // FindAll implements TodoListRepository.
@@ -82,26 +67,57 @@ func (t *todoListRepository) FindAll() (model.TodoLists, error) {
 	return todolists, nil
 }
 
-// Update implements TodoListRepository.
-func (t *todoListRepository) Update(id string) error {
-	panic("unimplemented")
+// FindByIdentifier implements TodoListRepository.
+func (t *todoListRepository) FindByIdentifier(identifier string) (model.TodoLists, error) {
+	SQL := `SELECT id, title, description, status, created_at, updated_at, deleted_at FROM "todo" WHERE status = $1 `
+
+	rows, err := t.DB.Query(SQL, identifier)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var todolists model.TodoLists
+	for rows.Next() {
+		var todolist model.TodoList
+		err := rows.Scan(
+			&todolist.Id,
+			&todolist.Title,
+			&todolist.Description,
+			&todolist.Status,
+			&todolist.CreatedAt,
+			&todolist.UpdatedAt,
+			&todolist.DeletedAt,
+		)
+		if err != nil {
+			return nil, err
+		}
+		todolists = append(todolists, todolist)
+	}
+	return todolists, nil
 }
 
-func (t *todoListRepository) Save(todoList model.TodoList) error {
-	SQL := `INSERT INTO "todo"(id, title, description, status, created_at, updated_at, deleted_at) VALUES ($1, $2, $3, $4, $5, $6, $7)`
+// Update implements TodoListRepository.
+func (t *todoListRepository) Update(identifier req.UpdateRequest) error {
+	SQL := `UPDATE "todo" SET status = $4 WHERE id = $1`
 
-	_, err := t.DB.Exec(SQL,
-		&todoList.Id,
-		&todoList.Title,
-		&todoList.Description,
-		&todoList.Status,
-		&todoList.CreatedAt,
-		&todoList.UpdatedAt,
-		&todoList.DeletedAt,
-	)
+	_, err := t.DB.Exec(SQL, identifier.Id, identifier.Status)
 	if err != nil {
 		return err
 	}
+
+	return nil
+}
+
+// Delete implements TodoListRepository.
+func (t *todoListRepository) Delete(id string) error {
+	SQL := `DELETE FROM "todo" WHERE id = $1`
+
+	_, err := t.DB.Exec(SQL, id)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
 

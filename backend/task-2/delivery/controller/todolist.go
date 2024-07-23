@@ -20,6 +20,8 @@ func (t *TodoListController) Route() {
 	apiMux.Handle("/create/todos", helper.Post(http.HandlerFunc(t.createHandler)))
 	apiMux.Handle("/fetch/todos", helper.Get(http.HandlerFunc(t.getAllHandler)))
 	apiMux.Handle("/fetch/todos/byIdentifier", helper.Get(http.HandlerFunc(t.getByPayloadHandler)))
+	apiMux.Handle("/update/todos", helper.Put(http.HandlerFunc(t.updateHandler)))
+	apiMux.Handle("/delete/todos", helper.Delete(http.HandlerFunc(t.deleteHandler)))
 
 	t.Engine.Handle("/api/v1/", http.StripPrefix("/api/v1", apiMux))
 }
@@ -82,6 +84,40 @@ func (t *TodoListController) getByPayloadHandler(w http.ResponseWriter, r *http.
 		http.Error(w, "Failed to encode response", http.StatusInternalServerError)
 		return
 	}
+}
+
+func (t *TodoListController) updateHandler(w http.ResponseWriter, r *http.Request) {
+
+	var payload req.UpdateRequest
+	if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		return
+	}
+
+	if err := t.UseCase.UpdateStatus(payload); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Status update successfully"))
+}
+
+func (t *TodoListController) deleteHandler(w http.ResponseWriter, r *http.Request) {
+
+	var payload string
+	if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		return
+	}
+
+	if err := t.UseCase.Delete(payload); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("TodoList deleted successfully"))
 }
 
 // NewTodoListController Constructor

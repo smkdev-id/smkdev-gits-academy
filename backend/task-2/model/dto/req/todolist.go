@@ -15,4 +15,9 @@ type (
 		UpdatedAt   sql.NullTime `json:"updated_at"`
 		DeletedAt   sql.NullTime `json:"deleted_at"`
 	}
+
+	UpdateRequest struct {
+		Id     string       `json:"id"`
+		Status model.Status `json:"status"`
+	}
 )
