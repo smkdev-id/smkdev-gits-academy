@@ -5,7 +5,6 @@ import (
 	"EkoEdyPurwanto/task-2/model/dto/req"
 	"EkoEdyPurwanto/task-2/repository/postgres"
 	"EkoEdyPurwanto/task-2/utility/common"
-	"database/sql"
 	"fmt"
 	"time"
 
@@ -43,9 +42,9 @@ func (t *todoListUseCase) Create(payload req.CreateRequest) error {
 		Title:       payload.Title,
 		Description: payload.Description,
 		Status:      model.StatusPending,
-		CreatedAt:   sql.NullTime{Time: time.Now(), Valid: true},
-		UpdatedAt:   sql.NullTime{Time: time.Time{}, Valid: false},
-		DeletedAt:   sql.NullTime{Time: time.Time{}, Valid: false},
+		CreatedAt:   time.Now(),
+		UpdatedAt:   time.Time{},
+		DeletedAt:   time.Time{},
 	}
 
 	// save todolist
@@ -90,6 +89,8 @@ func (t *todoListUseCase) UpdateStatus(payload req.UpdateRequest) error {
 		t.Logger.Warnf("Invalid request body : %+v", err)
 		return err
 	}
+
+	payload.UpdatedAt = time.Now()
 
 	if err := t.Repository.Update(payload); err != nil {
 		return err

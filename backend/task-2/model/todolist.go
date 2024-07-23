@@ -1,7 +1,7 @@
 package model
 
 import (
-	"database/sql"
+	"time"
 )
 
 type (
@@ -12,9 +12,9 @@ type (
 		Title       string
 		Description string
 		Status      Status
-		CreatedAt   sql.NullTime
-		UpdatedAt   sql.NullTime
-		DeletedAt   sql.NullTime
+		CreatedAt   time.Time
+		UpdatedAt   time.Time
+		DeletedAt   time.Time
 	}
 
 	TodoLists []TodoList

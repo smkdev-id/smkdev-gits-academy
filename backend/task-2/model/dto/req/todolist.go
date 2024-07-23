@@ -2,7 +2,7 @@ package req
 
 import (
 	"EkoEdyPurwanto/task-2/model"
-	"database/sql"
+	"time"
 )
 
 type (
@@ -11,13 +11,14 @@ type (
 		Title       string       `json:"title"`
 		Description string       `json:"description"`
 		Status      model.Status `json:"status"`
-		CreatedAt   sql.NullTime `json:"created_at"`
-		UpdatedAt   sql.NullTime `json:"updated_at"`
-		DeletedAt   sql.NullTime `json:"deleted_at"`
+		CreatedAt   time.Time    `json:"created_at"`
+		UpdatedAt   time.Time    `json:"updated_at"`
+		DeletedAt   time.Time    `json:"deleted_at"`
 	}
 
 	UpdateRequest struct {
-		Id     string       `json:"id"`
-		Status model.Status `json:"status"`
+		Id        string       `json:"id"`
+		Status    model.Status `json:"status"`
+		UpdatedAt time.Time    `json:"updated_at"`
 	}
 )

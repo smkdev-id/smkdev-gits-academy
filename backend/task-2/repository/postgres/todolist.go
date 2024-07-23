@@ -99,9 +99,9 @@ func (t *todoListRepository) FindByIdentifier(identifier string) (model.TodoList
 
 // Update implements TodoListRepository.
 func (t *todoListRepository) Update(identifier req.UpdateRequest) error {
-	SQL := `UPDATE "todo" SET status = $4 WHERE id = $1`
+	SQL := `UPDATE "todo" SET status = $2, updated_at = $3 WHERE id = $1`
 
-	_, err := t.DB.Exec(SQL, identifier.Id, identifier.Status)
+	_, err := t.DB.Exec(SQL, identifier.Id, identifier.Status, identifier.UpdatedAt)
 	if err != nil {
 		return err
 	}
