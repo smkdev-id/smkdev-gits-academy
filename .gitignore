@@ -6,3 +6,12 @@ frontend/task-1b/node_modules
 backend/task-2a/env.sh
 backend/task-2a/go.sum
 backend/task-2a/db
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# Logs
+logs
+*.log

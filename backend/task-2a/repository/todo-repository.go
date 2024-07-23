@@ -9,7 +9,7 @@ import (
 
 type (
 	TodoRepository interface {
-		FindAll() ([]entity.Todo, error)
+		FindAll() (*[]entity.Todo, error)
 		FindById(id string) (*entity.Todo, error)
 		Create(todo *entity.Todo) (*entity.Todo, error)
 		Update(id string, todo *entity.Todo) (*entity.Todo, error)
@@ -26,7 +26,7 @@ func NewTodoRepository(db *sql.DB) TodoRepository {
 }
 
 // FindAll implements TodoRepository
-func (r *todoRepository) FindAll() ([]entity.Todo, error) {
+func (r *todoRepository) FindAll() (*[]entity.Todo, error) {
 	SQL := "SELECT id, title, description, is_completed, created_at, updated_at FROM todo"
 	rows, err := r.DB.Query(SQL)
 	if err != nil {
@@ -68,7 +68,7 @@ func (r *todoRepository) FindAll() ([]entity.Todo, error) {
 		todos = append(todos, todo)
 	}
 
-	return todos, nil
+	return &todos, nil
 }
 
 // FindById implements TodoRepository

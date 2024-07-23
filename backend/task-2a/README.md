@@ -21,13 +21,13 @@ export DB_NAME=<your-db-name>
 export APP_PORT=":8080"
 ```
 
-2. after setup, you can run command :
+2. after setup, open your terminal, you can run command :
 
 ```bash
 source env.sh
 ```
 
-3. generate migrate create ⤵️ , open your terminal :
+3. generate migrate create ⤵️ :
 
 ```bash
 make migrate-crete
@@ -267,7 +267,7 @@ mysql>  SHOW DATABASES;
 }
 ```
 
-## ERROR RESPONSE TODO
+# ERROR RESPONSE TODO
 
 1. _CREATE TODO_
 

@@ -37,7 +37,7 @@ func (s *todoService) FindAll() (*[]response.TodoResponse, error) {
 	}
 
 	var dataList []response.TodoResponse
-	for _, todo := range todos {
+	for _, todo := range *todos {
 		var updatedAt string
 		if todo.UpdatedAt != nil {
 			updatedAt = todo.UpdatedAt.Local().String()

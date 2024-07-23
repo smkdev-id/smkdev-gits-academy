@@ -14,7 +14,7 @@ func NewRouter(todoController *controller.TodoController) *http.ServeMux {
 	mux.HandleFunc("/api/v1/todos", func(rw http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case http.MethodGet:
-			todoController.GetAll(rw, r)
+			todoController.FindAll(rw, r)
 		case http.MethodPost:
 			todoController.Create(rw, r)
 		default:

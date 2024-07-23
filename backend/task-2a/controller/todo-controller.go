@@ -22,7 +22,7 @@ func NewTodoController(todoService service.TodoService) *TodoController {
 	}
 }
 
-func (c *TodoController) GetAll(rw http.ResponseWriter, r *http.Request) {
+func (c *TodoController) FindAll(rw http.ResponseWriter, r *http.Request) {
 	todos, err := c.todoService.FindAll()
 
 	rw.Header().Set("Content-Type", "application/json")
