@@ -14,5 +14,8 @@ migrate-down:
 run:
 	go run main.go
 
-.PHONY: migrate-create migrate-up migrate-down run
+test:
+	go test -v ./test/...
+
+.PHONY: migrate-create migrate-up migrate-down run test
 include env.sh

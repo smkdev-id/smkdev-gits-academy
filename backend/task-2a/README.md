@@ -2,7 +2,37 @@
 
 Create, Read, Update, Delete (CRUD) application of todo.
 
-## How to run application
+---
+
+## FEATURES
+
+- **FIND ALL TODOS**: looking all todos created have exist in database using `GET` method.
+- **FIND BY ID**: find specific todo with id params into URL using `GET` method.
+- **CREATE TODO**: generate new todo with input title and description using `POST` method.
+- **UPDATE TODO**: update todo when is_completed=false to is_completed=true, title and description using `PUT` method.
+- **DELETE TODO**: delete specific todo if you completed with id params into URL using `DELETE` method.
+
+---
+
+- [TODO APP](#todo-app)
+  - [FEATURES](#features)
+  - [HOW TO RUN TESTING](#how-to-run-testing)
+  - [HOW TO RUN APPLICATION](#how-to-run-application)
+  - [HOW TO RUN USING DOCKER](#how-to-run-using-docker)
+  - [ROUTER, REQUEST AND RESPONSE TODO](#router-request-and-response-todo)
+  - [ERROR RESPONSE TODO](#error-response-todo)
+
+---
+
+## HOW TO RUN TESTING
+
+```bash
+go test -v ./test/...
+```
+
+---
+
+## HOW TO RUN APPLICATION
 
 1. you can setup `env.sh` file, get example from `env.example.sh` file.
 
@@ -64,7 +94,9 @@ make migrate-down
 go run main.go
 ```
 
-## How to run using Docker
+---
+
+## HOW TO RUN USING DOCKER
 
 1. setup your environment variable in file `env.sh` :
 
@@ -128,7 +160,9 @@ mysql>  SHOW DATABASES;
 
 5. check your table name is `todo` must _exist_ in database 💯
 
-# ROUTER, REQUEST AND RESPONSE TODO
+---
+
+## ROUTER, REQUEST AND RESPONSE TODO
 
 1. URL Pattern: `/api/v1/todos`
 
@@ -267,7 +301,9 @@ mysql>  SHOW DATABASES;
 }
 ```
 
-# ERROR RESPONSE TODO
+---
+
+## ERROR RESPONSE TODO
 
 1. _CREATE TODO_
 
