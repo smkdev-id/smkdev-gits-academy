@@ -13,9 +13,9 @@ func main() {
 	e := echo.New()
 
 	// Buka koneksi ke database SQLite
-	db, err := sql.Open("sqlite3", "./database.sqlite")
+	db, err := sql.Open("sqlite3", "./user.db")
 	if err != nil {
-		e.Logger.Fatal(err)
+		e.Logger.Fatal("Error opening database: ", err)
 	}
 	defer db.Close()
 
@@ -26,7 +26,7 @@ func main() {
 
 	// Handler untuk mengambil data dari database
 	e.GET("/users", func(c echo.Context) error {
-		rows, err := db.Query("SELECT id, name FROM users")
+		rows, err := db.Query("SELECT * FROM users")
 		if err != nil {
 			return err
 		}
@@ -35,14 +35,14 @@ func main() {
 		var users []map[string]interface{}
 		for rows.Next() {
 			var id int
-			var name string
-			err := rows.Scan(&id, &name)
+			var nama string
+			err := rows.Scan(&id, &nama)
 			if err != nil {
 				return err
 			}
 			user := map[string]interface{}{
 				"id":   id,
-				"name": name,
+				"nama": nama,
 			}
 			users = append(users, user)
 		}
