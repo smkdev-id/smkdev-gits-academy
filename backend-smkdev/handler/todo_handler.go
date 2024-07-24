@@ -64,10 +64,10 @@ func (h *TodoHandler) Create(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, echo.Map{"message": err.Error()})
 	}
 	res := helper.Response(dto.ResponseParams{
-		StatusCode: http.StatusOK,
+		StatusCode: http.StatusCreated,
 		Message:    "success Create Todo",
 	})
-	return c.JSON(http.StatusOK, res)
+	return c.JSON(http.StatusCreated, res)
 }
 
 func (h *TodoHandler) Update(c echo.Context) error {

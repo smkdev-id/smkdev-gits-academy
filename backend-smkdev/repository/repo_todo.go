@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 	"database/sql"
+	"errors"
 	"time"
 	"todos/entity"
 )
@@ -30,7 +31,7 @@ func (r *TodoRepository) GetAll(c context.Context) ([]*entity.Todo, error) {
 	// Buat query SQL untuk mengambil semua todo
 	rows, err := r.db.Query("SELECT id, title, description, completed, created_at, updated_at FROM todos")
 	if err != nil {
-		return nil, err
+		return nil, errors.New("todo not found")
 	}
 	defer rows.Close()
 
@@ -39,7 +40,7 @@ func (r *TodoRepository) GetAll(c context.Context) ([]*entity.Todo, error) {
 		todo := &entity.Todo{}
 		err = rows.Scan(&todo.ID, &todo.Title, &todo.Description, &todo.Completed, &todo.CreatedAt, &todo.UpdatedAt)
 		if err != nil {
-			return nil, err
+			return nil, errors.New("todo not found")
 		}
 		todos = append(todos, todo)
 	}
@@ -58,7 +59,7 @@ func (r *TodoRepository) GetByID(c context.Context, id int) (*entity.Todo, error
 	row := r.db.QueryRow("SELECT id, title, description, completed, created_at, updated_at FROM todos WHERE id = ?", id)
 	err := row.Scan(&todo.ID, &todo.Title, &todo.Description, &todo.Completed, &todo.CreatedAt, &todo.UpdatedAt)
 	if err != nil {
-		return nil, err
+		return nil, errors.New("todo not found")
 	}
 
 	return todo, nil
