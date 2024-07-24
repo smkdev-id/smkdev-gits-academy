@@ -17,6 +17,7 @@ type (
 		Create(payload req.CreateRequest) error
 		GetAll() (model.TodoLists, error)
 		GetByPayload(payload string) (model.TodoLists, error)
+		GetById(id string) (model.TodoLists, error)
 		UpdateStatus(payload req.UpdateRequest) error
 		Delete(payload req.DeleteRequest) error
 	}
@@ -81,6 +82,21 @@ func (t *todoListUseCase) GetByPayload(payload string) (model.TodoLists, error) 
 	return todolists, nil
 }
 
+// GetById implements TodoListUseCase.
+func (t *todoListUseCase) GetById(id string) (model.TodoLists, error) {
+	// validation
+	if id == "" {
+		return nil, fmt.Errorf("id is required")
+	}
+
+	todolists, err := t.Repository.FindById(id)
+	if err != nil {
+		return nil, err
+	}
+
+	return todolists, nil
+}
+
 // UpdateStatus implements TodoListUseCase.
 func (t *todoListUseCase) UpdateStatus(payload req.UpdateRequest) error {
 	// struct validation
@@ -90,9 +106,16 @@ func (t *todoListUseCase) UpdateStatus(payload req.UpdateRequest) error {
 		return err
 	}
 
+	_, err = t.GetById(payload.Id)
+	if err != nil {
+		t.Logger.Warnf("TodoList not found : %+v", err)
+		return err
+	}
+
 	payload.UpdatedAt = time.Now()
 
 	if err := t.Repository.Update(payload); err != nil {
+		t.Logger.Warnf("Failed to update TodoList : %+v", err)
 		return err
 	}
 	return nil

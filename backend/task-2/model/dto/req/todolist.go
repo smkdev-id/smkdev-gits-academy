@@ -8,8 +8,8 @@ import (
 type (
 	CreateRequest struct {
 		Id          string       `json:"id"`
-		Title       string       `json:"title"`
-		Description string       `json:"description"`
+		Title       string       `json:"title" validate:"required"`
+		Description string       `json:"description" validate:"max=100"`
 		Status      model.Status `json:"status"`
 		CreatedAt   time.Time    `json:"created_at"`
 		UpdatedAt   time.Time    `json:"updated_at"`
@@ -17,12 +17,12 @@ type (
 	}
 
 	UpdateRequest struct {
-		Id        string       `json:"id"`
-		Status    model.Status `json:"status"`
+		Id        string       `json:"id" validate:"required"`
+		Status    model.Status `json:"status" validate:"required"`
 		UpdatedAt time.Time    `json:"updated_at"`
 	}
 
 	DeleteRequest struct {
-		Id string `json:"id"`
+		Id string `json:"id" validate:"required"`
 	}
 )

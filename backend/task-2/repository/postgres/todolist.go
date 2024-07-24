@@ -11,6 +11,7 @@ type (
 		Save(todoList model.TodoList) error
 		FindAll() (model.TodoLists, error)
 		FindByIdentifier(identifier string) (model.TodoLists, error)
+		FindById(id string) (model.TodoLists, error)
 		Update(identifier req.UpdateRequest) error
 		Delete(identifier req.DeleteRequest) error
 	}
@@ -72,6 +73,36 @@ func (t *todoListRepository) FindByIdentifier(identifier string) (model.TodoList
 	SQL := `SELECT id, title, description, status, created_at, updated_at, deleted_at FROM "todo" WHERE status = $1 `
 
 	rows, err := t.DB.Query(SQL, identifier)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var todolists model.TodoLists
+	for rows.Next() {
+		var todolist model.TodoList
+		err := rows.Scan(
+			&todolist.Id,
+			&todolist.Title,
+			&todolist.Description,
+			&todolist.Status,
+			&todolist.CreatedAt,
+			&todolist.UpdatedAt,
+			&todolist.DeletedAt,
+		)
+		if err != nil {
+			return nil, err
+		}
+		todolists = append(todolists, todolist)
+	}
+	return todolists, nil
+}
+
+// FindById implements TodoListRepository.
+func (t *todoListRepository) FindById(id string) (model.TodoLists, error) {
+	SQL := `SELECT id, title, description, status, created_at, updated_at, deleted_at FROM "todo" WHERE id = $1 `
+
+	rows, err := t.DB.Query(SQL, id)
 	if err != nil {
 		return nil, err
 	}
