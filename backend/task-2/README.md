@@ -16,9 +16,7 @@ Welcome to the Simple TodoList project! This application is designed to help you
 
 **Programming Language:** Go
 
-**Infrastructure:** Docker
-
-**Database:** PostgreSQL on Docker
+**Database:** PostgreSQL
 
 **Security Tool:** osv.dev
 
