@@ -2,6 +2,8 @@ package entity
 
 import "time"
 
+
+// Struct Todo
 type Todo struct {
 	ID          int    `json:"id"`
 	Title       string `json:"title"`
