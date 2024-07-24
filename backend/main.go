@@ -1,23 +1,32 @@
 package main
 
 import (
-	"database/sql"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
 	_ "github.com/mattn/go-sqlite3"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 )
+
+type User struct {
+	gorm.Model
+	nama   string
+	alamat string
+}
 
 func main() {
 	// Inisialisasi Echo
 	e := echo.New()
 
 	// Buka koneksi ke database SQLite
-	db, err := sql.Open("sqlite3", "./user.db")
+	db, err := gorm.Open(sqlite.Open("user.db"), &gorm.Config{})
 	if err != nil {
-		e.Logger.Fatal("Error opening database: ", err)
+		panic("failed to connect database")
 	}
-	defer db.Close()
+
+	// Migrasi schema
+	db.AutoMigrate(&User{})
 
 	// Handler untuk route utama
 	e.GET("/", func(c echo.Context) error {
@@ -26,25 +35,9 @@ func main() {
 
 	// Handler untuk mengambil data dari database
 	e.GET("/users", func(c echo.Context) error {
-		rows, err := db.Query("SELECT * FROM users")
-		if err != nil {
-			return err
-		}
-		defer rows.Close()
-
-		var users []map[string]interface{}
-		for rows.Next() {
-			var id int
-			var nama string
-			err := rows.Scan(&id, &nama)
-			if err != nil {
-				return err
-			}
-			user := map[string]interface{}{
-				"id":   id,
-				"nama": nama,
-			}
-			users = append(users, user)
+		var users []User
+		if result := db.Find(&users); result.Error != nil {
+			return c.JSON(http.StatusInternalServerError, map[string]string{"error": result.Error.Error()})
 		}
 		return c.JSON(http.StatusOK, users)
 	})
