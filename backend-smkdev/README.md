@@ -28,9 +28,18 @@ Proyek ini dibangun menggunakan [Go](https://go.dev/dl/) 1.13+.
 1. Clone repository
 
 ```sh
-- git clone https://github.com/trikrama/todos.git
+- git clone https://github.com/smkdev-id/smkdev-gits-academy/tree/tri-krama/backend-smkdev
+```
+2. Masuk Ke Direktori
+```sh
 - cd todos
+```
+3. Install Package
+```sh
 - go mod tidy
+```
+4. Run Program
+```sh
 - go run main.go
 ```
 
