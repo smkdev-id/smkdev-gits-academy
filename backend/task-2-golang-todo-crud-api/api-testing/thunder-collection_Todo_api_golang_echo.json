@@ -1,0 +1,81 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Todo_api_golang_echo",
+    "collectionId": "20c64877-6942-426c-98a9-1a945c7896ee",
+    "dateExported": "2024-07-26T04:01:30.656Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "d3118b98-c76f-4b1e-bd0f-94de61a3d9ff",
+            "colId": "20c64877-6942-426c-98a9-1a945c7896ee",
+            "containerId": "",
+            "name": "Get item by id",
+            "url": "http://localhost:8080/items/3",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-07-26T03:59:44.103Z",
+            "modified": "2024-07-26T03:59:44.103Z",
+            "headers": []
+        },
+        {
+            "_id": "7d5811b6-7084-4d5b-86cf-426b4589f4bb",
+            "colId": "20c64877-6942-426c-98a9-1a945c7896ee",
+            "containerId": "",
+            "name": "Delete Item",
+            "url": "http://localhost:8080/items/4",
+            "method": "DELETE",
+            "sortNum": 20000,
+            "created": "2024-07-26T04:00:08.774Z",
+            "modified": "2024-07-26T04:00:08.774Z",
+            "headers": []
+        },
+        {
+            "_id": "e7ed0257-609a-42ea-8b99-18949dd3b412",
+            "colId": "20c64877-6942-426c-98a9-1a945c7896ee",
+            "containerId": "",
+            "name": "Update item",
+            "url": "http://localhost:8080/items/6",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-07-26T04:00:32.437Z",
+            "modified": "2024-07-26T04:00:32.437Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\":\"Tes3849\",\n  \"description\":\"membuat wireframe\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "13326608-fcf7-4694-bb0e-134b846886d0",
+            "colId": "20c64877-6942-426c-98a9-1a945c7896ee",
+            "containerId": "",
+            "name": "Create item",
+            "url": "http://localhost:8080/items",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-07-26T04:01:08.814Z",
+            "modified": "2024-07-26T04:01:08.814Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\":\"Tes 123567\",\n  \"description\":\"membuat wireframe\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "53834240-1181-4e9c-86cb-ee36c4040753",
+            "colId": "20c64877-6942-426c-98a9-1a945c7896ee",
+            "containerId": "",
+            "name": "Get all item",
+            "url": "http://localhost:8080/items",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-07-26T04:01:20.630Z",
+            "modified": "2024-07-26T04:01:20.630Z",
+            "headers": []
+        }
+    ],
+    "ref": "DHqu23XvXk9BwPiURq__1uC6dEY6gQqiGg2bOAy9ZA-sEzwU8cdVmKI1k3qNoDfhW4asVox59zMegNCKkXn0CA"
+}
