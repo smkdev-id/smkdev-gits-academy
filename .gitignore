@@ -2,11 +2,16 @@
 frontend/task-1b/dist
 frontend/task-1b/node_modules
 
-#  backend
+#  backend task-2a
 backend/task-2a/env.sh
 backend/task-2a/go.sum
 backend/task-2a/db
 backend/task-2a/script.sh
+
+# backend task-3
+backend/task-3/env.sh
+backend/task-3/script.sh
+backend/task-3/go.sum
 
 # Editor directories and files
 .vscode/*
