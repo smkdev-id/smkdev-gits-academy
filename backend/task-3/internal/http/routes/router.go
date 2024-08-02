@@ -8,21 +8,22 @@ import (
 )
 
 type Route struct {
-	Path    string
 	Method  string
+	Path    string
 	Handler echo.HandlerFunc
 }
 
-func PublicRoutes(bookContrller *controllers.BookController) []*Route {
+func Routes(bookController *controllers.BookController) []*Route {
 	return []*Route{
 		{
-			Path:    "/api/v1/books",
 			Method:  http.MethodPost,
-			Handler: bookContrller.Create,
+			Path:    "/api/v1/books",
+			Handler: bookController.Create,
+		},
+		{
+			Method:  http.MethodGet,
+			Path:    "/api/v1/books",
+			Handler: bookController.FindAll,
 		},
 	}
-}
-
-func PrivateRoutes(bookController *controllers.BookController) []*Route {
-	return []*Route{}
 }

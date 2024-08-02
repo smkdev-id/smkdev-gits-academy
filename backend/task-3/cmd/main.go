@@ -27,12 +27,12 @@ func main() {
 	}
 
 	// build public routes
-	publicRoutes := builders.BuildPublicRoutes(cfg, db)
+	routes := builders.BuildRoutes(cfg, db)
 
 	// start server
-	server := server.NewServer(cfg, publicRoutes, nil)
+	server := server.NewServer(cfg, routes)
 	// run server
 	server.Run()
-	// graceful shutdown server
+	// graceful shutdown server after 10 seconds when CTRL+C is pressed
 	server.GracefulShutdown()
 }

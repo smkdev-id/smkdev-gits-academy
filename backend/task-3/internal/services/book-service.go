@@ -15,7 +15,7 @@ import (
 
 type (
 	BookService interface {
-		FindAll(ctx context.Context) ([]*response.BookResponse, error)
+		FindAll(ctx context.Context, page, pageSize int) ([]*response.BookResponse, int, error)
 		FindByID(ctx context.Context, id string) (*response.BookResponse, error)
 		Create(ctx context.Context, req *request.CreateBookRequest) error
 		Update(ctx context.Context, req *request.UpdateBookRequest) error
@@ -48,7 +48,11 @@ func (s *bookService) Create(ctx context.Context, req *request.CreateBookRequest
 		UpdatedAt:         nil,
 	}
 
-	return s.bookRepository.Create(ctx, newBook)
+	if err := s.bookRepository.Create(ctx, newBook); err != nil {
+		return err
+	}
+
+	return nil
 }
 
 // Delete implements BookService.
@@ -57,8 +61,35 @@ func (s *bookService) Delete(ctx context.Context, id string) error {
 }
 
 // FindAll implements BookService.
-func (s *bookService) FindAll(ctx context.Context) ([]*response.BookResponse, error) {
-	panic("unimplemented")
+func (s *bookService) FindAll(ctx context.Context, page, pageSize int) ([]*response.BookResponse, int, error) {
+	books, totalRecords, err := s.bookRepository.FindAll(ctx, page, pageSize)
+	if err != nil {
+		return nil, 0, err
+	}
+
+	var bookResponses []*response.BookResponse
+
+	for _, book := range books {
+		updatedAtStr := ""
+		if book.UpdatedAt != nil {
+			updatedAtStr = book.UpdatedAt.String()
+		}
+
+		bookResponses = append(bookResponses, &response.BookResponse{
+			Id:                book.ID,
+			Isbn:              book.ISBN,
+			Title:             book.Title,
+			Description:       book.Description,
+			Author:            book.Author,
+			YearOfManufacture: book.YearOfManufacture,
+			Stock:             book.Stock,
+			Price:             book.Price,
+			CreatedAt:         book.CreatedAt.String(),
+			UpdatedAt:         updatedAtStr,
+		})
+	}
+
+	return bookResponses, int(totalRecords), nil
 }
 
 // FindByID implements BookService.

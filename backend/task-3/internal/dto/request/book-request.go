@@ -18,4 +18,13 @@ type (
 		Stock             int    `validate:"required,gt=0" json:"stock"`
 		Price             int    `validate:"required,gt=0" json:"price"`
 	}
+
+	SearchBookRequest struct {
+		ISBN      string `json:"isbn"`
+		Title     string `json:"title"`
+		Year      int    `json:"year"`
+		Author    string `json:"author"`
+		Price     int    `json:"price"`
+		CreatedAt string `json:"created_at"`
+	}
 )

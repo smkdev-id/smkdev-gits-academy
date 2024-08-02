@@ -9,18 +9,10 @@ import (
 	"gorm.io/gorm"
 )
 
-func BuildPublicRoutes(cfg *configs.Config, db *gorm.DB) []*routes.Route {
+func BuildRoutes(cfg *configs.Config, db *gorm.DB) []*routes.Route {
 	bookRepository := repositories.NewBookRepository(db)
 	bookService := services.NewBookService(cfg, bookRepository)
 	bookController := controllers.NewBookController(bookService)
 
-	return routes.PublicRoutes(bookController)
-}
-
-func BuildPrivateRoutes(cfg *configs.Config, db *gorm.DB) []*routes.Route {
-	bookRepository := repositories.NewBookRepository(db)
-	bookService := services.NewBookService(cfg, bookRepository)
-	bookController := controllers.NewBookController(bookService)
-
-	return routes.PrivateRoutes(bookController)
+	return routes.Routes(bookController)
 }

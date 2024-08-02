@@ -18,14 +18,11 @@ type Server struct {
 	cfg *configs.Config
 }
 
-func NewServer(cfg *configs.Config, publicRoutes, privateRoutes []*routes.Route) *Server {
+func NewServer(cfg *configs.Config, routes []*routes.Route) *Server {
 	e := echo.New()
-	for _, v := range publicRoutes {
-		e.Add(v.Method, v.Path, v.Handler)
-	}
 
-	for _, v := range privateRoutes {
-		e.Add(v.Method, v.Path, v.Handler) // with MiddleWareFunc
+	for _, v := range routes {
+		e.Add(v.Method, v.Path, v.Handler)
 	}
 
 	return &Server{e, cfg}
