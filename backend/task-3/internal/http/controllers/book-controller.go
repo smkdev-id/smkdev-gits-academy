@@ -18,8 +18,9 @@ func NewBookController(bookService services.BookService) *BookController {
 	return &BookController{bookService: bookService}
 }
 
-// Create New Book
+// Create New Book Controller
 func (c *BookController) Create(ctx echo.Context) error {
+	// check request url, if it has query params, return error
 	if len(ctx.QueryParams()) > 0 {
 		return ctx.JSON(http.StatusBadRequest, response.ErrorResponse{
 			StatusCode: http.StatusBadRequest,
@@ -27,8 +28,10 @@ func (c *BookController) Create(ctx echo.Context) error {
 			Error:      "Invalid request url",
 		})
 	}
+
 	var req request.CreateBookRequest
 
+	// bind request body & validate request body
 	if err := ctx.Bind(&req); err != nil {
 		return ctx.JSON(http.StatusBadRequest, response.ErrorResponse{
 			StatusCode: http.StatusBadRequest,
@@ -37,6 +40,7 @@ func (c *BookController) Create(ctx echo.Context) error {
 		})
 	}
 
+	// create new book, if error, return error
 	if err := c.bookService.Create(ctx.Request().Context(), &req); err != nil {
 		return ctx.JSON(http.StatusInternalServerError, response.ErrorResponse{
 			StatusCode: http.StatusInternalServerError,
@@ -45,6 +49,7 @@ func (c *BookController) Create(ctx echo.Context) error {
 		})
 	}
 
+	// return created book success response
 	return ctx.JSON(http.StatusCreated, response.CommonResponse{
 		StatusCode: http.StatusCreated,
 		Message:    "Create book successfully",
@@ -55,6 +60,7 @@ func (c *BookController) Create(ctx echo.Context) error {
 // Find All Books Controller with pagination
 func (c *BookController) FindAll(ctx echo.Context) error {
 
+	// init current_page and page_size for query params
 	page, _ := strconv.Atoi(ctx.QueryParam("current_page"))
 	if page < 1 {
 		page = 1
@@ -71,7 +77,7 @@ func (c *BookController) FindAll(ctx echo.Context) error {
 		"page_size":    true,
 	}
 
-	// check is query param valid
+	// check is query params valid
 	for param := range ctx.QueryParams() {
 		if !allowedParams[param] {
 			return ctx.JSON(http.StatusBadRequest, response.ErrorResponse{
@@ -82,6 +88,7 @@ func (c *BookController) FindAll(ctx echo.Context) error {
 		}
 	}
 
+	// find all books, if error, return error
 	books, totalRecords, err := c.bookService.FindAll(ctx.Request().Context(), page, pageSize)
 	if err != nil {
 		return ctx.JSON(http.StatusInternalServerError, response.ErrorResponse{
@@ -91,11 +98,13 @@ func (c *BookController) FindAll(ctx echo.Context) error {
 		})
 	}
 
+	// math total pages based on total records
 	totalPages := totalRecords / pageSize
 	if totalRecords%pageSize != 0 {
 		totalPages++
 	}
 
+	// init pagination response
 	paginationResp := response.PaginationResponse{
 		CurrentPage: page,
 		PageSize:    pageSize,
@@ -103,6 +112,7 @@ func (c *BookController) FindAll(ctx echo.Context) error {
 		TotalPages:  totalPages,
 	}
 
+	// return find all books success response
 	commonResponse := response.CommonResponse{
 		StatusCode: http.StatusOK,
 		Message:    "Find all books successfully",
@@ -111,4 +121,124 @@ func (c *BookController) FindAll(ctx echo.Context) error {
 	}
 
 	return ctx.JSON(http.StatusOK, commonResponse)
+}
+
+// Find Book By ID Controller
+func (c *BookController) FindByID(ctx echo.Context) error {
+	var bookId = ctx.Param("id")
+
+	// check request url, if it has query params, return error
+	if len(ctx.QueryParams()) > 0 {
+		return ctx.JSON(http.StatusBadRequest, response.ErrorResponse{
+			StatusCode: http.StatusBadRequest,
+			Message:    "Failed to find book by id",
+			Error:      "Invalid request url",
+		})
+	}
+
+	// find book by id, if error, return error
+	book, err := c.bookService.FindByID(ctx.Request().Context(), bookId)
+	if err != nil {
+		return ctx.JSON(http.StatusNotFound, response.ErrorResponse{
+			StatusCode: http.StatusNotFound,
+			Message:    "Failed to find book by id, book not found",
+			Error:      err.Error(),
+		})
+	}
+
+	// return find book by id success response
+	return ctx.JSON(http.StatusOK, response.CommonResponse{
+		StatusCode: http.StatusOK,
+		Message:    "Find book by id successfully",
+		Data:       book,
+	})
+
+}
+
+// Update Book Controller
+func (c *BookController) Update(ctx echo.Context) error {
+	var bookId = ctx.Param("id")
+	var req request.UpdateBookRequest
+
+	// check request url, if it has query params, return error
+	if len(ctx.QueryParams()) > 0 {
+		return ctx.JSON(http.StatusBadRequest, response.ErrorResponse{
+			StatusCode: http.StatusBadRequest,
+			Message:    "Failed to update book",
+			Error:      "Invalid request url",
+		})
+	}
+
+	// parse request body, if error, return error
+	if err := ctx.Bind(&req); err != nil {
+		return ctx.JSON(http.StatusBadRequest, response.ErrorResponse{
+			StatusCode: http.StatusBadRequest,
+			Message:    "Failed to update book",
+			Error:      err.Error(),
+		})
+	}
+
+	// find book by id, if error, return error
+	existingBook, err := c.bookService.FindByID(ctx.Request().Context(), bookId)
+	if err != nil {
+		return ctx.JSON(http.StatusNotFound, response.ErrorResponse{
+			StatusCode: http.StatusNotFound,
+			Message:    "Failed to update book, book not found",
+			Error:      err.Error(),
+		})
+	}
+
+	// update book, if error, return error
+	if err := c.bookService.Update(ctx.Request().Context(), existingBook.Id, &req); err != nil {
+		return ctx.JSON(http.StatusInternalServerError, response.ErrorResponse{
+			StatusCode: http.StatusInternalServerError,
+			Message:    "Failed to update book",
+			Error:      err.Error(),
+		})
+	}
+
+	// return update book success response
+	return ctx.JSON(http.StatusOK, response.CommonResponse{
+		StatusCode: http.StatusOK,
+		Message:    "Update book successfully",
+	})
+}
+
+// Delete Book Controller
+func (c *BookController) DeleteByID(ctx echo.Context) error {
+	var bookId = ctx.Param("id")
+
+	// check request url, if it has query params, return error
+	if len(ctx.QueryParams()) > 0 {
+		return ctx.JSON(http.StatusBadRequest, response.ErrorResponse{
+			StatusCode: http.StatusBadRequest,
+			Message:    "Failed to delete book",
+			Error:      "Invalid request url",
+		})
+	}
+
+	// find book by id, if error, return error
+	existingBook, err := c.bookService.FindByID(ctx.Request().Context(), bookId)
+	if err != nil {
+		return ctx.JSON(http.StatusNotFound, response.ErrorResponse{
+			StatusCode: http.StatusNotFound,
+			Message:    "Failed to delete book, book not found",
+			Error:      err.Error(),
+		})
+	}
+
+	// delete book, if error, return error
+	if err := c.bookService.DeleteByID(ctx.Request().Context(), existingBook.Id); err != nil {
+		return ctx.JSON(http.StatusInternalServerError, response.ErrorResponse{
+			StatusCode: http.StatusInternalServerError,
+			Message:    "Failed to delete book",
+			Error:      err.Error(),
+		})
+	}
+
+	// return delete book success response
+	return ctx.JSON(http.StatusOK, response.CommonResponse{
+		StatusCode: http.StatusOK,
+		Message:    "Delete book successfully",
+	})
 }

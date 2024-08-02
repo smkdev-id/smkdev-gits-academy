@@ -25,5 +25,20 @@ func Routes(bookController *controllers.BookController) []*Route {
 			Path:    "/api/v1/books",
 			Handler: bookController.FindAll,
 		},
+		{
+			Method:  http.MethodGet,
+			Path:    "/api/v1/books/:id",
+			Handler: bookController.FindByID,
+		},
+		{
+			Method:  http.MethodPut,
+			Path:    "/api/v1/books/:id",
+			Handler: bookController.Update,
+		},
+		{
+			Method:  http.MethodDelete,
+			Path:    "/api/v1/books/:id",
+			Handler: bookController.DeleteByID,
+		},
 	}
 }
