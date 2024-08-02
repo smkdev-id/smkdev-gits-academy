@@ -2,6 +2,9 @@ package database
 
 import (
 	"context"
+	"errors"
+	"fmt"
+	"os"
 	"time"
 
 	"github.com/alwiirfan/configs"
@@ -23,8 +26,14 @@ func SqliteConnection(ctx context.Context, cfg *configs.Config) (*gorm.DB, error
 		log = logger.Default.LogMode(logger.Silent)
 	}
 
+	dbPath := os.Getenv("DATABASE_PATH")
+	if dbPath == "" {
+		return nil, errors.New("DATABASE_PATH is not set")
+	}
+	fmt.Printf("Connecting to database at path: %s", dbPath)
+
 	// open sqlite database connection
-	db, err := gorm.Open(sqlite.Open("bookstore.db"), &gorm.Config{
+	db, err := gorm.Open(sqlite.Open(dbPath), &gorm.Config{
 		Logger: log,
 	})
 	if err != nil {

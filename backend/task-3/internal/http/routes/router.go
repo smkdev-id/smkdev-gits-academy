@@ -26,6 +26,11 @@ func Routes(bookController *controllers.BookController) []*Route {
 			Handler: bookController.FindAll,
 		},
 		{
+			Method:  http.MethodDelete,
+			Path:    "/api/v1/books",
+			Handler: bookController.DeleteAll,
+		},
+		{
 			Method:  http.MethodGet,
 			Path:    "/api/v1/books/:id",
 			Handler: bookController.FindByID,
@@ -39,6 +44,16 @@ func Routes(bookController *controllers.BookController) []*Route {
 			Method:  http.MethodDelete,
 			Path:    "/api/v1/books/:id",
 			Handler: bookController.DeleteByID,
+		},
+		{
+			Method:  http.MethodGet,
+			Path:    "/api/v1/books/:isbn",
+			Handler: bookController.FindByISBN,
+		},
+		{
+			Method:  http.MethodGet,
+			Path:    "/api/v1/books/search",
+			Handler: bookController.FindAllSearch,
 		},
 	}
 }

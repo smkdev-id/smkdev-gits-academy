@@ -25,6 +25,7 @@ type (
 		Year      int    `json:"year"`
 		Author    string `json:"author"`
 		Price     int    `json:"price"`
-		CreatedAt string `json:"created_at"`
+		StartDate string `json:"start_date"`
+		EndDate   string `json:"end_date"`
 	}
 )

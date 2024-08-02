@@ -12,6 +12,7 @@ backend/task-2a/script.sh
 backend/task-3/env.sh
 backend/task-3/script.sh
 backend/task-3/go.sum
+backend/task-3/bookstore.db
 
 # Editor directories and files
 .vscode/*
