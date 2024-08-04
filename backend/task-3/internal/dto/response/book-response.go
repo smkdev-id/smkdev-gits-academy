@@ -10,6 +10,7 @@ type (
 		YearOfManufacture int    `json:"year_of_manufacture"`
 		Stock             int    `json:"stock"`
 		Price             int    `json:"price"`
+		IsDisplayed       bool   `json:"is_displayed"`
 		CreatedAt         string `json:"created_at"`
 		UpdatedAt         string `json:"updated_at"`
 	}

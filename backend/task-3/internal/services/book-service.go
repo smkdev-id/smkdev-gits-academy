@@ -47,6 +47,7 @@ func (s *bookService) Create(ctx context.Context, req *request.CreateBookRequest
 		YearOfManufacture: req.YearOfManufacture,
 		Stock:             req.Stock,
 		Price:             req.Price,
+		IsDisplayed:       false,
 		CreatedAt:         time.Now().Local(),
 		UpdatedAt:         nil,
 	}
@@ -101,6 +102,7 @@ func (s *bookService) FindAll(ctx context.Context, page, pageSize int) ([]*respo
 			YearOfManufacture: book.YearOfManufacture,
 			Stock:             book.Stock,
 			Price:             book.Price,
+			IsDisplayed:       book.IsDisplayed,
 			CreatedAt:         book.CreatedAt.String(),
 			UpdatedAt:         updatedAtStr,
 		})
@@ -133,6 +135,7 @@ func (s *bookService) FindAllSearch(ctx context.Context, page, pageSize int, req
 			YearOfManufacture: book.YearOfManufacture,
 			Stock:             book.Stock,
 			Price:             book.Price,
+			IsDisplayed:       book.IsDisplayed,
 			CreatedAt:         book.CreatedAt.String(),
 			UpdatedAt:         updatedAtStr,
 		})
@@ -162,6 +165,7 @@ func (s *bookService) FindByID(ctx context.Context, id string) (*response.BookRe
 		YearOfManufacture: existingBook.YearOfManufacture,
 		Stock:             existingBook.Stock,
 		Price:             existingBook.Price,
+		IsDisplayed:       existingBook.IsDisplayed,
 		CreatedAt:         existingBook.CreatedAt.String(),
 		UpdatedAt:         updatedAtStr,
 	}
@@ -190,6 +194,7 @@ func (s *bookService) FindByISBN(ctx context.Context, isbn string) (*response.Bo
 		YearOfManufacture: existingBook.YearOfManufacture,
 		Stock:             existingBook.Stock,
 		Price:             existingBook.Price,
+		IsDisplayed:       existingBook.IsDisplayed,
 		CreatedAt:         existingBook.CreatedAt.String(),
 		UpdatedAt:         updatedAtStr,
 	}
@@ -218,6 +223,7 @@ func (s *bookService) Update(ctx context.Context, id string, req *request.Update
 	existingBook.YearOfManufacture = req.YearOfManufacture
 	existingBook.Stock = req.Stock
 	existingBook.Price = req.Price
+	existingBook.IsDisplayed = req.IsDisplayed
 	existingBook.UpdatedAt = &updatedAt
 
 	return s.bookRepository.Update(ctx, existingBook)

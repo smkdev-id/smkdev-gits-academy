@@ -23,6 +23,8 @@ func NewServer(cfg *configs.Config, routes []*routes.Route) *Server {
 
 	for _, v := range routes {
 		e.Add(v.Method, v.Path, v.Handler)
+
+		fmt.Printf("Registered route: %s %s\n", v.Method, v.Path)
 	}
 
 	return &Server{e, cfg}

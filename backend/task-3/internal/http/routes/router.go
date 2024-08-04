@@ -47,7 +47,7 @@ func Routes(bookController *controllers.BookController) []*Route {
 		},
 		{
 			Method:  http.MethodGet,
-			Path:    "/api/v1/books/:isbn",
+			Path:    "/api/v1/books/isbn/:isbn",
 			Handler: bookController.FindByISBN,
 		},
 		{

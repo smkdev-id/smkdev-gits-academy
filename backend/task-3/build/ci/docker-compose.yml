@@ -1,0 +1,17 @@
+services:
+  bookstore-container:
+    image: bookstore:v1
+    container_name: bookstore-container
+    build:
+      context: ../..
+      dockerfile: build/package/Dockerfile
+    ports:
+      - "5000:5000"
+    networks:
+      - bookstore-network
+    volumes:
+      - ../../bookstore.db:/root/bookstore.db
+    environment:
+      - APP_ENV=development
+      - APP_PORT=5000
+      - DATABASE_PATH=/root/bookstore.db

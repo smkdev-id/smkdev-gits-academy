@@ -8,6 +8,7 @@ import (
 	"github.com/alwiirfan/internal/dto/response"
 	"github.com/alwiirfan/internal/services"
 	"github.com/alwiirfan/internal/utils"
+	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
 )
 
@@ -43,6 +44,13 @@ func (c *BookController) Create(ctx echo.Context) error {
 
 	// create new book, if error, return error
 	if err := c.bookService.Create(ctx.Request().Context(), &req); err != nil {
+		if err, ok := err.(validator.ValidationErrors); ok {
+			return ctx.JSON(http.StatusBadRequest, response.ErrorResponse{
+				StatusCode: http.StatusBadRequest,
+				Message:    "Validation failed",
+				Error:      err.Error(),
+			})
+		}
 		return ctx.JSON(http.StatusInternalServerError, response.ErrorResponse{
 			StatusCode: http.StatusInternalServerError,
 			Message:    "Failed to create book",
@@ -144,6 +152,7 @@ func (c *BookController) FindAllSearch(ctx echo.Context) error {
 		"year":         true,
 		"author":       true,
 		"price":        true,
+		"is_displayed": true,
 		"start_date":   true,
 		"end_date":     true,
 	}
@@ -170,6 +179,9 @@ func (c *BookController) FindAllSearch(ctx echo.Context) error {
 	req.Year = year
 	price, _ := strconv.Atoi(ctx.QueryParam("price"))
 	req.Price = price
+
+	isDisplayed, _ := strconv.ParseBool(ctx.QueryParam("is_displayed"))
+	req.IsDisplayed = isDisplayed
 
 	// parse start_date and end_date
 	startDateStr := ctx.QueryParam("start_date")
@@ -344,6 +356,13 @@ func (c *BookController) Update(ctx echo.Context) error {
 
 	// update book, if error, return error
 	if err := c.bookService.Update(ctx.Request().Context(), existingBook.Id, &req); err != nil {
+		if err, ok := err.(validator.ValidationErrors); ok {
+			return ctx.JSON(http.StatusBadRequest, response.ErrorResponse{
+				StatusCode: http.StatusBadRequest,
+				Message:    "Failed to update book",
+				Error:      err.Error(),
+			})
+		}
 		return ctx.JSON(http.StatusInternalServerError, response.ErrorResponse{
 			StatusCode: http.StatusInternalServerError,
 			Message:    "Failed to update book",

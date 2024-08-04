@@ -99,6 +99,10 @@ func (r *bookRepository) FindAllSearch(ctx context.Context, page, pageSize int, 
 		query = query.Where("price = ?", req.Price)
 	}
 
+	if req.IsDisplayed {
+		query = query.Where("is_displayed = ?", req.IsDisplayed)
+	}
+
 	if req.StartDate != "" && req.EndDate != "" {
 		query = query.Where("created_at BETWEEN ? AND ?", req.StartDate, req.EndDate)
 	} else if req.StartDate != "" {
