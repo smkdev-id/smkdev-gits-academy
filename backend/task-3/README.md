@@ -20,12 +20,12 @@ Create, Read, Update, Delete (CRUD) application of selling books.
 ## FEATURES 🛫
 
 - **FIND ALL BOOKS**: looking all books created have exist in database using `GET` method and paginate.
-- **FIND ALL BOOKS SEARCH**: looking all book if exist in database, and search with key & value.
+- **FIND ALL BOOKS SEARCH**: looking all book if exist in database, and search with key & value, default search is_displayed=true.
 - **FIND BOOK BY ID**: find specific book with id params into URL using `GET` method.
 - **FIND BOOK BY ISBN**: find specific boom with ISBN params input to URL using `GET` method.
 - **CREATE NEW BOOK**: generate new book for display into store using `POST` method.
 - **UPDATE BOOK**: update todo when is_displayed=false to is_completed=true and another using `PUT` method.
-- **DELETE TODO BY ID**: delete specific book if you completed with id params into URL using `DELETE` method.
+- **DELETE BOOK BY ID**: delete specific book if you completed with id params into URL using `DELETE` method.
 - **DELETE ALL BOOKS**: delete all books if exist in the table using `DELETE` method.
 
 ---
@@ -43,7 +43,7 @@ Create, Read, Update, Delete (CRUD) application of selling books.
 ## HOW TO RUN TESTING 🧪
 
 ```bash
-go test -v ./tests/...
+go test ./tests/... -v
 ```
 
 ---

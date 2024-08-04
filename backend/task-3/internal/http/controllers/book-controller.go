@@ -178,10 +178,18 @@ func (c *BookController) FindAllSearch(ctx echo.Context) error {
 	year, _ := strconv.Atoi(ctx.QueryParam("year"))
 	req.Year = year
 	price, _ := strconv.Atoi(ctx.QueryParam("price"))
-	req.Price = price
+	if price != 0 {
+		req.Price = price
+	}
 
-	isDisplayed, _ := strconv.ParseBool(ctx.QueryParam("is_displayed"))
-	req.IsDisplayed = isDisplayed
+	isDisplayedStr := ctx.QueryParam("is_displayed")
+	if isDisplayedStr == "" {
+		isDisplayed := true
+		req.IsDisplayed = &isDisplayed
+	} else {
+		isDisplayed, _ := strconv.ParseBool(isDisplayedStr)
+		req.IsDisplayed = &isDisplayed
+	}
 
 	// parse start_date and end_date
 	startDateStr := ctx.QueryParam("start_date")
@@ -243,7 +251,7 @@ func (c *BookController) FindAllSearch(ctx echo.Context) error {
 	paginationResp := response.PaginationResponse{
 		CurrentPage: page,
 		PageSize:    pageSize,
-		TotalData:   totalRecords,
+		TotalData:   len(books),
 		TotalPages:  totalPages,
 	}
 

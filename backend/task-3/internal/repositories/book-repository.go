@@ -99,8 +99,9 @@ func (r *bookRepository) FindAllSearch(ctx context.Context, page, pageSize int, 
 		query = query.Where("price = ?", req.Price)
 	}
 
-	if req.IsDisplayed {
-		query = query.Where("is_displayed = ?", req.IsDisplayed)
+	if req.IsDisplayed == nil {
+		req.IsDisplayed = new(bool)
+		*req.IsDisplayed = true
 	}
 
 	if req.StartDate != "" && req.EndDate != "" {
@@ -115,7 +116,7 @@ func (r *bookRepository) FindAllSearch(ctx context.Context, page, pageSize int, 
 		return nil, 0, err
 	}
 
-	if err := r.DB.WithContext(ctx).Scopes(pagination.BookPaginate(page, pageSize)).Find(&books).Error; err != nil {
+	if err := r.DB.WithContext(ctx).Scopes(pagination.BookPaginate(page, pageSize)).Where("is_displayed = ?", &req.IsDisplayed).Find(&books).Error; err != nil {
 		return nil, 0, err
 	}
 

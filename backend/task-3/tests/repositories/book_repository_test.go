@@ -242,7 +242,7 @@ func (s *BookRepositorySuite) TestFindAllSearchBooksRepositoryWhenSuccess() {
 		YearOfManufacture: 2023,
 		Stock:             10,
 		Price:             100,
-		IsDisplayed:       false,
+		IsDisplayed:       true,
 		CreatedAt:         time.Now(),
 		UpdatedAt:         nil,
 	}
@@ -254,7 +254,7 @@ func (s *BookRepositorySuite) TestFindAllSearchBooksRepositoryWhenSuccess() {
 		YearOfManufacture: 2023,
 		Stock:             10,
 		Price:             100,
-		IsDisplayed:       false,
+		IsDisplayed:       true,
 		CreatedAt:         time.Now(),
 		UpdatedAt:         nil,
 	}
@@ -264,8 +264,9 @@ func (s *BookRepositorySuite) TestFindAllSearchBooksRepositoryWhenSuccess() {
 	require.NoError(s.T(), err)
 
 	// Perform search
+	isDisplayed := true
 	req := &request.SearchBookRequest{
-		Title: "Test Book",
+		IsDisplayed: &isDisplayed,
 	}
 	books, total, err := s.repository.FindAllSearch(context.Background(), 1, 10, req)
 	require.NoError(s.T(), err)

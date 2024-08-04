@@ -323,7 +323,10 @@ func (s *BookControllerSuite) TestFindAllBookControllerWhenFailedConnection() {
 }
 
 func (s *BookControllerSuite) TestFindAllSearchBooksControllerWhenSuccess() {
-	dummyreq := request.SearchBookRequest{}
+	isDisplayed := true
+	dummyreq := request.SearchBookRequest{
+		IsDisplayed: &isDisplayed,
+	}
 	s.mockBookService.On("FindAllSearch", context.Background(), 1, 10, &dummyreq).Return([]*response.BookResponse{
 		{
 			Id:                "1",
@@ -355,9 +358,11 @@ func (s *BookControllerSuite) TestFindAllSearchBooksControllerWhenSuccess() {
 
 	rec := httptest.NewRecorder()
 	c := s.echoInstance.NewContext(
-		httptest.NewRequest(http.MethodGet, "/api/v1/books/search", nil),
+		httptest.NewRequest(http.MethodGet, "/api/v1/books/search?is_displayed=true", nil),
 		rec,
 	)
+
+	c.QueryParam("is_displayed")
 
 	c.Request().Header.Set("Content-Type", "application/json")
 
@@ -380,15 +385,20 @@ func (s *BookControllerSuite) TestFindAllSearchBooksControllerWhenSuccess() {
 
 func (s *BookControllerSuite) TestFindAllSearchBooksControllerWhenFailedQueryParams() {
 
-	dummyreq := request.SearchBookRequest{}
+	isDisplayed := true
+	dummyreq := request.SearchBookRequest{
+		IsDisplayed: &isDisplayed,
+	}
 
 	s.mockBookService.On("FindAllSearch", context.Background(), 1, 10, &dummyreq).Return(nil, 0, nil)
 
 	rec := httptest.NewRecorder()
 	c := s.echoInstance.NewContext(
-		httptest.NewRequest(http.MethodGet, "/api/v1/books/search?error=error", nil),
+		httptest.NewRequest(http.MethodGet, "/api/v1/books/search?is_displayed=true&error=error", nil),
 		rec,
 	)
+
+	c.QueryParam("is_displayed")
 
 	c.Request().Header.Set("Content-Type", "application/json")
 
@@ -411,7 +421,10 @@ func (s *BookControllerSuite) TestFindAllSearchBooksControllerWhenFailedQueryPar
 
 func (s *BookControllerSuite) TestFindAllSearchBooksControllerWhenFailedConnection() {
 
-	dummyreq := request.SearchBookRequest{}
+	isDisplayed := true
+	dummyreq := request.SearchBookRequest{
+		IsDisplayed: &isDisplayed,
+	}
 
 	s.mockBookService.On("FindAllSearch", context.Background(), 1, 10, &dummyreq).Return(nil, 0, sql.ErrConnDone)
 

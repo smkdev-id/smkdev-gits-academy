@@ -26,7 +26,7 @@ type (
 		Year        int    `json:"year"`
 		Author      string `json:"author"`
 		Price       int    `json:"price"`
-		IsDisplayed bool   `json:"is_displayed"`
+		IsDisplayed *bool  `json:"is_displayed"`
 		StartDate   string `json:"start_date"`
 		EndDate     string `json:"end_date"`
 	}
