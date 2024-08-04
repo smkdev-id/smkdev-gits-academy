@@ -36,7 +36,7 @@ Create, Read, Update, Delete (CRUD) application of selling books.
   - [HOW TO RUN TESTING 🧪](#how-to-run-testing-)
   - [HOW TO RUN APPLICATION 🏃](#how-to-run-application-)
   - [HOW TO RUN USING DOCKER 🏃‍♀️](#how-to-run-using-docker-️)
-  - [ROUTER, REQUEST AND RESPONSE TODO 💁](#router-request-and-response-todo-)
+  - [ROUTER, REQUEST AND RESPONSE BOOKSTORE 💁](#router-request-and-response-bookstore-)
 
 ---
 
@@ -114,7 +114,7 @@ sudo docker compose down -v
 
 ---
 
-## ROUTER, REQUEST AND RESPONSE TODO 💁
+## ROUTER, REQUEST AND RESPONSE BOOKSTORE 💁
 
 1. URL Pattern: `/api/v1/books`
 
