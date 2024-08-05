@@ -11,6 +11,10 @@ import (
 func GetAllBooks(c *gin.Context) {
 	var books []models.Book
 	config.DB.Find(&books)
+	if len(books) == 0 {
+		c.JSON(http.StatusNotFound, gin.H{"message": "No books found"})
+		return
+	}
 	c.JSON(http.StatusOK, gin.H{"message": "Data retrieved successfully", "data": books})
 }
 
@@ -22,8 +26,12 @@ func CreateBook(c *gin.Context) {
 		return
 	}
 
-	config.DB.Create(&book)
-	c.JSON(http.StatusCreated, book)
+	if err := config.DB.Create(&book).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create book"})
+		return
+	}
+
+	c.JSON(http.StatusCreated, gin.H{"message": "Book created successfully", "data": book})
 }
 
 // GetBookByID retrieves a book by its ID
@@ -33,7 +41,7 @@ func GetBookByID(c *gin.Context) {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Book not found"})
 		return
 	}
-	c.JSON(http.StatusOK, book)
+	c.JSON(http.StatusOK, gin.H{"message": "Book retrieved successfully", "data": book})
 }
 
 // UpdateBook updates an existing book
@@ -49,8 +57,12 @@ func UpdateBook(c *gin.Context) {
 		return
 	}
 
-	config.DB.Save(&book)
-	c.JSON(http.StatusOK, book)
+	if err := config.DB.Save(&book).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update book"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Book updated successfully", "data": book})
 }
 
 // DeleteBook deletes a book by its ID
@@ -61,6 +73,10 @@ func DeleteBook(c *gin.Context) {
 		return
 	}
 
-	config.DB.Delete(&book)
-	c.JSON(http.StatusOK, gin.H{"message": "Book deleted", "data": book})
+	if err := config.DB.Delete(&book).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to delete book"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Book deleted successfully", "data": book})
 }
