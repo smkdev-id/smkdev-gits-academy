@@ -1,4 +1,4 @@
-module go_crud_todos
+module github.com/smkdev-id/smkdev-gits-academy/api-golang
 
 go 1.22.5
 

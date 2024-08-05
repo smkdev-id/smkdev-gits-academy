@@ -30,12 +30,12 @@ To install and run this project, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/simple-todos-crud.git
+    git clone https://github.com/smkdev-id/smkdev-gits-academy.git
     ```
 
 2. Navigate to the project directory:
     ```bash
-    cd simple-todos-crud
+    cd api-golang
     ```
 
 3. Install dependencies:
