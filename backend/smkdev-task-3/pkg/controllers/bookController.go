@@ -39,9 +39,12 @@ func (bc *BookController) GetOneBook(c echo.Context) error {
 	var book models.Book
 	// Find the book by ID
 	if err := bc.DB.First(&book, "id = ?", id).Error; err != nil {
+		if err == gorm.ErrRecordNotFound {
+			return utils.JSONResponse(c, http.StatusNotFound, "Book not found", nil)
+		}
 		return utils.JSONResponse(c, http.StatusInternalServerError, err.Error(), nil)
 	}
-	return utils.JSONResponse(c, http.StatusOK, "Successfully get a book", book)
+	return utils.JSONResponse(c, http.StatusOK, "Succesfully get a book", book)
 }
 /*
 desc 	: Controller function to create a new book entry in the database.
