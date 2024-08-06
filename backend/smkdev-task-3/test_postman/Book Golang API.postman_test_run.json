@@ -1,0 +1,128 @@
+{
+	"id": "4f07ac7f-7821-4db1-bde2-758b3f0082b9",
+	"name": "Book Golang API",
+	"timestamp": "2024-08-06T03:23:43.979Z",
+	"collection_id": "0-a7ac0e7d-d461-443a-b3e3-cf68a285e3f4",
+	"folder_id": 0,
+	"environment_id": "5e01020c-14e3-47f2-84f8-5567f83b2067",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "f5ae0c8c-f6fd-45e3-87fd-5cc37d4d666c",
+			"name": "Getting All Books",
+			"url": "http://localhost:8080/book",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "eea72fa8-5b1d-46c5-90c7-09081b08cc8c",
+			"name": "Getting Specific Book",
+			"url": "http://localhost:8080/book/de61b9a2-ec49-4999-b975-169c52dce708",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "7dd4594f-b273-4481-ba29-3b4b95957a9c",
+			"name": "Adding Book",
+			"url": "http://localhost:8080/book",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0c1111a5-baa4-4227-8151-60fc7a1a1a12",
+			"name": "Update Book By Id",
+			"url": "http://localhost:8080/book/02ad8f1b-3987-45fc-8f93-99ee12991585",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "cfa781c7-8107-43f5-a791-220960055c91",
+			"name": "Delete Book By Id",
+			"url": "http://localhost:8080/book/8e2f3470-5aca-46da-9fb7-8371a1674561",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 35,
+	"collection": {
+		"requests": [
+			{
+				"id": "f5ae0c8c-f6fd-45e3-87fd-5cc37d4d666c",
+				"method": "GET"
+			},
+			{
+				"id": "eea72fa8-5b1d-46c5-90c7-09081b08cc8c",
+				"method": "GET"
+			},
+			{
+				"id": "7dd4594f-b273-4481-ba29-3b4b95957a9c",
+				"method": "POST"
+			},
+			{
+				"id": "0c1111a5-baa4-4227-8151-60fc7a1a1a12",
+				"method": "PUT"
+			},
+			{
+				"id": "cfa781c7-8107-43f5-a791-220960055c91",
+				"method": "DELETE"
+			}
+		]
+	}
+}

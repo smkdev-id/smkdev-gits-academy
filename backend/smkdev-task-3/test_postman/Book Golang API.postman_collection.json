@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "a7ac0e7d-d461-443a-b3e3-cf68a285e3f4",
+		"name": "Book Golang API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Getting All Books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting Specific Book",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/book/de61b9a2-ec49-4999-b975-169c52dce708",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"book",
+						"de61b9a2-ec49-4999-b975-169c52dce708"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adding Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Death Note\",\r\n    \"author\": \"Tsugumi Ohba\",\r\n    \"publication_year\": \"2003\",\r\n    \"price\": 22999,\r\n    \"stock\": 22,\r\n    \"isbn\": \"r5t7v8n9w1q4\",\r\n    \"synopsis\": \"Light Yagami menemukan buku catatan yang memungkinkan dia membunuh siapa saja hanya dengan menulis nama mereka di dalamnya dan berusaha menciptakan dunia tanpa kejahatan.\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book By Id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"My hero Academia\",\r\n    \"author\": \"Kohei Horikoshi\",\r\n    \"publication_year\": \"2014\",\r\n    \"price\": 21999,\r\n    \"stock\": 25,\r\n    \"isbn\": \"g7h89jklm34n\",\r\n    \"synopsis\": \"Di dunia di mana hampir semua orang memiliki kekuatan super, Izuku Midoriya yang lahir tanpa kekuatan berusaha menjadi pahlawan terbesar.\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/book/02ad8f1b-3987-45fc-8f93-99ee12991585",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"book",
+						"02ad8f1b-3987-45fc-8f93-99ee12991585"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Book By Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/book/8b7b0a5a-d190-4411-b683-1bcc1b1ef760",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"book",
+						"8b7b0a5a-d190-4411-b683-1bcc1b1ef760"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
