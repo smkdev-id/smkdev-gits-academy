@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"BookStore/pkg/service"
+	"BookStore/pkg/utils"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -19,62 +20,64 @@ func NewTransactionController(transactionService service.TransactionService) *Tr
 func (tc *TransactionController) CreateTransaction(ctx *gin.Context) {
 	customerID, err := tc.getCustomerID(ctx)
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusBadRequest, err.Error(), nil)
 		return
 	}
 
 	transaction, err := tc.transactionService.CreateTransactionFromBasket(customerID)
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusInternalServerError, err.Error(), nil)
 		return
 	}
 
-	ctx.JSON(http.StatusCreated, transaction)
+	utils.JSONResponse(ctx, http.StatusCreated, "Transaction created successfully", transaction)
 }
 
 func (tc *TransactionController) GetTransaction(ctx *gin.Context) {
 	transactionID, err := uuid.Parse(ctx.Param("id"))
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Invalid transaction ID"})
+		utils.JSONResponse(ctx, http.StatusBadRequest, "Invalid transaction ID", nil)
 		return
 	}
 
 	transaction, err := tc.transactionService.GetTransaction(transactionID)
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusInternalServerError, err.Error(), nil)
 		return
 	}
 
-	ctx.JSON(http.StatusOK, transaction)
+	utils.JSONResponse(ctx, http.StatusOK, "Transaction retrieved successfully", transaction)
 }
+
 func (tc *TransactionController) GetAllTransactions(ctx *gin.Context) {
 	transactions, err := tc.transactionService.GetAllTransactions()
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusInternalServerError, err.Error(), nil)
 		return
 	}
-	ctx.JSON(http.StatusOK, transactions)
+	utils.JSONResponse(ctx, http.StatusOK, "Transactions retrieved successfully", transactions)
 }
+
 func (tc *TransactionController) GetCustomerTransactions(ctx *gin.Context) {
 	customerID, err := tc.getCustomerID(ctx)
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusBadRequest, err.Error(), nil)
 		return
 	}
 
 	transactions, err := tc.transactionService.GetCustomerTransactions(customerID)
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusInternalServerError, err.Error(), nil)
 		return
 	}
 
-	ctx.JSON(http.StatusOK, transactions)
+	utils.JSONResponse(ctx, http.StatusOK, "Customer transactions retrieved successfully", transactions)
 }
 
 func (tc *TransactionController) UpdateTransactionStatus(ctx *gin.Context) {
 	transactionID, err := uuid.Parse(ctx.Param("id"))
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Invalid transaction ID"})
+		utils.JSONResponse(ctx, http.StatusBadRequest, "Invalid transaction ID", nil)
 		return
 	}
 
@@ -82,17 +85,17 @@ func (tc *TransactionController) UpdateTransactionStatus(ctx *gin.Context) {
 		Status string `json:"status" binding:"required"`
 	}
 	if err := ctx.ShouldBindJSON(&request); err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusBadRequest, err.Error(), nil)
 		return
 	}
 
 	err = tc.transactionService.UpdateTransactionStatus(transactionID, request.Status)
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusInternalServerError, err.Error(), nil)
 		return
 	}
 
-	ctx.JSON(http.StatusOK, gin.H{"message": "Transaction status updated"})
+	utils.JSONResponse(ctx, http.StatusOK, "Transaction status updated successfully", nil)
 }
 
 func (tc *TransactionController) getCustomerID(ctx *gin.Context) (uuid.UUID, error) {

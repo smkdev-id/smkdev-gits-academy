@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"BookStore/pkg/service"
+	"BookStore/pkg/utils"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -19,26 +20,26 @@ func NewBasketController(basketService service.BasketService) *BasketController 
 func (bc *BasketController) GetBasket(ctx *gin.Context) {
 	customerID, err := bc.getCustomerID(ctx)
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusBadRequest, err.Error(), nil)
 		return
 	}
 
 	basket, err := bc.basketService.GetBasket(customerID)
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusInternalServerError, err.Error(), nil)
 		return
 	}
 	if basket == nil {
-		ctx.JSON(http.StatusOK, gin.H{"message": "Basket is empty"})
+		utils.JSONResponse(ctx, http.StatusOK, "Basket is empty", nil)
 		return
 	}
-	ctx.JSON(http.StatusOK, basket)
+	utils.JSONResponse(ctx, http.StatusOK, "Basket retrieved", basket)
 }
 
 func (bc *BasketController) AddToBasket(ctx *gin.Context) {
 	customerID, err := bc.getCustomerID(ctx)
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusBadRequest, err.Error(), nil)
 		return
 	}
 
@@ -47,22 +48,22 @@ func (bc *BasketController) AddToBasket(ctx *gin.Context) {
 		Quantity int       `json:"quantity" binding:"required,min=1"`
 	}
 	if err := ctx.ShouldBindJSON(&request); err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusBadRequest, err.Error(), nil)
 		return
 	}
 
 	err = bc.basketService.AddToBasket(customerID, request.BookID, request.Quantity)
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusInternalServerError, err.Error(), nil)
 		return
 	}
-	ctx.JSON(http.StatusOK, gin.H{"message": "Added to basket"})
+	utils.JSONResponse(ctx, http.StatusOK, "Added to basket", nil)
 }
 
 func (bc *BasketController) UpdateBasketItem(ctx *gin.Context) {
 	customerID, err := bc.getCustomerID(ctx)
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusBadRequest, err.Error(), nil)
 		return
 	}
 
@@ -71,7 +72,7 @@ func (bc *BasketController) UpdateBasketItem(ctx *gin.Context) {
 		Quantity int       `json:"quantity" binding:"required,min=0"`
 	}
 	if err := ctx.ShouldBindJSON(&request); err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusBadRequest, err.Error(), nil)
 		return
 	}
 
@@ -81,44 +82,44 @@ func (bc *BasketController) UpdateBasketItem(ctx *gin.Context) {
 		err = bc.basketService.UpdateBasketItem(customerID, request.BookID, request.Quantity)
 	}
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusInternalServerError, err.Error(), nil)
 		return
 	}
-	ctx.JSON(http.StatusOK, gin.H{"message": "Basket updated"})
+	utils.JSONResponse(ctx, http.StatusOK, "Basket updated", nil)
 }
 
 func (bc *BasketController) RemoveFromBasket(ctx *gin.Context) {
 	customerID, err := bc.getCustomerID(ctx)
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusBadRequest, err.Error(), nil)
 		return
 	}
 
 	bookID, err := uuid.Parse(ctx.Param("book_id"))
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Invalid book ID"})
+		utils.JSONResponse(ctx, http.StatusBadRequest, "Invalid book ID", nil)
 		return
 	}
 
 	if err := bc.basketService.RemoveFromBasket(customerID, bookID); err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusInternalServerError, err.Error(), nil)
 		return
 	}
-	ctx.JSON(http.StatusOK, gin.H{"message": "Removed from basket"})
+	utils.JSONResponse(ctx, http.StatusOK, "Removed from basket", nil)
 }
 
 func (bc *BasketController) ClearBasket(ctx *gin.Context) {
 	customerID, err := bc.getCustomerID(ctx)
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusBadRequest, err.Error(), nil)
 		return
 	}
 
 	if err := bc.basketService.ClearBasket(customerID); err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(ctx, http.StatusInternalServerError, err.Error(), nil)
 		return
 	}
-	ctx.JSON(http.StatusOK, gin.H{"message": "Basket cleared"})
+	utils.JSONResponse(ctx, http.StatusOK, "Basket cleared", nil)
 }
 
 func (bc *BasketController) getCustomerID(ctx *gin.Context) (uuid.UUID, error) {

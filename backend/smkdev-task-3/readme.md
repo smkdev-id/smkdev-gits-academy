@@ -57,7 +57,8 @@ smkdev-task-3
 │ │ └── basket.go
 │ │ └── book.go
 │ │ └── transaksi.go
-│ └── utils
+│ ├── utils
+│ └──── utils.go
 ├── go.mod
 ├── go.sum
 └── readme.md

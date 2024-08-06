@@ -3,6 +3,7 @@ package controllers
 import (
 	"BookStore/pkg/models"
 	"BookStore/pkg/service"
+	"BookStore/pkg/utils"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -22,27 +23,30 @@ func NewAuthController(authService service.AuthService) *AuthController {
 func (ctrl *AuthController) RegisterUser(c *gin.Context) {
 	var registerRequest models.UserRegister
 	if err := c.ShouldBindJSON(&registerRequest); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid input"})
+		utils.JSONResponse(c, http.StatusBadRequest, "Invalid input", nil)
 		return
 	}
 
 	if err := ctrl.authService.Register(c, &registerRequest); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(c, http.StatusInternalServerError, err.Error(), nil)
 		return
 	}
 
+	utils.JSONResponse(c, http.StatusOK, "Registration successful", nil)
 }
 
 // LoginUser mengontrol proses login user
 func (ctrl *AuthController) LoginUser(c *gin.Context) {
 	var loginRequest models.UserLogin
 	if err := c.ShouldBindJSON(&loginRequest); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid input"})
+		utils.JSONResponse(c, http.StatusBadRequest, "Invalid input", nil)
 		return
 	}
 
 	if err := ctrl.authService.Login(c, &loginRequest); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(c, http.StatusInternalServerError, err.Error(), nil)
 		return
 	}
+
+	utils.JSONResponse(c, http.StatusOK, "Login successful", nil)
 }
