@@ -9,15 +9,15 @@ import (
 )
 
 func ConnectDB() (*gorm.DB, error) {
-	db, err := gorm.Open(sqlite.Open("bookstore.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("database/bookstore.db"), &gorm.Config{})
 	if err != nil {
 		log.Println("Database Not Found. Creating one....")
-		file, err := os.Create("bookstore.db") // Create SQLite file
+		file, err := os.Create("database/bookstore.db")
 		if err != nil {
 			log.Println("Failed to create a database")
 		}
 		file.Close()
 	}
-	
+
 	return db, nil
 }

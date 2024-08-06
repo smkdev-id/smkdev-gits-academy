@@ -17,7 +17,7 @@ func main() {
 	db.AutoMigrate(&models.Book{})
 
 	// Initialize Controller
-	bookController := controllers.NewBookController()
+	bookController := controllers.NewBookController(db)
 
 	// Initialize Routes
 	bookRoutes := routes.BookRoutes(bookController)
@@ -28,6 +28,6 @@ func main() {
 		e.Add(v.Method, v.Path, v.Handler)
 	}
 
-	e.Logger.Fatal(e.Start(":8080"))
+	e.Logger.Fatal(e.Start(":8000"))
 
 }

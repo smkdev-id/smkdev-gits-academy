@@ -19,5 +19,15 @@ func BookRoutes(bookcontroller *controllers.BookController) []*Route {
 			Path:    "/",
 			Handler: bookcontroller.GetAllBooks,
 		},
+		{
+			Method:  "GET",
+			Path:    "/book/:id",
+			Handler: bookcontroller.GetBookByID,
+		},
+		{
+			Method:  "POST",
+			Path:    "/book",
+			Handler: bookcontroller.CreateBook,
+		},
 	}
 }
