@@ -6,20 +6,15 @@ import (
 	"BookStore/pkg/routes"
 	"BookStore/pkg/server"
 	"BookStore/pkg/utils"
-	"context"
-	"fmt"
-	"log"
-	"os"
-	"os/signal"
-	"time"
 )
 
 func main() {
 
 	// Membaca konfigurasi dari file .env
 	cfg, err := config.NewConfig(".env")
-	checkError(err)
-
+	if err != nil {
+		panic(err)
+	}
 	// Inisialisasi logger
 	utils.InitLogger()
 
@@ -37,40 +32,8 @@ func main() {
 	routes.SetupRoutes(e)
 
 	// Menjalankan server
-	runServer(e, cfg.Port)
+	server.RunServer(e, cfg.Port)
 
 	// Menunggu dan menangani shutdown server dengan baik
-	waitForShutdown(e)
-}
-
-// Fungsi untuk memeriksa dan menangani error
-func checkError(err error) {
-	if err != nil {
-		panic(err)
-	}
-}
-
-// Fungsi untuk menjalankan server dalam goroutine terpisah
-func runServer(srv *server.Server, port string) {
-	go func() {
-		err := srv.Start(fmt.Sprintf(":%s", port))
-		log.Fatal(err)
-	}()
-}
-
-// Fungsi untuk menangani shutdown server dengan aman
-func waitForShutdown(srv *server.Server) {
-	quit := make(chan os.Signal, 1)
-	signal.Notify(quit, os.Interrupt)
-
-	<-quit
-
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-
-	go func() {
-		if err := srv.Shutdown(ctx); err != nil {
-			srv.Logger.Fatal(err)
-		}
-	}()
+	server.WaitForShutdown(e)
 }
