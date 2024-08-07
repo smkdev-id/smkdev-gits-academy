@@ -10,14 +10,14 @@ import (
 
 func GetBooks(c *gin.Context) {
 	var books []models.Book
-	config.DB.Find(&books)
+	config.DB.Preload("Kategori").Find(&books)
 	c.JSON(http.StatusOK, books)
 }
 
 func GetBookByID(c *gin.Context) {
 	id := c.Param("id")
 	var book models.Book
-	if err := config.DB.First(&book, id).Error; err != nil {
+	if err := config.DB.Preload("Kategori").First(&book, id).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Book not found!"})
 		return
 	}
