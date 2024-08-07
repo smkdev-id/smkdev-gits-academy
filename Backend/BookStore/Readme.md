@@ -74,7 +74,7 @@ This project is a Bookstore REST API built with Golang, Echo framework, GORM, an
 ### Books
 
 - **Get All Books**
-  - **URL:** `/api/books`
+  - **URL:** `/api/book`
   - **Method:** `GET`
   - **Success Response:**
     - **Code:** 200
