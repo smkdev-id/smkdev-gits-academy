@@ -1,4 +1,4 @@
-module github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api
+module golang-bookstore
 
 go 1.22.4
 

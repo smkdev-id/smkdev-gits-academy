@@ -3,12 +3,12 @@ package main
 import (
 	"net/http"
 
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/app"
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/controller"
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/exception"
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/helper"
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/repository"
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/service"
+	"golang-bookstore/app"
+	"golang-bookstore/controller"
+	"golang-bookstore/exception"
+	"golang-bookstore/helper"
+	"golang-bookstore/repository"
+	"golang-bookstore/service"
 
 	_ "github.com/go-sql-driver/mysql"
 

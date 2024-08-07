@@ -4,7 +4,7 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/model/domain"
+	"golang-bookstore/model/domain"
 )
 
 type TodoListRepository interface {

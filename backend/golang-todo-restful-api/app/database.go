@@ -3,8 +3,9 @@ package app
 import (
 	"database/sql"
 
+	"golang-bookstore/helper"
+
 	_ "github.com/mattn/go-sqlite3"
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/helper"
 )
 
 func NewDB() *sql.DB {

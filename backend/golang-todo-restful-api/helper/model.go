@@ -1,8 +1,8 @@
 package helper
 
 import (
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/model/domain"
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/model/web"
+	"golang-bookstore/model/domain"
+	"golang-bookstore/model/web"
 )
 
 func TodoListResponse(todolist domain.TodoList) web.TodoListResponse {

@@ -4,11 +4,11 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/exception"
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/helper"
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/model/domain"
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/model/web"
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/repository"
+	"golang-bookstore/exception"
+	"golang-bookstore/helper"
+	"golang-bookstore/model/domain"
+	"golang-bookstore/model/web"
+	"golang-bookstore/repository"
 
 	"github.com/go-playground/validator/v10"
 )

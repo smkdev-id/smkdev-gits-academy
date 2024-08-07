@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/model/web"
+	"golang-bookstore/model/web"
 )
 
 type TodoListService interface {

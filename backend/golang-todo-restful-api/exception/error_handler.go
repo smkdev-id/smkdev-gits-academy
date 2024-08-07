@@ -3,8 +3,8 @@ package exception
 import (
 	"net/http"
 
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/helper"
-	"github.com/smkdev-id/smkdev-gits-academy/tree/ahmadyani/backend/golang-todo-restful-api/model/web"
+	"golang-bookstore/helper"
+	"golang-bookstore/model/web"
 )
 
 func ErrorHandler(writer http.ResponseWriter, request *http.Request, err interface{}) {
