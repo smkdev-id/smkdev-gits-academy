@@ -13,5 +13,13 @@ func main() {
 
 	routes.RegisterRoutes(r)
 
-	r.Run(":3000")
+	err := r.Run(":3000")
+	checkError(err)
+	return
+}
+
+func checkError(err error) {
+	if err != nil {
+		panic(err)
+	}
 }
