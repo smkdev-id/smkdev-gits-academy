@@ -29,5 +29,15 @@ func BookRoutes(bookcontroller *controllers.BookController) []*Route {
 			Path:    "/book",
 			Handler: bookcontroller.CreateBook,
 		},
+		{
+			Method:  "PUT",
+			Path:    "/book/:id",
+			Handler: bookcontroller.UpdateBook,
+		},
+		{
+			Method:  "DELETE",
+			Path:    "/book/:id",
+			Handler: bookcontroller.DeleteBook,
+		},
 	}
 }
