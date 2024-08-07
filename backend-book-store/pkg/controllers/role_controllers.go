@@ -10,6 +10,7 @@ import (
 
 func CreateRole(c *gin.Context) {
 	var role models.Role
+
 	if err := c.ShouldBindJSON(&role); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	}
@@ -22,6 +23,7 @@ func CreateRole(c *gin.Context) {
 
 func GetRoles(c *gin.Context) {
 	var roles []models.Role
+
 	if err := config.DB.Find(&roles).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return

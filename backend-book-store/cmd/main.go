@@ -9,6 +9,7 @@ import (
 func main(){
 	config.InitDB()
 	config.InitRedis()
+	config.SeedData()
 
 	router := gin.Default()
 	routes.RegisterRoutes(router)

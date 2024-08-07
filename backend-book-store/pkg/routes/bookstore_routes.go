@@ -9,16 +9,23 @@ import (
 func RegisterRoutes(router *gin.Engine) {
 	router.POST("/register", controllers.Register)
 	router.POST("/login", controllers.Login)
-	router.POST("/role", controllers.CreateRole)
-	router.GET("/role", controllers.GetRoles)
-	router.POST("/assign-role/:userID", controllers.AssignRole)
+	
+	userProtected := router.Group("/")
+	userProtected.Use(middleware.AuthMiddleware())
+	
+	userProtected.GET("/book", controllers.GetBooks)
+	userProtected.GET("/book/:bookId", controllers.GetBookById)
+	
+	userProtected.POST("/logout", controllers.Logout)
 
-	protected := router.Group("/")
-	protected.Use(middleware.AuthMiddleware())
-	protected.GET("/book", controllers.GetBooks)
-	protected.POST("/book", controllers.CreateBook)
-	protected.GET("/book/:bookId", controllers.GetBookById)
-	protected.PUT("/book/:bookId", controllers.UpdateBook)
-	protected.DELETE("/book/:bookId", controllers.DeleteBook)
-	protected.POST("/logout", controllers.Logout)
+	adminProtected := router.Group("/")
+	adminProtected.Use(middleware.AuthMiddleware(), middleware.AdminOnly())
+
+	adminProtected.POST("/book", controllers.CreateBook)
+	adminProtected.PUT("/book/:bookId", controllers.UpdateBook)
+	adminProtected.DELETE("/book/:bookId", controllers.DeleteBook)
+
+	adminProtected.POST("/role", controllers.CreateRole)
+	adminProtected.GET("/role", controllers.GetRoles)
+	adminProtected.POST("/assign-role/:userID", controllers.AssignRole)
 }	

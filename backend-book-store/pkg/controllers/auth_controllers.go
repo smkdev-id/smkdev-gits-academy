@@ -37,6 +37,17 @@ func Register(c *gin.Context) {
 		return
 	}
 
+	var defaultRole models.Role
+	if err := config.DB.Where("name = ?", "user").First(&defaultRole).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Default role not found"})
+		return
+	}
+
+	if err := config.DB.Model(&user).Association("Roles").Append(&defaultRole); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to assign default role"})
+		return
+	}
+
 	token, err := utils.GenerateToken(user.ID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error" : err.Error()})
@@ -71,7 +82,19 @@ func AssignRole(c *gin.Context) {
 		return
 	}
 
-	if err := config.DB.Model(&user).Association("Roles").Append(roles); err != nil {
+	var newRoles []models.Role
+    existingRoleMap := make(map[uint]bool)
+    for _, role := range user.Roles {
+        existingRoleMap[role.ID] = true
+    }
+
+    for _, role := range roles {
+        if !existingRoleMap[role.ID] {
+            newRoles = append(newRoles, role)
+        }
+    }
+
+	if err := config.DB.Model(&user).Association("Roles").Append(newRoles); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error" : err})
 		return
 	}

@@ -4,21 +4,23 @@ import (
 	"errors"
 	"time"
 
+	"github.com/ItsKevinRafaell/go-books-store-crud/pkg/config"
+	"github.com/ItsKevinRafaell/go-books-store-crud/pkg/models"
 	"github.com/dgrijalva/jwt-go"
 )
 
 var jwtSecret = []byte("secret")
 
-func GenerateToken(userId uint) (string, error) {
+func GenerateToken(userID uint) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"userId": userId,
+		"userID": userID,
 		"exp": time.Now().Add(time.Hour * 24).Unix(),
 	})
 
 	return token.SignedString(jwtSecret)
 }
 
-func ValidateToken(tokenString string) (*jwt.Token, error) {
+func ValidateToken(tokenString string) (jwt.MapClaims, error) {
     token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
         if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
             return nil, errors.New("unexpected signing method")
@@ -30,9 +32,22 @@ func ValidateToken(tokenString string) (*jwt.Token, error) {
         return nil, err
     }
 
-    if _, ok := token.Claims.(jwt.Claims); !ok || !token.Valid {
+    if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+        return claims, nil
+    } else {
         return nil, errors.New("invalid token")
     }
+}
 
-    return token, nil
+func IsUserAdmin(userID uint) (bool, error) {
+    var user models.User
+    if err := config.DB.Where("id = ?", userID).Preload("Roles").First(&user).Error; err != nil {
+        return false, err
+    }
+    for _, role := range user.Roles {
+        if role.Name == "admin" {
+            return true, nil
+        }
+    }
+    return false, nil
 }
