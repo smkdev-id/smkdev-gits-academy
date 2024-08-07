@@ -40,7 +40,7 @@ Konfigurasi database SQLite dapat dilakukan di file pkg/config/app.go. Pastikan 
 
 ## Jalankan Aplikasi
 ```bash 
-go run main.go
+go run cmd/main.go
 ```
 Aplikasi akan berjalan di http://localhost:3000.
 
