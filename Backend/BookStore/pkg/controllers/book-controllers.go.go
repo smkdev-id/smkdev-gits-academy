@@ -6,6 +6,7 @@ import (
 	"BookStore/pkg/models"
 	"BookStore/pkg/utils"
 	"fmt"
+	"strconv"
 
 	"net/http"
 
@@ -15,16 +16,16 @@ import (
 // GetBooks mengembalikan daftar semua buku.
 func GetBooks(c echo.Context) error {
 	var books []*models.Book
-    var bookRes []*dto.BookResponse
-    // Ambil semua buku dari database
+	var bookRes []*dto.BookResponse
+	// Ambil semua buku dari database
 	config.DB.Find(&books)
-    // Ubah setiap buku menjadi format respons
-    for _, book := range books {
+	// Ubah setiap buku menjadi format respons
+	for _, book := range books {
 		BookResponses := dto.EntityToResponse(book)
 		bookRes = append(bookRes, BookResponses)
 	}
-    fmt.Println(bookRes)
-    // Kembalikan respons sukses dengan data buku
+	fmt.Println(bookRes)
+	// Kembalikan respons sukses dengan data buku
 	return utils.SuccessResponse(c, http.StatusOK, bookRes)
 }
 
@@ -32,31 +33,35 @@ func GetBooks(c echo.Context) error {
 func GetBookByID(c echo.Context) error {
 	var book *models.Book
 	id := c.Param("id")
-    // Cari buku berdasarkan ID
-	if err := config.DB.First(&book, id).Error; err != nil {
+	intID, err := strconv.Atoi(id)
+	if err != nil {
+		return utils.ErrorResponse(c, http.StatusBadRequest, "Book not found")
+	}
+	// Cari buku berdasarkan ID
+	if err := config.DB.First(&book, intID).Error; err != nil {
 		return utils.ErrorResponse(c, http.StatusNotFound, "Book not found")
 	}
-    // Ubah buku menjadi format respons
-    bookRes := dto.EntityToResponse(book)
-    // Kembalikan respons sukses dengan data buku
+	// Ubah buku menjadi format respons
+	bookRes := dto.EntityToResponse(book)
+	// Kembalikan respons sukses dengan data buku
 	return utils.SuccessResponse(c, http.StatusOK, bookRes)
 }
 
 // CreateBook membuat buku baru.
 func CreateBook(c echo.Context) error {
 	var book *models.Book
-    // Bind data dari request ke model buku
+	// Bind data dari request ke model buku
 	if err := c.Bind(&book); err != nil {
 		return utils.ErrorResponse(c, http.StatusBadRequest, err.Error())
 	}
-    // Validasi input
+	// Validasi input
 	if err := utils.ValidateStruct(book); err != nil {
 		errors := utils.ParseValidationErrors(err)
 		return utils.ErrorResponseValidation(c, http.StatusBadRequest, errors)
 	}
-    // Simpan buku baru ke database
+	// Simpan buku baru ke database
 	config.DB.Create(&book)
-    // Kembalikan respons sukses tanpa data
+	// Kembalikan respons sukses tanpa data
 	return utils.SuccessResponseWithoutData(c, http.StatusCreated)
 }
 
@@ -64,22 +69,26 @@ func CreateBook(c echo.Context) error {
 func UpdateBook(c echo.Context) error {
 	var book *models.Book
 	id := c.Param("id")
-    // Cari buku berdasarkan ID
-	if err := config.DB.First(&book, id).Error; err != nil {
+	intID, err := strconv.Atoi(id)
+	if err != nil {
+		return utils.ErrorResponse(c, http.StatusBadRequest, "Book not found")
+	}
+	// Cari buku berdasarkan ID
+	if err := config.DB.First(&book, intID).Error; err != nil {
 		return utils.ErrorResponse(c, http.StatusNotFound, "Book not found")
 	}
-    // Bind data dari request ke model buku
+	// Bind data dari request ke model buku
 	if err := c.Bind(&book); err != nil {
 		return utils.ErrorResponse(c, http.StatusBadRequest, err.Error())
 	}
-    // Validasi input
+	// Validasi input
 	if err := utils.ValidateStruct(book); err != nil {
 		errors := utils.ParseValidationErrors(err)
 		return utils.ErrorResponseValidation(c, http.StatusBadRequest, errors)
 	}
-    // Simpan perubahan buku ke database
+	// Simpan perubahan buku ke database
 	config.DB.Save(&book)
-    // Kembalikan respons sukses tanpa data
+	// Kembalikan respons sukses tanpa data
 	return utils.SuccessResponseWithoutData(c, http.StatusOK)
 }
 
@@ -87,12 +96,16 @@ func UpdateBook(c echo.Context) error {
 func DeleteBook(c echo.Context) error {
 	var book models.Book
 	id := c.Param("id")
-    // Cari buku berdasarkan ID
-	if err := config.DB.First(&book, id).Error; err != nil {
+	intID, err := strconv.Atoi(id)
+	if err != nil {
+		return utils.ErrorResponse(c, http.StatusBadRequest, "Book not found")
+	}
+	// Cari buku berdasarkan ID
+	if err := config.DB.First(&book, intID).Error; err != nil {
 		return utils.ErrorResponse(c, http.StatusNotFound, "Book not found")
 	}
-    // Hapus buku dari database
+	// Hapus buku dari database
 	config.DB.Delete(&book)
-    // Kembalikan respons sukses tanpa data
+	// Kembalikan respons sukses tanpa data
 	return utils.SuccessResponseWithoutData(c, http.StatusOK)
 }
