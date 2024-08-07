@@ -230,16 +230,18 @@ Bookstore/
 │ │ └── app.go
 │ ├── controllers/
 │ │ └── book-controllers.go
+│ ├── dto/
+│ │ └── book_dto.go
 │ ├── models/
-│ │ └── book.go
+│ │ ├── book.go
+│ │ ├── bookstore.db
+│ │ └── database.go
 │ ├── routes/
 │ │ └── bookstore-routes.go
 │ ├── utils/
-│ │ ├── config.go
 │ │ ├── logger.go
-│ │ ├── middleware.go
 │ │ ├── response.go
-│ │ ├── validation.go
+│ │ └── validation.go
 ├── .env
 ├── go.sum
 ├── go.mod

@@ -3,6 +3,7 @@ module BookStore
 go 1.20
 
 require (
+	github.com/caarlos0/env/v6 v6.10.1
 	github.com/go-playground/validator/v10 v10.22.0
 	github.com/joho/godotenv v1.5.1
 	github.com/labstack/echo/v4 v4.12.0
